@@ -1,0 +1,197 @@
+---
+title: HandlerRoutine fonction de rappel
+description: Fonction définie par l’application utilisée avec la fonction SetConsoleCtrlHandler. Un processus de console utilise cette fonction pour gérer les signaux de contrôle reçus par le processus.
+author: miniksa
+ms.author: miniksa
+ms.topic: article
+keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+f1_keywords:
+- consoleapi/HandlerRoutine
+- wincon/HandlerRoutine
+- HandlerRoutine
+MS-HAID:
+- '\_win32\_handlerroutine'
+- base.handlerroutine
+- consoles.handlerroutine
+MSHAttr:
+- PreferredSiteName:MSDN
+- PreferredLib:/library/windows/desktop
+ms.assetid: 2e8732fa-7dfd-415b-b2fc-c27a400496f2
+topic_type:
+- apiref
+api_name:
+- HandlerRoutine
+api_location:
+- Wincon.h
+api_type:
+- UserDefined
+ms.openlocfilehash: 14205baaddd98c8c22881c5f448119412e1f4a1c
+ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "89059332"
+---
+# <a name="handlerroutine-callback-function"></a><span data-ttu-id="ba045-105">HandlerRoutine fonction de rappel</span><span class="sxs-lookup"><span data-stu-id="ba045-105">HandlerRoutine callback function</span></span>
+
+
+<span data-ttu-id="ba045-106">Fonction définie par l’application utilisée avec la fonction [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) .</span><span class="sxs-lookup"><span data-stu-id="ba045-106">An application-defined function used with the [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) function.</span></span> <span data-ttu-id="ba045-107">Un processus de console utilise cette fonction pour gérer les signaux de contrôle reçus par le processus.</span><span class="sxs-lookup"><span data-stu-id="ba045-107">A console process uses this function to handle control signals received by the process.</span></span> <span data-ttu-id="ba045-108">Lorsque le signal est reçu, le système crée un nouveau thread dans le processus pour exécuter la fonction.</span><span class="sxs-lookup"><span data-stu-id="ba045-108">When the signal is received, the system creates a new thread in the process to execute the function.</span></span>
+
+<span data-ttu-id="ba045-109">Le type de \*\* \_ routine PHANDLER\*\* définit un pointeur vers cette fonction de rappel.</span><span class="sxs-lookup"><span data-stu-id="ba045-109">The **PHANDLER\_ROUTINE** type defines a pointer to this callback function.</span></span> <span data-ttu-id="ba045-110">**HandlerRoutine** est un espace réservé pour le nom de la fonction définie par l’application.</span><span class="sxs-lookup"><span data-stu-id="ba045-110">**HandlerRoutine** is a placeholder for the application-defined function name.</span></span>
+
+<a name="syntax"></a><span data-ttu-id="ba045-111">Syntaxe</span><span class="sxs-lookup"><span data-stu-id="ba045-111">Syntax</span></span>
+------
+
+```C
+BOOL WINAPI HandlerRoutine(
+  _In_ DWORD dwCtrlType
+);
+```
+
+<a name="parameters"></a><span data-ttu-id="ba045-112">Paramètres</span><span class="sxs-lookup"><span data-stu-id="ba045-112">Parameters</span></span>
+----------
+
+<span data-ttu-id="ba045-113">*dwCtrlType* \[ dans\]</span><span class="sxs-lookup"><span data-stu-id="ba045-113">*dwCtrlType* \[in\]</span></span>  
+<span data-ttu-id="ba045-114">Type de signal de contrôle reçu par le gestionnaire.</span><span class="sxs-lookup"><span data-stu-id="ba045-114">The type of control signal received by the handler.</span></span> <span data-ttu-id="ba045-115">Ce paramètre peut prendre l’une des valeurs suivantes.</span><span class="sxs-lookup"><span data-stu-id="ba045-115">This parameter can be one of the following values.</span></span>
+
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="ba045-116">Value</span><span class="sxs-lookup"><span data-stu-id="ba045-116">Value</span></span></th>
+<th><span data-ttu-id="ba045-117">Signification</span><span class="sxs-lookup"><span data-stu-id="ba045-117">Meaning</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span data-ttu-id="ba045-118"><span id="CTRL_C_EVENT"></span><span id="ctrl_c_event"></span>
+<strong>CTRL_C_EVENT</strong> 0</span><span class="sxs-lookup"><span data-stu-id="ba045-118"><span id="CTRL_C_EVENT"></span><span id="ctrl_c_event"></span>
+<strong>CTRL_C_EVENT</strong> 0</span></span></td>
+<td><p><span data-ttu-id="ba045-119">Un signal CTRL + C a été reçu, soit à partir d’une entrée au clavier, soit à partir d’un signal généré par la fonction <a href="generateconsolectrlevent.md" data-raw-source="[&lt;strong&gt;GenerateConsoleCtrlEvent&lt;/strong&gt;](generateconsolectrlevent.md)"><strong>GenerateConsoleCtrlEvent</strong></a> .</span><span class="sxs-lookup"><span data-stu-id="ba045-119">A CTRL+C signal was received, either from keyboard input or from a signal generated by the <a href="generateconsolectrlevent.md" data-raw-source="[&lt;strong&gt;GenerateConsoleCtrlEvent&lt;/strong&gt;](generateconsolectrlevent.md)"><strong>GenerateConsoleCtrlEvent</strong></a> function.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><span data-ttu-id="ba045-120"><span id="CTRL_BREAK_EVENT"></span><span id="ctrl_break_event"></span>
+<strong>CTRL_BREAK_EVENT</strong> 1</span><span class="sxs-lookup"><span data-stu-id="ba045-120"><span id="CTRL_BREAK_EVENT"></span><span id="ctrl_break_event"></span>
+<strong>CTRL_BREAK_EVENT</strong> 1</span></span></td>
+<td><p><span data-ttu-id="ba045-121">Un signal CTRL + ATTN a été reçu, soit à partir d’une entrée au clavier, soit à partir d’un signal généré par <a href="generateconsolectrlevent.md" data-raw-source="[&lt;strong&gt;GenerateConsoleCtrlEvent&lt;/strong&gt;](generateconsolectrlevent.md)"><strong>GenerateConsoleCtrlEvent</strong></a>.</span><span class="sxs-lookup"><span data-stu-id="ba045-121">A CTRL+BREAK signal was received, either from keyboard input or from a signal generated by <a href="generateconsolectrlevent.md" data-raw-source="[&lt;strong&gt;GenerateConsoleCtrlEvent&lt;/strong&gt;](generateconsolectrlevent.md)"><strong>GenerateConsoleCtrlEvent</strong></a>.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><span data-ttu-id="ba045-122"><span id="CTRL_CLOSE_EVENT"></span><span id="ctrl_close_event"></span>
+<strong>CTRL_CLOSE_EVENT</strong> 2</span><span class="sxs-lookup"><span data-stu-id="ba045-122"><span id="CTRL_CLOSE_EVENT"></span><span id="ctrl_close_event"></span>
+<strong>CTRL_CLOSE_EVENT</strong> 2</span></span></td>
+<td><p><span data-ttu-id="ba045-123">Signal que le système envoie à tous les processus attachés à une console lorsque l’utilisateur ferme la console (en cliquant sur <strong>Fermer</strong> dans la fenêtre de la console&#39;le menu fenêtre, ou en cliquant sur la commande terminer le bouton <strong>tâche</strong> du gestionnaire des tâches).</span><span class="sxs-lookup"><span data-stu-id="ba045-123">A signal that the system sends to all processes attached to a console when the user closes the console (either by clicking <strong>Close</strong> on the console window&#39;s window menu, or by clicking the <strong>End Task</strong> button command from Task Manager).</span></span></p></td>
+</tr>
+<tr class="even">
+<td><span data-ttu-id="ba045-124"><span id="CTRL_LOGOFF_EVENT"></span><span id="ctrl_logoff_event"></span>
+<strong>CTRL_LOGOFF_EVENT</strong> 5</span><span class="sxs-lookup"><span data-stu-id="ba045-124"><span id="CTRL_LOGOFF_EVENT"></span><span id="ctrl_logoff_event"></span>
+<strong>CTRL_LOGOFF_EVENT</strong> 5</span></span></td>
+<td><p><span data-ttu-id="ba045-125">Signal que le système envoie à tous les processus de la console lorsqu’un utilisateur se déconnecte.</span><span class="sxs-lookup"><span data-stu-id="ba045-125">A signal that the system sends to all console processes when a user is logging off.</span></span> <span data-ttu-id="ba045-126">Ce signal n’indique pas quel utilisateur se déconnecte, donc aucune hypothèse ne peut être faite.</span><span class="sxs-lookup"><span data-stu-id="ba045-126">This signal does not indicate which user is logging off, so no assumptions can be made.</span></span></p>
+<p><span data-ttu-id="ba045-127">Notez que ce signal est reçu uniquement par les services.</span><span class="sxs-lookup"><span data-stu-id="ba045-127">Note that this signal is received only by services.</span></span> <span data-ttu-id="ba045-128">Les applications interactives se terminent à la fermeture de session. elles ne sont donc pas présentes lorsque le système envoie ce signal.</span><span class="sxs-lookup"><span data-stu-id="ba045-128">Interactive applications are terminated at logoff, so they are not present when the system sends this signal.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><span data-ttu-id="ba045-129"><span id="CTRL_SHUTDOWN_EVENT"></span><span id="ctrl_shutdown_event"></span>
+<strong>CTRL_SHUTDOWN_EVENT</strong> 6</span><span class="sxs-lookup"><span data-stu-id="ba045-129"><span id="CTRL_SHUTDOWN_EVENT"></span><span id="ctrl_shutdown_event"></span>
+<strong>CTRL_SHUTDOWN_EVENT</strong> 6</span></span></td>
+<td><p><span data-ttu-id="ba045-130">Signal que le système envoie lorsque le système est en cours d’arrêt.</span><span class="sxs-lookup"><span data-stu-id="ba045-130">A signal that the system sends when the system is shutting down.</span></span> <span data-ttu-id="ba045-131">Les applications interactives ne sont pas présentes au moment où le système envoie ce signal. par conséquent, il est possible de recevoir uniquement des services dans cette situation.</span><span class="sxs-lookup"><span data-stu-id="ba045-131">Interactive applications are not present by the time the system sends this signal, therefore it can be received only be services in this situation.</span></span> <span data-ttu-id="ba045-132">Les services disposent également de leur propre mécanisme de notification pour les événements d’arrêt.</span><span class="sxs-lookup"><span data-stu-id="ba045-132">Services also have their own notification mechanism for shutdown events.</span></span> <span data-ttu-id="ba045-133">Pour plus d’informations, consultez <a href="https://msdn.microsoft.com/library/windows/desktop/ms683240" data-raw-source="[&lt;strong&gt;Handler&lt;/strong&gt;](https://msdn.microsoft.com/library/windows/desktop/ms683240)"><strong>handler</strong></a>.</span><span class="sxs-lookup"><span data-stu-id="ba045-133">For more information, see <a href="https://msdn.microsoft.com/library/windows/desktop/ms683240" data-raw-source="[&lt;strong&gt;Handler&lt;/strong&gt;](https://msdn.microsoft.com/library/windows/desktop/ms683240)"><strong>Handler</strong></a>.</span></span></p>
+<p><span data-ttu-id="ba045-134">Ce signal peut également être généré par une application à l’aide de <a href="generateconsolectrlevent.md" data-raw-source="[&lt;strong&gt;GenerateConsoleCtrlEvent&lt;/strong&gt;](generateconsolectrlevent.md)"><strong>GenerateConsoleCtrlEvent</strong></a>.</span><span class="sxs-lookup"><span data-stu-id="ba045-134">This signal can also be generated by an application using <a href="generateconsolectrlevent.md" data-raw-source="[&lt;strong&gt;GenerateConsoleCtrlEvent&lt;/strong&gt;](generateconsolectrlevent.md)"><strong>GenerateConsoleCtrlEvent</strong></a>.</span></span></p></td>
+</tr>
+<tr class="even">
+</tr>
+<tr class="odd">
+</tr>
+<tr class="even">
+</tr>
+</tbody>
+</table>
+
+ 
+
+<a name="return-value"></a><span data-ttu-id="ba045-135">Valeur retournée</span><span class="sxs-lookup"><span data-stu-id="ba045-135">Return value</span></span>
+------------
+
+<span data-ttu-id="ba045-136">Si la fonction gère le signal de contrôle, elle doit retourner **true**.</span><span class="sxs-lookup"><span data-stu-id="ba045-136">If the function handles the control signal, it should return **TRUE**.</span></span> <span data-ttu-id="ba045-137">Si elle retourne **false**, la fonction de gestionnaire suivante dans la liste des gestionnaires pour ce processus est utilisée.</span><span class="sxs-lookup"><span data-stu-id="ba045-137">If it returns **FALSE**, the next handler function in the list of handlers for this process is used.</span></span>
+
+<a name="remarks"></a><span data-ttu-id="ba045-138">Remarques</span><span class="sxs-lookup"><span data-stu-id="ba045-138">Remarks</span></span>
+-------
+
+<span data-ttu-id="ba045-139">Étant donné que le système crée un nouveau thread dans le processus pour exécuter la fonction de gestionnaire, il est possible que la fonction de gestionnaire se termine par un autre thread dans le processus.</span><span class="sxs-lookup"><span data-stu-id="ba045-139">Because the system creates a new thread in the process to execute the handler function, it is possible that the handler function will be terminated by another thread in the process.</span></span> <span data-ttu-id="ba045-140">Veillez à synchroniser les threads dans le processus avec le thread pour la fonction de gestionnaire.</span><span class="sxs-lookup"><span data-stu-id="ba045-140">Be sure to synchronize threads in the process with the thread for the handler function.</span></span>
+
+<span data-ttu-id="ba045-141">Chaque processus de console possède sa propre liste de fonctions **HandlerRoutine** .</span><span class="sxs-lookup"><span data-stu-id="ba045-141">Each console process has its own list of **HandlerRoutine** functions.</span></span> <span data-ttu-id="ba045-142">Initialement, cette liste contient uniquement une fonction de gestionnaire par défaut qui appelle [**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658).</span><span class="sxs-lookup"><span data-stu-id="ba045-142">Initially, this list contains only a default handler function that calls [**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658).</span></span> <span data-ttu-id="ba045-143">Un processus de console ajoute ou supprime des fonctions gestionnaires supplémentaires en appelant la fonction [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) , qui n’affecte pas la liste des fonctions de gestionnaire pour d’autres processus.</span><span class="sxs-lookup"><span data-stu-id="ba045-143">A console process adds or removes additional handler functions by calling the [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) function, which does not affect the list of handler functions for other processes.</span></span> <span data-ttu-id="ba045-144">Lorsqu’un processus de console reçoit l’un des signaux de contrôle, ses fonctions de gestionnaire sont appelées sur une base de dernier enregistrement, première appel, jusqu’à ce que l’un des gestionnaires retourne la **valeur true**.</span><span class="sxs-lookup"><span data-stu-id="ba045-144">When a console process receives any of the control signals, its handler functions are called on a last-registered, first-called basis until one of the handlers returns **TRUE**.</span></span> <span data-ttu-id="ba045-145">Si aucun des gestionnaires ne retourne la **valeur true**, le gestionnaire par défaut est appelé.</span><span class="sxs-lookup"><span data-stu-id="ba045-145">If none of the handlers returns **TRUE**, the default handler is called.</span></span>
+
+<span data-ttu-id="ba045-146">Les signaux de l’événement \*\*CTRL \_ Close \_ **, de l' \*\* \_ \_ événement Ctrl Logoff**et de la \*\*touche Ctrl \_ arrêter \_ \*\* permettent au processus de nettoyer avant l’arrêt.</span><span class="sxs-lookup"><span data-stu-id="ba045-146">The **CTRL\_CLOSE\_EVENT**, **CTRL\_LOGOFF\_EVENT**, and **CTRL\_SHUTDOWN\_EVENT** signals give the process an opportunity to clean up before termination.</span></span> <span data-ttu-id="ba045-147">Un **HandlerRoutine** peut effectuer tout nettoyage nécessaire, puis effectuer l’une des actions suivantes :</span><span class="sxs-lookup"><span data-stu-id="ba045-147">A **HandlerRoutine** can perform any necessary cleanup, then take one of the following actions:</span></span>
+
+- <span data-ttu-id="ba045-148">Appelez la fonction [**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658) pour terminer le processus.</span><span class="sxs-lookup"><span data-stu-id="ba045-148">Call the [**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658) function to terminate the process.</span></span>
+- <span data-ttu-id="ba045-149">Retourne **false**.</span><span class="sxs-lookup"><span data-stu-id="ba045-149">Return **FALSE**.</span></span> <span data-ttu-id="ba045-150">Si aucune des fonctions de gestionnaire inscrites ne retourne la **valeur true**, le gestionnaire par défaut arrête le processus.</span><span class="sxs-lookup"><span data-stu-id="ba045-150">If none of the registered handler functions returns **TRUE**, the default handler terminates the process.</span></span>
+- <span data-ttu-id="ba045-151">Retourne la **valeur true**.</span><span class="sxs-lookup"><span data-stu-id="ba045-151">Return **TRUE**.</span></span> <span data-ttu-id="ba045-152">Dans ce cas, aucune autre fonction de gestionnaire n’est appelée et le système met fin au processus.</span><span class="sxs-lookup"><span data-stu-id="ba045-152">In this case, no other handler functions are called and the system terminates the process.</span></span>
+
+<span data-ttu-id="ba045-153">Un processus peut utiliser la fonction [**SetProcessShutdownParameters**](https://msdn.microsoft.com/library/windows/desktop/ms686227) pour empêcher le système d’afficher une boîte de dialogue à l’utilisateur lors de la fermeture ou de l’arrêt.</span><span class="sxs-lookup"><span data-stu-id="ba045-153">A process can use the [**SetProcessShutdownParameters**](https://msdn.microsoft.com/library/windows/desktop/ms686227) function to prevent the system from displaying a dialog box to the user during logoff or shutdown.</span></span> <span data-ttu-id="ba045-154">Dans ce cas, le système met fin au processus lorsque **HandlerRoutine** retourne la **valeur true** ou lorsque le délai d’attente est écoulé.</span><span class="sxs-lookup"><span data-stu-id="ba045-154">In this case, the system terminates the process when **HandlerRoutine** returns **TRUE** or when the time-out period elapses.</span></span>
+
+<span data-ttu-id="ba045-155">Lorsqu’une application console est exécutée en tant que service, elle reçoit un gestionnaire de contrôle de console par défaut modifié.</span><span class="sxs-lookup"><span data-stu-id="ba045-155">When a console application is run as a service, it receives a modified default console control handler.</span></span> <span data-ttu-id="ba045-156">Ce gestionnaire modifié n’appelle pas [**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658) lors du traitement des signaux d’événement \*\*CTRL \_ Logoff \_ \*\* et \*\*CTRL \_ Shutdown \_ \*\* .</span><span class="sxs-lookup"><span data-stu-id="ba045-156">This modified handler does not call [**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658) when processing the **CTRL\_LOGOFF\_EVENT** and **CTRL\_SHUTDOWN\_EVENT** signals.</span></span> <span data-ttu-id="ba045-157">Cela permet au service de continuer à s’exécuter après la fermeture de la session de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="ba045-157">This allows the service to continue running after the user logs off.</span></span> <span data-ttu-id="ba045-158">Si le service installe son propre gestionnaire de contrôle de console, ce gestionnaire est appelé avant le gestionnaire par défaut.</span><span class="sxs-lookup"><span data-stu-id="ba045-158">If the service installs its own console control handler, this handler is called before the default handler.</span></span> <span data-ttu-id="ba045-159">Si le gestionnaire installé appelle **ExitProcess** lors du traitement du signal d' \*\* \_ \_ événement Ctrl Logoff\*\* , le service se termine lorsque l’utilisateur se déconnecte.</span><span class="sxs-lookup"><span data-stu-id="ba045-159">If the installed handler calls **ExitProcess** when processing the **CTRL\_LOGOFF\_EVENT** signal, the service exits when the user logs off.</span></span>
+
+<span data-ttu-id="ba045-160">Notez qu’une bibliothèque ou une DLL tierce peut installer un gestionnaire de contrôle de console pour votre application.</span><span class="sxs-lookup"><span data-stu-id="ba045-160">Note that a third-party library or DLL can install a console control handler for your application.</span></span> <span data-ttu-id="ba045-161">Si c’est le cas, ce gestionnaire remplace le gestionnaire par défaut et peut provoquer la fermeture de l’application lorsque l’utilisateur se déconnecte.</span><span class="sxs-lookup"><span data-stu-id="ba045-161">If it does, this handler overrides the default handler, and can cause the application to exit when the user logs off.</span></span>
+
+## <a name="timeouts"></a><span data-ttu-id="ba045-162">Délais d'expiration</span><span class="sxs-lookup"><span data-stu-id="ba045-162">Timeouts</span></span>
+
+| <span data-ttu-id="ba045-163">Événement</span><span class="sxs-lookup"><span data-stu-id="ba045-163">Event</span></span>                  | <span data-ttu-id="ba045-164">Circonstances</span><span class="sxs-lookup"><span data-stu-id="ba045-164">Circumstances</span></span>                   | <span data-ttu-id="ba045-165">Délai d'expiration</span><span class="sxs-lookup"><span data-stu-id="ba045-165">Timeout</span></span>                                                     |
+|------------------------|---------------------------------|-------------------------------------------------------------|
+| `CTRL_CLOSE_EVENT`     | <span data-ttu-id="ba045-166">_aux_</span><span class="sxs-lookup"><span data-stu-id="ba045-166">_any_</span></span>                           | <span data-ttu-id="ba045-167">paramètre système `SPI_GETHUNGAPPTIMEOUT` , 5 000 MS</span><span class="sxs-lookup"><span data-stu-id="ba045-167">system parameter `SPI_GETHUNGAPPTIMEOUT`, 5000ms</span></span>            |
+| `CTRL_LOGOFF_EVENT`    | <span data-ttu-id="ba045-168">_rapide_[1]</span><span class="sxs-lookup"><span data-stu-id="ba045-168">_quick_[1]</span></span> | <span data-ttu-id="ba045-169">clé `CriticalAppShutdownTimeout` de registre ou 500 ms</span><span class="sxs-lookup"><span data-stu-id="ba045-169">registry key `CriticalAppShutdownTimeout` or 500ms</span></span>          |
+| `CTRL_LOGOFF_EVENT`    | <span data-ttu-id="ba045-170">_aucun des éléments ci-dessus_</span><span class="sxs-lookup"><span data-stu-id="ba045-170">_none of the above_</span></span>             | <span data-ttu-id="ba045-171">paramètre système `SPI_GETWAITTOKILLTIMEOUT` , 5 000 MS</span><span class="sxs-lookup"><span data-stu-id="ba045-171">system parameter `SPI_GETWAITTOKILLTIMEOUT`, 5000ms</span></span>         |
+| `CTRL_SHUTDOWN_EVENT`  | <span data-ttu-id="ba045-172">**processus de service**</span><span class="sxs-lookup"><span data-stu-id="ba045-172">**service process**</span></span>             | <span data-ttu-id="ba045-173">paramètre système `SPI_GETWAITTOKILLSERVICETIMEOUT` , 20000ms</span><span class="sxs-lookup"><span data-stu-id="ba045-173">system parameter `SPI_GETWAITTOKILLSERVICETIMEOUT`, 20000ms</span></span> |
+| `CTRL_SHUTDOWN_EVENT`  | <span data-ttu-id="ba045-174">_rapide_[1]</span><span class="sxs-lookup"><span data-stu-id="ba045-174">_quick_[1]</span></span> | <span data-ttu-id="ba045-175">clé `CriticalAppShutdownTimeout` de registre ou 500 ms</span><span class="sxs-lookup"><span data-stu-id="ba045-175">registry key `CriticalAppShutdownTimeout` or 500ms</span></span>          |
+| `CTRL_SHUTDOWN_EVENT`  | <span data-ttu-id="ba045-176">_aucun des éléments ci-dessus_</span><span class="sxs-lookup"><span data-stu-id="ba045-176">_none of the above_</span></span>             | <span data-ttu-id="ba045-177">paramètre système `SPI_GETWAITTOKILLTIMEOUT` , 5 000 MS</span><span class="sxs-lookup"><span data-stu-id="ba045-177">system parameter `SPI_GETWAITTOKILLTIMEOUT`, 5000ms</span></span>         |
+| <span data-ttu-id="ba045-178">`CTRL_C`, `CTRL_BREAK`</span><span class="sxs-lookup"><span data-stu-id="ba045-178">`CTRL_C`, `CTRL_BREAK`</span></span> | <span data-ttu-id="ba045-179">_aux_</span><span class="sxs-lookup"><span data-stu-id="ba045-179">_any_</span></span>                           | <span data-ttu-id="ba045-180">**aucun délai d’attente**</span><span class="sxs-lookup"><span data-stu-id="ba045-180">**no timeout**</span></span>                                              |
+
+<span data-ttu-id="ba045-181">_[1] : les événements « rapides » ne sont jamais utilisés, mais il reste du code pour les prendre en charge._</span><span class="sxs-lookup"><span data-stu-id="ba045-181">_[1]: "quick" events are never used, but there's still code to support them._</span></span>
+
+<a name="requirements"></a><span data-ttu-id="ba045-182">Configuration requise</span><span class="sxs-lookup"><span data-stu-id="ba045-182">Requirements</span></span>
+------------
+
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="ba045-183">Client minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="ba045-183">Minimum supported client</span></span></p></td>
+<td><p><span data-ttu-id="ba045-184">Windows 2000 professionnel [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="ba045-184">Windows 2000 Professional [desktop apps only]</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ba045-185">Serveur minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="ba045-185">Minimum supported server</span></span></p></td>
+<td><p><span data-ttu-id="ba045-186">Serveur Windows 2000 [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="ba045-186">Windows 2000 Server [desktop apps only]</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ba045-187">En-tête</span><span class="sxs-lookup"><span data-stu-id="ba045-187">Header</span></span></p></td>
+<td><span data-ttu-id="ba045-188">ConsoleApi. h (via wincon. h, incluez Windows. h)</span><span class="sxs-lookup"><span data-stu-id="ba045-188">ConsoleApi.h (via Wincon.h, include Windows.h)</span></span></td>
+</tr>
+</tbody>
+</table>
+
+## <a name="span-idsee_alsospansee-also"></a><span data-ttu-id="ba045-189"><span id="see_also"></span>Voir aussi</span><span class="sxs-lookup"><span data-stu-id="ba045-189"><span id="see_also"></span>See also</span></span>
+
+
+[<span data-ttu-id="ba045-190">Gestionnaires de contrôle de console</span><span class="sxs-lookup"><span data-stu-id="ba045-190">Console Control Handlers</span></span>](console-control-handlers.md)
+
+[<span data-ttu-id="ba045-191">Fonctions de la console</span><span class="sxs-lookup"><span data-stu-id="ba045-191">Console Functions</span></span>](console-functions.md)
+
+[<span data-ttu-id="ba045-192">**ExitProcess**</span><span class="sxs-lookup"><span data-stu-id="ba045-192">**ExitProcess**</span></span>](https://msdn.microsoft.com/library/windows/desktop/ms682658)
+
+[<span data-ttu-id="ba045-193">**GenerateConsoleCtrlEvent**</span><span class="sxs-lookup"><span data-stu-id="ba045-193">**GenerateConsoleCtrlEvent**</span></span>](generateconsolectrlevent.md)
+
+[<span data-ttu-id="ba045-194">**GetProcessShutdownParameters**</span><span class="sxs-lookup"><span data-stu-id="ba045-194">**GetProcessShutdownParameters**</span></span>](https://msdn.microsoft.com/library/windows/desktop/ms683221)
+
+[<span data-ttu-id="ba045-195">**SetConsoleCtrlHandler**</span><span class="sxs-lookup"><span data-stu-id="ba045-195">**SetConsoleCtrlHandler**</span></span>](setconsolectrlhandler.md)
+
+[<span data-ttu-id="ba045-196">**SetProcessShutdownParameters**</span><span class="sxs-lookup"><span data-stu-id="ba045-196">**SetProcessShutdownParameters**</span></span>](https://msdn.microsoft.com/library/windows/desktop/ms686227)
+
+ 
+
+ 
+
+
+
+
