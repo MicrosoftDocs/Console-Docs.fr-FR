@@ -1,10 +1,10 @@
 ---
-title: Structure MENU_EVENT_RECORD
+title: MENU_EVENT_RECORD, structure
 description: Décrit un événement de menu dans une structure d’enregistrement d’entrée de console \_ . Ces événements sont utilisés en interne et doivent être ignorés.
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - wincontypes/MENU_EVENT_RECORD
 - wincon/MENU_EVENT_RECORD
@@ -25,23 +25,23 @@ topic_type:
 api_name:
 - MENU_EVENT_RECORD
 api_location:
-- Wincon.h
+- WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: 8bbfbf6ad8bd885d69ce08e94dfced93b0bd3257
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: dfca825c03dbf0e63041e68adc5e43f2ca0ef669
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059077"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039517"
 ---
-# <a name="menu_event_record-structure"></a><span data-ttu-id="7edd7-105">Structure d’enregistrement d' \_ événement de menu \_</span><span class="sxs-lookup"><span data-stu-id="7edd7-105">MENU\_EVENT\_RECORD structure</span></span>
+# <a name="menu_event_record-structure"></a><span data-ttu-id="f0131-105">Structure d’enregistrement d' \_ événement de menu \_</span><span class="sxs-lookup"><span data-stu-id="f0131-105">MENU\_EVENT\_RECORD structure</span></span>
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
-<span data-ttu-id="7edd7-106">Décrit un événement de menu dans une structure [**d' \_ enregistrement d’entrée**](input-record-str.md) de console.</span><span class="sxs-lookup"><span data-stu-id="7edd7-106">Describes a menu event in a console [**INPUT\_RECORD**](input-record-str.md) structure.</span></span> <span data-ttu-id="7edd7-107">Ces événements sont utilisés en interne et doivent être ignorés.</span><span class="sxs-lookup"><span data-stu-id="7edd7-107">These events are used internally and should be ignored.</span></span>
+<span data-ttu-id="f0131-106">Décrit un événement de menu dans une structure [**d' \_ enregistrement d’entrée**](input-record-str.md) de console.</span><span class="sxs-lookup"><span data-stu-id="f0131-106">Describes a menu event in a console [**INPUT\_RECORD**](input-record-str.md) structure.</span></span> <span data-ttu-id="f0131-107">Ces événements sont utilisés en interne et doivent être ignorés.</span><span class="sxs-lookup"><span data-stu-id="f0131-107">These events are used internally and should be ignored.</span></span>
 
-<a name="syntax"></a><span data-ttu-id="7edd7-108">Syntaxe</span><span class="sxs-lookup"><span data-stu-id="7edd7-108">Syntax</span></span>
-------
+## <a name="syntax"></a><span data-ttu-id="f0131-108">Syntaxe</span><span class="sxs-lookup"><span data-stu-id="f0131-108">Syntax</span></span>
 
 ```C
 typedef struct _MENU_EVENT_RECORD {
@@ -49,45 +49,19 @@ typedef struct _MENU_EVENT_RECORD {
 } MENU_EVENT_RECORD, *PMENU_EVENT_RECORD;
 ```
 
-<a name="members"></a><span data-ttu-id="7edd7-109">Membres</span><span class="sxs-lookup"><span data-stu-id="7edd7-109">Members</span></span>
--------
+## <a name="members"></a><span data-ttu-id="f0131-109">Membres</span><span class="sxs-lookup"><span data-stu-id="f0131-109">Members</span></span>
 
-<span data-ttu-id="7edd7-110">**dwCommandId**</span><span class="sxs-lookup"><span data-stu-id="7edd7-110">**dwCommandId**</span></span>  
-<span data-ttu-id="7edd7-111">Réservé.</span><span class="sxs-lookup"><span data-stu-id="7edd7-111">Reserved.</span></span>
+<span data-ttu-id="f0131-110">**dwCommandId**</span><span class="sxs-lookup"><span data-stu-id="f0131-110">**dwCommandId**</span></span>  
+<span data-ttu-id="f0131-111">Réservé.</span><span class="sxs-lookup"><span data-stu-id="f0131-111">Reserved.</span></span>
 
-<a name="requirements"></a><span data-ttu-id="7edd7-112">Configuration requise</span><span class="sxs-lookup"><span data-stu-id="7edd7-112">Requirements</span></span>
-------------
+## <a name="requirements"></a><span data-ttu-id="f0131-112">Spécifications</span><span class="sxs-lookup"><span data-stu-id="f0131-112">Requirements</span></span>
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p><span data-ttu-id="7edd7-113">Client minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="7edd7-113">Minimum supported client</span></span></p></td>
-<td><p><span data-ttu-id="7edd7-114">Windows 2000 professionnel [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="7edd7-114">Windows 2000 Professional [desktop apps only]</span></span></p></td>
-</tr>
-<tr class="even">
-<td><p><span data-ttu-id="7edd7-115">Serveur minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="7edd7-115">Minimum supported server</span></span></p></td>
-<td><p><span data-ttu-id="7edd7-116">Serveur Windows 2000 [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="7edd7-116">Windows 2000 Server [desktop apps only]</span></span></p></td>
-</tr>
-<tr class="odd">
-<td><p><span data-ttu-id="7edd7-117">En-tête</span><span class="sxs-lookup"><span data-stu-id="7edd7-117">Header</span></span></p></td>
-<td><span data-ttu-id="7edd7-118">WinConTypes. h (via wincon. h, incluez Windows. h)</span><span class="sxs-lookup"><span data-stu-id="7edd7-118">WinConTypes.h (via Wincon.h, include Windows.h)</span></span></td>
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| <span data-ttu-id="f0131-113">Client minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="f0131-113">Minimum supported client</span></span> | <span data-ttu-id="f0131-114">Applications de bureau Windows 2000 professionnel \[ uniquement\]</span><span class="sxs-lookup"><span data-stu-id="f0131-114">Windows 2000 Professional \[desktop apps only\]</span></span> |
+| <span data-ttu-id="f0131-115">Serveur minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="f0131-115">Minimum supported server</span></span> | <span data-ttu-id="f0131-116">Applications de bureau Windows 2000 Server \[ uniquement\]</span><span class="sxs-lookup"><span data-stu-id="f0131-116">Windows 2000 Server \[desktop apps only\]</span></span> |
+| <span data-ttu-id="f0131-117">En-tête</span><span class="sxs-lookup"><span data-stu-id="f0131-117">Header</span></span> | <span data-ttu-id="f0131-118">WinConTypes. h (via WinCon. h, incluez Windows. h)</span><span class="sxs-lookup"><span data-stu-id="f0131-118">WinConTypes.h (via WinCon.h, include Windows.h)</span></span> |
 
-## <a name="span-idsee_alsospansee-also"></a><span data-ttu-id="7edd7-119"><span id="see_also"></span>Voir aussi</span><span class="sxs-lookup"><span data-stu-id="7edd7-119"><span id="see_also"></span>See also</span></span>
+## <a name="see-also"></a><span data-ttu-id="f0131-119">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="f0131-119">See also</span></span>
 
-
-[<span data-ttu-id="7edd7-120">**enregistrement d’entrée \_**</span><span class="sxs-lookup"><span data-stu-id="7edd7-120">**INPUT\_RECORD**</span></span>](input-record-str.md)
-
- 
-
- 
-
-
-
-
+[<span data-ttu-id="f0131-120">**enregistrement d’entrée \_**</span><span class="sxs-lookup"><span data-stu-id="f0131-120">**INPUT\_RECORD**</span></span>](input-record-str.md)
