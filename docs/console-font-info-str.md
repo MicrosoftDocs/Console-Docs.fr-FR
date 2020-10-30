@@ -4,7 +4,7 @@ description: Consultez les informations de référence sur la structure CONSOLE_
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - wincontypes/CONSOLE_FONT_INFO
 - wincon/CONSOLE_FONT_INFO
@@ -25,23 +25,23 @@ topic_type:
 api_name:
 - CONSOLE_FONT_INFO
 api_location:
-- Wincon.h
+- WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: c4218c53eacd95d67f3dc9056f5a1024ac1a8ab0
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 6c437e626ed6d207da4672a3a5ea60c2ea0ee008
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059333"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93037137"
 ---
-# <a name="console_font_info-structure"></a><span data-ttu-id="67e89-104">Structure des informations de \_ police de la console \_</span><span class="sxs-lookup"><span data-stu-id="67e89-104">CONSOLE\_FONT\_INFO structure</span></span>
+# <a name="console_font_info-structure"></a><span data-ttu-id="e8847-104">Structure des informations de \_ police de la console \_</span><span class="sxs-lookup"><span data-stu-id="e8847-104">CONSOLE\_FONT\_INFO structure</span></span>
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
-<span data-ttu-id="67e89-105">Contient des informations pour une police de console.</span><span class="sxs-lookup"><span data-stu-id="67e89-105">Contains information for a console font.</span></span>
+<span data-ttu-id="e8847-105">Contient des informations pour une police de console.</span><span class="sxs-lookup"><span data-stu-id="e8847-105">Contains information for a console font.</span></span>
 
-<a name="syntax"></a><span data-ttu-id="67e89-106">Syntaxe</span><span class="sxs-lookup"><span data-stu-id="67e89-106">Syntax</span></span>
-------
+## <a name="syntax"></a><span data-ttu-id="e8847-106">Syntaxe</span><span class="sxs-lookup"><span data-stu-id="e8847-106">Syntax</span></span>
 
 ```C
 typedef struct _CONSOLE_FONT_INFO {
@@ -50,55 +50,28 @@ typedef struct _CONSOLE_FONT_INFO {
 } CONSOLE_FONT_INFO, *PCONSOLE_FONT_INFO;
 ```
 
-<a name="members"></a><span data-ttu-id="67e89-107">Membres</span><span class="sxs-lookup"><span data-stu-id="67e89-107">Members</span></span>
--------
+## <a name="members"></a><span data-ttu-id="e8847-107">Membres</span><span class="sxs-lookup"><span data-stu-id="e8847-107">Members</span></span>
 
-<span data-ttu-id="67e89-108">**nFont**</span><span class="sxs-lookup"><span data-stu-id="67e89-108">**nFont**</span></span>  
-<span data-ttu-id="67e89-109">Index de la police dans la table des polices de la console du système.</span><span class="sxs-lookup"><span data-stu-id="67e89-109">The index of the font in the system's console font table.</span></span>
+<span data-ttu-id="e8847-108">**nFont**</span><span class="sxs-lookup"><span data-stu-id="e8847-108">**nFont**</span></span>  
+<span data-ttu-id="e8847-109">Index de la police dans la table des polices de la console du système.</span><span class="sxs-lookup"><span data-stu-id="e8847-109">The index of the font in the system's console font table.</span></span>
 
-<span data-ttu-id="67e89-110">**dwFontSize**</span><span class="sxs-lookup"><span data-stu-id="67e89-110">**dwFontSize**</span></span>  
-<span data-ttu-id="67e89-111">Structure de [**repère**](coord-str.md) qui contient la largeur et la hauteur de chaque caractère de la police, en unités logiques.</span><span class="sxs-lookup"><span data-stu-id="67e89-111">A [**COORD**](coord-str.md) structure that contains the width and height of each character in the font, in logical units.</span></span> <span data-ttu-id="67e89-112">Le membre **X** contient la largeur, tandis que le membre **Y** contient la hauteur.</span><span class="sxs-lookup"><span data-stu-id="67e89-112">The **X** member contains the width, while the **Y** member contains the height.</span></span>
+<span data-ttu-id="e8847-110">**dwFontSize**</span><span class="sxs-lookup"><span data-stu-id="e8847-110">**dwFontSize**</span></span>  
+<span data-ttu-id="e8847-111">Structure de [**repère**](coord-str.md) qui contient la largeur et la hauteur de chaque caractère de la police, en unités logiques.</span><span class="sxs-lookup"><span data-stu-id="e8847-111">A [**COORD**](coord-str.md) structure that contains the width and height of each character in the font, in logical units.</span></span> <span data-ttu-id="e8847-112">Le membre **X** contient la largeur, tandis que le membre **Y** contient la hauteur.</span><span class="sxs-lookup"><span data-stu-id="e8847-112">The **X** member contains the width, while the **Y** member contains the height.</span></span>
 
-<a name="remarks"></a><span data-ttu-id="67e89-113">Remarques</span><span class="sxs-lookup"><span data-stu-id="67e89-113">Remarks</span></span>
--------
+## <a name="remarks"></a><span data-ttu-id="e8847-113">Remarques</span><span class="sxs-lookup"><span data-stu-id="e8847-113">Remarks</span></span>
 
-<span data-ttu-id="67e89-114">Pour obtenir la taille de la police, transmettez l’index de la police à la fonction [**GetConsoleFontSize**](getconsolefontsize.md) .</span><span class="sxs-lookup"><span data-stu-id="67e89-114">To obtain the size of the font, pass the font index to the [**GetConsoleFontSize**](getconsolefontsize.md) function.</span></span>
+<span data-ttu-id="e8847-114">Pour obtenir la taille de la police, transmettez l’index de la police à la fonction [**GetConsoleFontSize**](getconsolefontsize.md) .</span><span class="sxs-lookup"><span data-stu-id="e8847-114">To obtain the size of the font, pass the font index to the [**GetConsoleFontSize**](getconsolefontsize.md) function.</span></span>
 
-<a name="requirements"></a><span data-ttu-id="67e89-115">Configuration requise</span><span class="sxs-lookup"><span data-stu-id="67e89-115">Requirements</span></span>
-------------
+## <a name="requirements"></a><span data-ttu-id="e8847-115">Spécifications</span><span class="sxs-lookup"><span data-stu-id="e8847-115">Requirements</span></span>
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p><span data-ttu-id="67e89-116">Client minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="67e89-116">Minimum supported client</span></span></p></td>
-<td><p><span data-ttu-id="67e89-117">Windows XP [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="67e89-117">Windows XP [desktop apps only]</span></span></p></td>
-</tr>
-<tr class="even">
-<td><p><span data-ttu-id="67e89-118">Serveur minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="67e89-118">Minimum supported server</span></span></p></td>
-<td><p><span data-ttu-id="67e89-119">Windows Server 2003 [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="67e89-119">Windows Server 2003 [desktop apps only]</span></span></p></td>
-</tr>
-<tr class="odd">
-<td><p><span data-ttu-id="67e89-120">En-tête</span><span class="sxs-lookup"><span data-stu-id="67e89-120">Header</span></span></p></td>
-<td><span data-ttu-id="67e89-121">Wincon. h (inclure Windows. h)</span><span class="sxs-lookup"><span data-stu-id="67e89-121">Wincon.h (include Windows.h)</span></span></td>
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| <span data-ttu-id="e8847-116">Client minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="e8847-116">Minimum supported client</span></span> | <span data-ttu-id="e8847-117">Applications de \[ Bureau Windows XP uniquement\]</span><span class="sxs-lookup"><span data-stu-id="e8847-117">Windows XP \[desktop apps only\]</span></span> |
+| <span data-ttu-id="e8847-118">Serveur minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="e8847-118">Minimum supported server</span></span> | <span data-ttu-id="e8847-119">Applications de bureau Windows Server 2003 \[ uniquement\]</span><span class="sxs-lookup"><span data-stu-id="e8847-119">Windows Server 2003 \[desktop apps only\]</span></span> |
+| <span data-ttu-id="e8847-120">En-tête</span><span class="sxs-lookup"><span data-stu-id="e8847-120">Header</span></span> | <span data-ttu-id="e8847-121">WinCon. h (inclure Windows. h)</span><span class="sxs-lookup"><span data-stu-id="e8847-121">WinCon.h (include Windows.h)</span></span> |
 
-## <a name="span-idsee_alsospansee-also"></a><span data-ttu-id="67e89-122"><span id="see_also"></span>Voir aussi</span><span class="sxs-lookup"><span data-stu-id="67e89-122"><span id="see_also"></span>See also</span></span>
+## <a name="see-also"></a><span data-ttu-id="e8847-122">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="e8847-122">See also</span></span>
 
+[<span data-ttu-id="e8847-123">**COORDONNÉES**</span><span class="sxs-lookup"><span data-stu-id="e8847-123">**COORD**</span></span>](coord-str.md)
 
-[<span data-ttu-id="67e89-123">**COORDONNÉES**</span><span class="sxs-lookup"><span data-stu-id="67e89-123">**COORD**</span></span>](coord-str.md)
-
-[<span data-ttu-id="67e89-124">**GetCurrentConsoleFont**</span><span class="sxs-lookup"><span data-stu-id="67e89-124">**GetCurrentConsoleFont**</span></span>](getcurrentconsolefont.md)
-
- 
-
- 
-
-
-
-
+[<span data-ttu-id="e8847-124">**GetCurrentConsoleFont**</span><span class="sxs-lookup"><span data-stu-id="e8847-124">**GetCurrentConsoleFont**</span></span>](getcurrentconsolefont.md)

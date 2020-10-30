@@ -4,7 +4,7 @@ description: Récupère des informations étendues sur la mémoire tampon d’é
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi2/GetConsoleScreenBufferInfoEx
 - wincon/GetConsoleScreenBufferInfoEx
@@ -27,102 +27,63 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 69cb3c59af1a93cf6af664bbecaf05ef00b64ce8
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 5f4b0f11821b7d5b61c61d4ab8f9774c4a69eec0
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059144"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93037937"
 ---
-# <a name="getconsolescreenbufferinfoex-function"></a><span data-ttu-id="31e25-104">GetConsoleScreenBufferInfoEx fonction)</span><span class="sxs-lookup"><span data-stu-id="31e25-104">GetConsoleScreenBufferInfoEx function</span></span>
+# <a name="getconsolescreenbufferinfoex-function"></a><span data-ttu-id="db428-104">GetConsoleScreenBufferInfoEx fonction)</span><span class="sxs-lookup"><span data-stu-id="db428-104">GetConsoleScreenBufferInfoEx function</span></span>
 
+<span data-ttu-id="db428-105">Récupère des informations étendues sur la mémoire tampon d’écran de console spécifiée.</span><span class="sxs-lookup"><span data-stu-id="db428-105">Retrieves extended information about the specified console screen buffer.</span></span>
 
-<span data-ttu-id="31e25-105">Récupère des informations étendues sur la mémoire tampon d’écran de console spécifiée.</span><span class="sxs-lookup"><span data-stu-id="31e25-105">Retrieves extended information about the specified console screen buffer.</span></span>
-
-<a name="syntax"></a><span data-ttu-id="31e25-106">Syntaxe</span><span class="sxs-lookup"><span data-stu-id="31e25-106">Syntax</span></span>
-------
+## <a name="syntax"></a><span data-ttu-id="db428-106">Syntaxe</span><span class="sxs-lookup"><span data-stu-id="db428-106">Syntax</span></span>
 
 ```C
 BOOL WINAPI GetConsoleScreenBufferInfoEx(
-  _In_  HANDLE                        hConsoleOutput,
-  _Out_ PCONSOLE_SCREEN_BUFFER_INFOEX lpConsoleScreenBufferInfoEx
+  _In_  HANDLE                        hConsoleOutput,
+  _Out_ PCONSOLE_SCREEN_BUFFER_INFOEX lpConsoleScreenBufferInfoEx
 );
 ```
 
-<a name="parameters"></a><span data-ttu-id="31e25-107">Paramètres</span><span class="sxs-lookup"><span data-stu-id="31e25-107">Parameters</span></span>
-----------
+## <a name="parameters"></a><span data-ttu-id="db428-107">Paramètres</span><span class="sxs-lookup"><span data-stu-id="db428-107">Parameters</span></span>
 
-<span data-ttu-id="31e25-108">*hConsoleOutput* \[ dans\]</span><span class="sxs-lookup"><span data-stu-id="31e25-108">*hConsoleOutput* \[in\]</span></span>  
-<span data-ttu-id="31e25-109">Handle vers la mémoire tampon d’écran de la console.</span><span class="sxs-lookup"><span data-stu-id="31e25-109">A handle to the console screen buffer.</span></span> <span data-ttu-id="31e25-110">Le handle doit avoir le droit d’accès \*\* \_ en lecture générique\*\* .</span><span class="sxs-lookup"><span data-stu-id="31e25-110">The handle must have the **GENERIC\_READ** access right.</span></span> <span data-ttu-id="31e25-111">Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).</span><span class="sxs-lookup"><span data-stu-id="31e25-111">For more information, see [Console Buffer Security and Access Rights](console-buffer-security-and-access-rights.md).</span></span>
+<span data-ttu-id="db428-108">*hConsoleOutput* \[ dans\]</span><span class="sxs-lookup"><span data-stu-id="db428-108">*hConsoleOutput* \[in\]</span></span>  
+<span data-ttu-id="db428-109">Handle vers la mémoire tampon d’écran de la console.</span><span class="sxs-lookup"><span data-stu-id="db428-109">A handle to the console screen buffer.</span></span> <span data-ttu-id="db428-110">Le handle doit avoir le droit d’accès **\_ en lecture générique** .</span><span class="sxs-lookup"><span data-stu-id="db428-110">The handle must have the **GENERIC\_READ** access right.</span></span> <span data-ttu-id="db428-111">Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).</span><span class="sxs-lookup"><span data-stu-id="db428-111">For more information, see [Console Buffer Security and Access Rights](console-buffer-security-and-access-rights.md).</span></span>
 
-<span data-ttu-id="31e25-112">*lpConsoleScreenBufferInfoEx* \[ à\]</span><span class="sxs-lookup"><span data-stu-id="31e25-112">*lpConsoleScreenBufferInfoEx* \[out\]</span></span>  
-<span data-ttu-id="31e25-113">Une [**structure \_ \_ \_ INFOEX de mémoire tampon d’écran**](console-screen-buffer-infoex.md) de la console qui reçoit les informations de mémoire tampon d’écran de console demandées.</span><span class="sxs-lookup"><span data-stu-id="31e25-113">A [**CONSOLE\_SCREEN\_BUFFER\_INFOEX**](console-screen-buffer-infoex.md) structure that receives the requested console screen buffer information.</span></span>
+<span data-ttu-id="db428-112">*lpConsoleScreenBufferInfoEx* \[ à\]</span><span class="sxs-lookup"><span data-stu-id="db428-112">*lpConsoleScreenBufferInfoEx* \[out\]</span></span>  
+<span data-ttu-id="db428-113">Une [**structure \_ \_ \_ INFOEX de mémoire tampon d’écran**](console-screen-buffer-infoex.md) de la console qui reçoit les informations de mémoire tampon d’écran de console demandées.</span><span class="sxs-lookup"><span data-stu-id="db428-113">A [**CONSOLE\_SCREEN\_BUFFER\_INFOEX**](console-screen-buffer-infoex.md) structure that receives the requested console screen buffer information.</span></span>
 
-<a name="return-value"></a><span data-ttu-id="31e25-114">Valeur retournée</span><span class="sxs-lookup"><span data-stu-id="31e25-114">Return value</span></span>
-------------
+## <a name="return-value"></a><span data-ttu-id="db428-114">Valeur retournée</span><span class="sxs-lookup"><span data-stu-id="db428-114">Return value</span></span>
 
-<span data-ttu-id="31e25-115">Si la fonction est réussie, la valeur de retour est différente de zéro.</span><span class="sxs-lookup"><span data-stu-id="31e25-115">If the function succeeds, the return value is nonzero.</span></span>
+<span data-ttu-id="db428-115">Si la fonction est réussie, la valeur de retour est différente de zéro.</span><span class="sxs-lookup"><span data-stu-id="db428-115">If the function succeeds, the return value is nonzero.</span></span>
 
-<span data-ttu-id="31e25-116">Si la fonction échoue, la valeur de retour est égale à zéro.</span><span class="sxs-lookup"><span data-stu-id="31e25-116">If the function fails, the return value is zero.</span></span> <span data-ttu-id="31e25-117">Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).</span><span class="sxs-lookup"><span data-stu-id="31e25-117">To get extended error information, call [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).</span></span>
+<span data-ttu-id="db428-116">Si la fonction échoue, la valeur de retour est égale à zéro.</span><span class="sxs-lookup"><span data-stu-id="db428-116">If the function fails, the return value is zero.</span></span> <span data-ttu-id="db428-117">Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).</span><span class="sxs-lookup"><span data-stu-id="db428-117">To get extended error information, call [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).</span></span>
 
-<a name="remarks"></a><span data-ttu-id="31e25-118">Remarques</span><span class="sxs-lookup"><span data-stu-id="31e25-118">Remarks</span></span>
--------
+## <a name="remarks"></a><span data-ttu-id="db428-118">Remarques</span><span class="sxs-lookup"><span data-stu-id="db428-118">Remarks</span></span>
 
-<span data-ttu-id="31e25-119">Le rectangle retourné dans le membre **srWindow** de la structure INFOEX de la [\*\* \_ \_ mémoire tampon \_ d’écran\*\*](console-screen-buffer-infoex.md) de la console peut être modifié, puis transmis à la fonction [**SetConsoleWindowInfo**](setconsolewindowinfo.md) pour faire défiler la mémoire tampon de l’écran de la console dans la fenêtre, pour modifier la taille de la fenêtre, ou les deux.</span><span class="sxs-lookup"><span data-stu-id="31e25-119">The rectangle returned in the **srWindow** member of the [**CONSOLE\_SCREEN\_BUFFER\_INFOEX**](console-screen-buffer-infoex.md) structure can be modified and then passed to the [**SetConsoleWindowInfo**](setconsolewindowinfo.md) function to scroll the console screen buffer in the window, to change the size of the window, or both.</span></span>
+<span data-ttu-id="db428-119">Le rectangle retourné dans le membre **srWindow** de la structure INFOEX de la [**\_ \_ mémoire tampon \_ d’écran**](console-screen-buffer-infoex.md) de la console peut être modifié, puis transmis à la fonction [**SetConsoleWindowInfo**](setconsolewindowinfo.md) pour faire défiler la mémoire tampon de l’écran de la console dans la fenêtre, pour modifier la taille de la fenêtre, ou les deux.</span><span class="sxs-lookup"><span data-stu-id="db428-119">The rectangle returned in the **srWindow** member of the [**CONSOLE\_SCREEN\_BUFFER\_INFOEX**](console-screen-buffer-infoex.md) structure can be modified and then passed to the [**SetConsoleWindowInfo**](setconsolewindowinfo.md) function to scroll the console screen buffer in the window, to change the size of the window, or both.</span></span>
 
-<span data-ttu-id="31e25-120">Toutes les coordonnées retournées dans la structure INFOEX de la [\*\* \_ \_ mémoire tampon \_ d’écran\*\*](console-screen-buffer-infoex.md) de la console sont exprimées en coordonnées de cellule de caractères, où l’origine (0,0) se trouve dans l’angle supérieur gauche de la mémoire tampon d’écran de la console.</span><span class="sxs-lookup"><span data-stu-id="31e25-120">All coordinates returned in the [**CONSOLE\_SCREEN\_BUFFER\_INFOEX**](console-screen-buffer-infoex.md) structure are in character-cell coordinates, where the origin (0, 0) is at the upper-left corner of the console screen buffer.</span></span>
+<span data-ttu-id="db428-120">Toutes les coordonnées retournées dans la structure INFOEX de la [**\_ \_ mémoire tampon \_ d’écran**](console-screen-buffer-infoex.md) de la console sont exprimées en coordonnées de cellule de caractères, où l’origine (0,0) se trouve dans l’angle supérieur gauche de la mémoire tampon d’écran de la console.</span><span class="sxs-lookup"><span data-stu-id="db428-120">All coordinates returned in the [**CONSOLE\_SCREEN\_BUFFER\_INFOEX**](console-screen-buffer-infoex.md) structure are in character-cell coordinates, where the origin (0, 0) is at the upper-left corner of the console screen buffer.</span></span>
 
-<a name="requirements"></a><span data-ttu-id="31e25-121">Configuration requise</span><span class="sxs-lookup"><span data-stu-id="31e25-121">Requirements</span></span>
-------------
+> [!TIP]
+> <span data-ttu-id="db428-121">Cette API n’a pas d’équivalent de **[terminal virtuel](console-virtual-terminal-sequences.md)** .</span><span class="sxs-lookup"><span data-stu-id="db428-121">This API does not have a **[virtual terminal](console-virtual-terminal-sequences.md)** equivalent.</span></span> <span data-ttu-id="db428-122">Son utilisation peut toujours être requise pour les applications qui tentent de dessiner des colonnes, des grilles ou de remplir l’affichage pour récupérer la taille de la fenêtre.</span><span class="sxs-lookup"><span data-stu-id="db428-122">Its use may still be required for applications that are attempting to draw columns, grids, or fill the display to retrieve the window size.</span></span> <span data-ttu-id="db428-123">Cet état de la fenêtre est géré par TTY/PTY/Pseudoconsole en dehors du flux de flux normal, et est généralement considéré comme un privilège utilisateur non réglable par l’application cliente.</span><span class="sxs-lookup"><span data-stu-id="db428-123">This window state is managed by the TTY/PTY/Pseudoconsole outside of the normal stream flow and is generally considered a user privilege not adjustable by the client application.</span></span> <span data-ttu-id="db428-124">Les mises à jour peuvent être reçues sur [**ReadConsoleInput**](readconsoleinput.md).</span><span class="sxs-lookup"><span data-stu-id="db428-124">Updates can be received on [**ReadConsoleInput**](readconsoleinput.md).</span></span>
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p><span data-ttu-id="31e25-122">Client minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="31e25-122">Minimum supported client</span></span></p></td>
-<td><p><span data-ttu-id="31e25-123">Windows Vista [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="31e25-123">Windows Vista [desktop apps only]</span></span></p></td>
-</tr>
-<tr class="even">
-<td><p><span data-ttu-id="31e25-124">Serveur minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="31e25-124">Minimum supported server</span></span></p></td>
-<td><p><span data-ttu-id="31e25-125">Windows Server 2008 [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="31e25-125">Windows Server 2008 [desktop apps only]</span></span></p></td>
-</tr>
-<tr class="odd">
-<td><p><span data-ttu-id="31e25-126">En-tête</span><span class="sxs-lookup"><span data-stu-id="31e25-126">Header</span></span></p></td>
-<td><span data-ttu-id="31e25-127">ConsoleApi2. h (via wincon. h, incluez Windows. h)</span><span class="sxs-lookup"><span data-stu-id="31e25-127">ConsoleApi2.h (via Wincon.h, include Windows.h)</span></span></td>
-</tr>
-<tr class="even">
-<td><p><span data-ttu-id="31e25-128">Bibliothèque</span><span class="sxs-lookup"><span data-stu-id="31e25-128">Library</span></span></p></td>
-<td><span data-ttu-id="31e25-129">Kernel32. lib</span><span class="sxs-lookup"><span data-stu-id="31e25-129">Kernel32.lib</span></span></td>
-</tr>
-<tr class="odd">
-<td><p><span data-ttu-id="31e25-130">DLL</span><span class="sxs-lookup"><span data-stu-id="31e25-130">DLL</span></span></p></td>
-<td><span data-ttu-id="31e25-131">Kernel32.dll</span><span class="sxs-lookup"><span data-stu-id="31e25-131">Kernel32.dll</span></span></td>
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+## <a name="requirements"></a><span data-ttu-id="db428-125">Spécifications</span><span class="sxs-lookup"><span data-stu-id="db428-125">Requirements</span></span>
 
-## <a name="span-idsee_alsospansee-also"></a><span data-ttu-id="31e25-132"><span id="see_also"></span>Voir aussi</span><span class="sxs-lookup"><span data-stu-id="31e25-132"><span id="see_also"></span>See also</span></span>
+| &nbsp; | &nbsp; |
+|-|-|
+| <span data-ttu-id="db428-126">Client minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="db428-126">Minimum supported client</span></span> | <span data-ttu-id="db428-127">Applications de \[ Bureau Windows Vista uniquement\]</span><span class="sxs-lookup"><span data-stu-id="db428-127">Windows Vista \[desktop apps only\]</span></span> |
+| <span data-ttu-id="db428-128">Serveur minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="db428-128">Minimum supported server</span></span> | <span data-ttu-id="db428-129">Applications de bureau Windows Server 2008 \[ uniquement\]</span><span class="sxs-lookup"><span data-stu-id="db428-129">Windows Server 2008 \[desktop apps only\]</span></span> |
+| <span data-ttu-id="db428-130">En-tête</span><span class="sxs-lookup"><span data-stu-id="db428-130">Header</span></span> | <span data-ttu-id="db428-131">ConsoleApi2. h (via WinCon. h, incluez Windows. h)</span><span class="sxs-lookup"><span data-stu-id="db428-131">ConsoleApi2.h (via WinCon.h, include Windows.h)</span></span> |
+| <span data-ttu-id="db428-132">Bibliothèque</span><span class="sxs-lookup"><span data-stu-id="db428-132">Library</span></span> | <span data-ttu-id="db428-133">Kernel32. lib</span><span class="sxs-lookup"><span data-stu-id="db428-133">Kernel32.lib</span></span> |
+| <span data-ttu-id="db428-134">DLL</span><span class="sxs-lookup"><span data-stu-id="db428-134">DLL</span></span> | <span data-ttu-id="db428-135">Kernel32.dll</span><span class="sxs-lookup"><span data-stu-id="db428-135">Kernel32.dll</span></span> |
 
+## <a name="see-also"></a><span data-ttu-id="db428-136">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="db428-136">See also</span></span>
 
-[<span data-ttu-id="31e25-133">Fonctions de la console</span><span class="sxs-lookup"><span data-stu-id="31e25-133">Console Functions</span></span>](console-functions.md)
+[<span data-ttu-id="db428-137">Fonctions de la console</span><span class="sxs-lookup"><span data-stu-id="db428-137">Console Functions</span></span>](console-functions.md)
 
-[<span data-ttu-id="31e25-134">**mémoire tampon d’écran de la CONSOLE \_ \_ \_ INFOEX**</span><span class="sxs-lookup"><span data-stu-id="31e25-134">**CONSOLE\_SCREEN\_BUFFER\_INFOEX**</span></span>](console-screen-buffer-infoex.md)
+[<span data-ttu-id="db428-138">**mémoire tampon d’écran de la CONSOLE \_ \_ \_ INFOEX**</span><span class="sxs-lookup"><span data-stu-id="db428-138">**CONSOLE\_SCREEN\_BUFFER\_INFOEX**</span></span>](console-screen-buffer-infoex.md)
 
-[<span data-ttu-id="31e25-135">**SetConsoleScreenBufferInfoEx**</span><span class="sxs-lookup"><span data-stu-id="31e25-135">**SetConsoleScreenBufferInfoEx**</span></span>](setconsolescreenbufferinfoex.md)
-
- 
-
- 
-
-
-
-
+[<span data-ttu-id="db428-139">**SetConsoleScreenBufferInfoEx**</span><span class="sxs-lookup"><span data-stu-id="db428-139">**SetConsoleScreenBufferInfoEx**</span></span>](setconsolescreenbufferinfoex.md)

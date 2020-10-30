@@ -4,7 +4,7 @@ description: Récupère le handle de fenêtre utilisé par la console associée 
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi3/GetConsoleWindow
 - wincon/GetConsoleWindow
@@ -33,87 +33,54 @@ api_location:
 - API-MS-Win-Core-Kernel32-Legacy-L1-1-5.dll
 api_type:
 - DllExport
-ms.openlocfilehash: dd356bab4674da0cc090e42911829dee994fa8b1
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: c74fe1a29b9ba2ea721e874eb624ea2f8517094c
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059108"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93038807"
 ---
-# <a name="getconsolewindow-function"></a><span data-ttu-id="c7a96-104">GetConsoleWindow fonction)</span><span class="sxs-lookup"><span data-stu-id="c7a96-104">GetConsoleWindow function</span></span>
+# <a name="getconsolewindow-function"></a><span data-ttu-id="f7476-104">GetConsoleWindow fonction)</span><span class="sxs-lookup"><span data-stu-id="f7476-104">GetConsoleWindow function</span></span>
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
-<span data-ttu-id="c7a96-105">Récupère le handle de fenêtre utilisé par la console associée au processus appelant.</span><span class="sxs-lookup"><span data-stu-id="c7a96-105">Retrieves the window handle used by the console associated with the calling process.</span></span>
+<span data-ttu-id="f7476-105">Récupère le handle de fenêtre utilisé par la console associée au processus appelant.</span><span class="sxs-lookup"><span data-stu-id="f7476-105">Retrieves the window handle used by the console associated with the calling process.</span></span>
 
-<a name="syntax"></a><span data-ttu-id="c7a96-106">Syntaxe</span><span class="sxs-lookup"><span data-stu-id="c7a96-106">Syntax</span></span>
-------
+## <a name="syntax"></a><span data-ttu-id="f7476-106">Syntaxe</span><span class="sxs-lookup"><span data-stu-id="f7476-106">Syntax</span></span>
 
 ```C
 HWND WINAPI GetConsoleWindow(void);
 ```
 
-<a name="parameters"></a><span data-ttu-id="c7a96-107">Paramètres</span><span class="sxs-lookup"><span data-stu-id="c7a96-107">Parameters</span></span>
-----------
+## <a name="parameters"></a><span data-ttu-id="f7476-107">Paramètres</span><span class="sxs-lookup"><span data-stu-id="f7476-107">Parameters</span></span>
 
-<span data-ttu-id="c7a96-108">Cette fonction n’a pas de paramètres.</span><span class="sxs-lookup"><span data-stu-id="c7a96-108">This function has no parameters.</span></span>
+<span data-ttu-id="f7476-108">Cette fonction n’a pas de paramètres.</span><span class="sxs-lookup"><span data-stu-id="f7476-108">This function has no parameters.</span></span>
 
-<a name="return-value"></a><span data-ttu-id="c7a96-109">Valeur retournée</span><span class="sxs-lookup"><span data-stu-id="c7a96-109">Return value</span></span>
-------------
+## <a name="return-value"></a><span data-ttu-id="f7476-109">Valeur retournée</span><span class="sxs-lookup"><span data-stu-id="f7476-109">Return value</span></span>
 
-<span data-ttu-id="c7a96-110">La valeur de retour est un handle de la fenêtre utilisée par la console associée au processus appelant ou **null** s’il n’existe aucune console associée.</span><span class="sxs-lookup"><span data-stu-id="c7a96-110">The return value is a handle to the window used by the console associated with the calling process or **NULL** if there is no such associated console.</span></span>
+<span data-ttu-id="f7476-110">La valeur de retour est un handle de la fenêtre utilisée par la console associée au processus appelant ou **null** s’il n’existe aucune console associée.</span><span class="sxs-lookup"><span data-stu-id="f7476-110">The return value is a handle to the window used by the console associated with the calling process or **NULL** if there is no such associated console.</span></span>
 
-<a name="remarks"></a><span data-ttu-id="c7a96-111">Remarques</span><span class="sxs-lookup"><span data-stu-id="c7a96-111">Remarks</span></span>
--------
+## <a name="remarks"></a><span data-ttu-id="f7476-111">Remarques</span><span class="sxs-lookup"><span data-stu-id="f7476-111">Remarks</span></span>
 
-<span data-ttu-id="c7a96-112">Pour compiler une application qui utilise cette fonction, définissez \*\* \_ Win32 \_ winnt\*\* comme 0x0500 ou version ultérieure.</span><span class="sxs-lookup"><span data-stu-id="c7a96-112">To compile an application that uses this function, define **\_WIN32\_WINNT** as 0x0500 or later.</span></span> <span data-ttu-id="c7a96-113">Pour plus d’informations, consultez [utilisation des en-têtes Windows](https://msdn.microsoft.com/library/windows/desktop/aa383745).</span><span class="sxs-lookup"><span data-stu-id="c7a96-113">For more information, see [Using the Windows Headers](https://msdn.microsoft.com/library/windows/desktop/aa383745).</span></span>
+<span data-ttu-id="f7476-112">Pour compiler une application qui utilise cette fonction, définissez **\_ Win32 \_ winnt** comme 0x0500 ou version ultérieure.</span><span class="sxs-lookup"><span data-stu-id="f7476-112">To compile an application that uses this function, define **\_WIN32\_WINNT** as 0x0500 or later.</span></span> <span data-ttu-id="f7476-113">Pour plus d’informations, consultez [utilisation des en-têtes Windows](https://msdn.microsoft.com/library/windows/desktop/aa383745).</span><span class="sxs-lookup"><span data-stu-id="f7476-113">For more information, see [Using the Windows Headers](https://msdn.microsoft.com/library/windows/desktop/aa383745).</span></span>
 
-<a name="requirements"></a><span data-ttu-id="c7a96-114">Configuration requise</span><span class="sxs-lookup"><span data-stu-id="c7a96-114">Requirements</span></span>
-------------
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p><span data-ttu-id="c7a96-115">Client minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="c7a96-115">Minimum supported client</span></span></p></td>
-<td><p><span data-ttu-id="c7a96-116">Windows 2000 professionnel [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="c7a96-116">Windows 2000 Professional [desktop apps only]</span></span></p></td>
-</tr>
-<tr class="even">
-<td><p><span data-ttu-id="c7a96-117">Serveur minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="c7a96-117">Minimum supported server</span></span></p></td>
-<td><p><span data-ttu-id="c7a96-118">Serveur Windows 2000 [applications de bureau uniquement]</span><span class="sxs-lookup"><span data-stu-id="c7a96-118">Windows 2000 Server [desktop apps only]</span></span></p></td>
-</tr>
-<tr class="odd">
-<td><p><span data-ttu-id="c7a96-119">En-tête</span><span class="sxs-lookup"><span data-stu-id="c7a96-119">Header</span></span></p></td>
-<td><span data-ttu-id="c7a96-120">ConsoleApi3. h (via wincon. h, incluez Windows. h)</span><span class="sxs-lookup"><span data-stu-id="c7a96-120">ConsoleApi3.h (via Wincon.h, include Windows.h)</span></span></td>
-</tr>
-<tr class="even">
-<td><p><span data-ttu-id="c7a96-121">Bibliothèque</span><span class="sxs-lookup"><span data-stu-id="c7a96-121">Library</span></span></p></td>
-<td><span data-ttu-id="c7a96-122">Kernel32. lib</span><span class="sxs-lookup"><span data-stu-id="c7a96-122">Kernel32.lib</span></span></td>
-</tr>
-<tr class="odd">
-<td><p><span data-ttu-id="c7a96-123">DLL</span><span class="sxs-lookup"><span data-stu-id="c7a96-123">DLL</span></span></p></td>
-<td><span data-ttu-id="c7a96-124">Kernel32.dll</span><span class="sxs-lookup"><span data-stu-id="c7a96-124">Kernel32.dll</span></span></td>
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
+[!INCLUDE [no-vt-equiv-local-context](./includes/no-vt-equiv-local-context.md)]
+
+<span data-ttu-id="f7476-114">Pour une application hébergée dans une session [**pseudoconsole**](pseudoconsoles.md) , cette fonction retourne un handle de fenêtre pour la file d’attente des messages uniquement.</span><span class="sxs-lookup"><span data-stu-id="f7476-114">For an application that is hosted inside a [**pseudoconsole**](pseudoconsoles.md) session, this function returns a window handle for message queue purposes only.</span></span> <span data-ttu-id="f7476-115">La fenêtre associée n’est pas affichée localement, car _pseudoconsole_ sérialise toutes les actions dans un flux de présentation dans une autre fenêtre de terminal à un autre endroit.</span><span class="sxs-lookup"><span data-stu-id="f7476-115">The associated window is not displayed locally as the _pseudoconsole_ is serializing all actions to a stream for presentation on another terminal window elsewhere.</span></span>
+
+## <a name="requirements"></a><span data-ttu-id="f7476-116">Spécifications</span><span class="sxs-lookup"><span data-stu-id="f7476-116">Requirements</span></span>
+
+| &nbsp; | &nbsp; |
+|-|-|
+| <span data-ttu-id="f7476-117">Client minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="f7476-117">Minimum supported client</span></span> | <span data-ttu-id="f7476-118">Applications de bureau Windows 2000 professionnel \[ uniquement\]</span><span class="sxs-lookup"><span data-stu-id="f7476-118">Windows 2000 Professional \[desktop apps only\]</span></span> |
+| <span data-ttu-id="f7476-119">Serveur minimal pris en charge</span><span class="sxs-lookup"><span data-stu-id="f7476-119">Minimum supported server</span></span> | <span data-ttu-id="f7476-120">Applications de bureau Windows 2000 Server \[ uniquement\]</span><span class="sxs-lookup"><span data-stu-id="f7476-120">Windows 2000 Server \[desktop apps only\]</span></span> |
+| <span data-ttu-id="f7476-121">En-tête</span><span class="sxs-lookup"><span data-stu-id="f7476-121">Header</span></span> | <span data-ttu-id="f7476-122">ConsoleApi3. h (via WinCon. h, incluez Windows. h)</span><span class="sxs-lookup"><span data-stu-id="f7476-122">ConsoleApi3.h (via WinCon.h, include Windows.h)</span></span> |
+| <span data-ttu-id="f7476-123">Bibliothèque</span><span class="sxs-lookup"><span data-stu-id="f7476-123">Library</span></span> | <span data-ttu-id="f7476-124">Kernel32. lib</span><span class="sxs-lookup"><span data-stu-id="f7476-124">Kernel32.lib</span></span> |
+| <span data-ttu-id="f7476-125">DLL</span><span class="sxs-lookup"><span data-stu-id="f7476-125">DLL</span></span> | <span data-ttu-id="f7476-126">Kernel32.dll</span><span class="sxs-lookup"><span data-stu-id="f7476-126">Kernel32.dll</span></span> |
+
 </table>
 
-## <a name="span-idsee_alsospansee-also"></a><span data-ttu-id="c7a96-125"><span id="see_also"></span>Voir aussi</span><span class="sxs-lookup"><span data-stu-id="c7a96-125"><span id="see_also"></span>See also</span></span>
+## <a name="see-also"></a><span data-ttu-id="f7476-127">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="f7476-127">See also</span></span>
 
-
-[<span data-ttu-id="c7a96-126">Fonctions de la console</span><span class="sxs-lookup"><span data-stu-id="c7a96-126">Console Functions</span></span>](console-functions.md)
-
- 
-
- 
-
-
-
-
+[<span data-ttu-id="f7476-128">Fonctions de la console</span><span class="sxs-lookup"><span data-stu-id="f7476-128">Console Functions</span></span>](console-functions.md)

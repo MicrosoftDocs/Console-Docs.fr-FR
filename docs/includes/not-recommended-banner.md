@@ -1,0 +1,10 @@
+---
+ms.openlocfilehash: 0ee819f2862acfdc3b2c8d0bcff4befb0dff6853
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93037011"
+---
+> [!IMPORTANT]
+> <span data-ttu-id="91a11-101">Ce document décrit les fonctionnalités de la plateforme de console qui ne font plus partie de notre feuille de route pour l' **[écosystème](../ecosystem-roadmap.md)** .</span><span class="sxs-lookup"><span data-stu-id="91a11-101">This document describes console platform functionality that is no longer a part of our **[ecosystem roadmap](../ecosystem-roadmap.md)** .</span></span> <span data-ttu-id="91a11-102">Nous vous déconseillons d’utiliser ce contenu dans de nouveaux produits, mais nous continuerons à prendre en charge les utilisations existantes pour le futur infini.</span><span class="sxs-lookup"><span data-stu-id="91a11-102">We do not recommend using this content in new products, but we will continue to support existing usages for the indefinite future.</span></span> <span data-ttu-id="91a11-103">Notre solution moderne préférée est axée sur les **[séquences de terminaux virtuels](../console-virtual-terminal-sequences.md)** pour une compatibilité maximale dans les scénarios multiplateformes.</span><span class="sxs-lookup"><span data-stu-id="91a11-103">Our preferred modern solution focuses on **[virtual terminal sequences](../console-virtual-terminal-sequences.md)** for maximum compatibility in cross-platform scenarios.</span></span> <span data-ttu-id="91a11-104">Vous trouverez plus d’informations sur cette décision de conception dans la **[console classique et](../classic-vs-vt.md)** dans le document de terminal virtuel.</span><span class="sxs-lookup"><span data-stu-id="91a11-104">You can find more information about this design decision in our **[classic console vs. virtual terminal](../classic-vs-vt.md)** document.</span></span>
