@@ -4,7 +4,7 @@ description: Consultez les informations de référence sur la structure CONSOLE_
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi3/CONSOLE_FONT_INFOEX
 - wincon/CONSOLE_FONT_INFOEX
@@ -24,37 +24,36 @@ topic_type:
 api_name:
 - CONSOLE_FONT_INFOEX
 api_location:
-- Wincon.h
+- WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: 12977e288a63397c581143683047239e4d410eec
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: ef89d1bf47a4153d44140d3f9f4845bb7496680e
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059320"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039257"
 ---
 # <a name="console_font_infoex-structure"></a>Structure de la police de la CONSOLE \_ \_ INFOEX
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Contient des informations étendues pour une police de console.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 typedef struct _CONSOLE_FONT_INFOEX {
   ULONG cbSize;
   DWORD nFont;
   COORD dwFontSize;
-  UINT  FontFamily;
-  UINT  FontWeight;
+  UINT  FontFamily;
+  UINT  FontWeight;
   WCHAR FaceName[LF_FACESIZE];
 } CONSOLE_FONT_INFOEX, *PCONSOLE_FONT_INFOEX;
 ```
 
-<a name="members"></a>Membres
--------
+## <a name="members"></a>Membres
 
 **cbSize**  
 Taille de cette structure, en octets. Ce membre doit être défini sur `sizeof(CONSOLE_FONT_INFOEX)` avant d’appeler [**GetCurrentConsoleFontEx**](getcurrentconsolefontex.md) , sinon il échouera.
@@ -74,44 +73,18 @@ L’espacement de la police et la famille. Pour plus d’informations sur les va
 **FaceName**  
 Nom du type de caractères (Courier ou Arial, par exemple).
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
 Pour obtenir la taille de la police, transmettez l’index de la police à la fonction [**GetConsoleFontSize**](getconsolefontsize.md) .
 
-<a name="requirements"></a>Configuration requise
-------------
+## <a name="requirements"></a>Spécifications
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows Vista [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Windows Server 2008 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>Wincon. h (inclure Windows. h)</td>
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de \[ Bureau Windows Vista uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows Server 2008 \[ uniquement\] |
+| En-tête | WinCon. h (inclure Windows. h) |
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
-
+## <a name="see-also"></a>Voir aussi
 
 [**GetCurrentConsoleFontEx**](getcurrentconsolefontex.md)
-
- 
-
- 
-
-
-
-

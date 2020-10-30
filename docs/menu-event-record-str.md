@@ -1,10 +1,10 @@
 ---
-title: Structure MENU_EVENT_RECORD
+title: MENU_EVENT_RECORD, structure
 description: Décrit un événement de menu dans une structure d’enregistrement d’entrée de console \_ . Ces événements sont utilisés en interne et doivent être ignorés.
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - wincontypes/MENU_EVENT_RECORD
 - wincon/MENU_EVENT_RECORD
@@ -25,23 +25,23 @@ topic_type:
 api_name:
 - MENU_EVENT_RECORD
 api_location:
-- Wincon.h
+- WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: 8bbfbf6ad8bd885d69ce08e94dfced93b0bd3257
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: dfca825c03dbf0e63041e68adc5e43f2ca0ef669
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059077"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039517"
 ---
 # <a name="menu_event_record-structure"></a>Structure d’enregistrement d' \_ événement de menu \_
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Décrit un événement de menu dans une structure [**d' \_ enregistrement d’entrée**](input-record-str.md) de console. Ces événements sont utilisés en interne et doivent être ignorés.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 typedef struct _MENU_EVENT_RECORD {
@@ -49,45 +49,19 @@ typedef struct _MENU_EVENT_RECORD {
 } MENU_EVENT_RECORD, *PMENU_EVENT_RECORD;
 ```
 
-<a name="members"></a>Membres
--------
+## <a name="members"></a>Membres
 
 **dwCommandId**  
 Réservé.
 
-<a name="requirements"></a>Configuration requise
-------------
+## <a name="requirements"></a>Spécifications
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>WinConTypes. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | WinConTypes. h (via WinCon. h, incluez Windows. h) |
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
-
+## <a name="see-also"></a>Voir aussi
 
 [**enregistrement d’entrée \_**](input-record-str.md)
-
- 
-
- 
-
-
-
-

@@ -1,10 +1,10 @@
 ---
-title: Structure CONSOLE_HISTORY_INFO
+title: CONSOLE_HISTORY_INFO, structure
 description: Consultez les informations de référence sur la structure CONSOLE_HISTORY_INFO, qui contient des informations sur l’historique de la console.
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi3/CONSOLE_HISTORY_INFO
 - wincon/CONSOLE_HISTORY_INFO
@@ -24,35 +24,34 @@ topic_type:
 api_name:
 - CONSOLE_HISTORY_INFO
 api_location:
-- Wincon.h
+- WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: ee0161f0c4aac5a280fd18260ebbb1f7ca57d54a
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 24d41dca61146cc3e835f405889400ae0d168e7f
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059500"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039217"
 ---
 # <a name="console_history_info-structure"></a>\_Structure des informations de l’historique de la console \_
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Contient des informations sur l’historique de la console.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 typedef struct {
-  UINT  cbSize;
-  UINT  HistoryBufferSize;
-  UINT  NumberOfHistoryBuffers;
+  UINT  cbSize;
+  UINT  HistoryBufferSize;
+  UINT  NumberOfHistoryBuffers;
   DWORD dwFlags;
 } CONSOLE_HISTORY_INFO, *PCONSOLE_HISTORY_INFO;
 ```
 
-<a name="members"></a>Membres
--------
+## <a name="members"></a>Membres
 
 **cbSize**  
 Taille de la structure en octets. Affectez à ce membre la valeur `sizeof(CONSOLE_HISTORY_INFO)` .
@@ -66,63 +65,20 @@ Nombre de mémoires tampons d’historique conservées pour ce processus de cons
 **dwFlags**  
 Ce paramètre peut être égal à zéro ou à la valeur suivante.
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Value</th>
-<th>Signification</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span id="HISTORY_NO_DUP_FLAG"></span><span id="history_no_dup_flag"></span>
-<strong>HISTORY_NO_DUP_FLAG</strong> 0x1</td>
-<td><p>Les entrées en double ne sont pas stockées dans la mémoire tampon de l’historique.</p></td>
-</tr>
-</tbody>
-</table>
+| Valeur | Signification |
+|-|-|
+| **HISTORY_NO_DUP_FLAG** 0x1 | Les entrées en double ne sont pas stockées dans la mémoire tampon de l’historique.
 
- 
+## <a name="requirements"></a>Spécifications
 
-<a name="requirements"></a>Configuration requise
-------------
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de \[ Bureau Windows Vista uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows Server 2008 \[ uniquement\] |
+| En-tête | ConsoleApi3. h (via WinCon. h, incluez Windows. h) |
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows Vista [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Windows Server 2008 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi3. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-</tbody>
-</table>
-
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
-
+## <a name="see-also"></a>Voir aussi
 
 [**GetConsoleHistoryInfo**](getconsolehistoryinfo.md)
 
 [**SetConsoleHistoryInfo**](setconsolehistoryinfo.md)
-
- 
-
- 
-
-
-
-

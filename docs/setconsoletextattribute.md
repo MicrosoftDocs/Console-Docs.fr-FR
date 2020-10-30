@@ -4,7 +4,7 @@ description: Définit les attributs des caractères écrits dans la mémoire tam
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi2/SetConsoleTextAttribute
 - wincon/SetConsoleTextAttribute
@@ -28,98 +28,68 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 2242466e4255b0d92c9bb1d1eac5431b59346e7b
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 03925af2668774a36de33bfe6ea5fcdc1b475d5b
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059529"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039317"
 ---
 # <a name="setconsoletextattribute-function"></a>SetConsoleTextAttribute fonction)
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Définit les attributs des caractères écrits dans la mémoire tampon d’écran de la console par la fonction [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) ou [**WriteConsole**](writeconsole.md) , ou en écho par la fonction [**ReadFile**](https://msdn.microsoft.com/library/windows/desktop/aa365467) ou [**ReadConsole**](readconsole.md) . Cette fonction affecte le texte écrit après l’appel de fonction.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 BOOL WINAPI SetConsoleTextAttribute(
-  _In_ HANDLE hConsoleOutput,
-  _In_ WORD   wAttributes
+  _In_ HANDLE hConsoleOutput,
+  _In_ WORD   wAttributes
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *hConsoleOutput* \[ dans\]  
-Handle vers la mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès ** \_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+Handle vers la mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès **\_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
 
 *wAttributes* \[ dans\]  
-[Attributs de caractère](console-screen-buffers.md#_win32_font_attributes).
+[Attributs de caractère](console-screen-buffers.md#character-attributes).
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Si la fonction est réussie, la valeur de retour est différente de zéro.
 
 Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
 Pour déterminer les attributs de couleur actuels d’une mémoire tampon d’écran, appelez la fonction [**GetConsoleScreenBufferInfo**](getconsolescreenbufferinfo.md) .
 
-<a name="examples"></a>Exemples
---------
+> [!TIP]
+> Cette API possède un **[terminal virtuel](console-virtual-terminal-sequences.md)** équivalent dans les séquences de **[mise en forme du texte](console-virtual-terminal-sequences.md#text-formatting)** . Les _séquences de terminaux virtuels_ sont recommandées pour tout développement nouveau et en cours.
 
-Pour obtenir un exemple, consultez [utilisation des fonctions d’entrée et de sortie de haut niveau](using-the-high-level-input-and-output-functions.md).
+## <a name="examples"></a>Exemples
 
-<a name="requirements"></a>Configuration requise
-------------
+Pour obtenir un exemple, consultez [utilisation des fonctions d’entrée et de sortie High-Level](using-the-high-level-input-and-output-functions.md).
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi2. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+## <a name="requirements"></a>Spécifications
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
 
+## <a name="see-also"></a>Voir aussi
 
 [Fonctions de la console](console-functions.md)
 
-[Mémoires tampons d’écran de la console](console-screen-buffers.md)
+[Mémoires tampons d’écran d’une console](console-screen-buffers.md)
 
 [**GetConsoleScreenBufferInfo**](getconsolescreenbufferinfo.md)
 
@@ -130,11 +100,3 @@ Pour obtenir un exemple, consultez [utilisation des fonctions d’entrée et de 
 [**WriteConsole**](writeconsole.md)
 
 [**Appel**](https://msdn.microsoft.com/library/windows/desktop/aa365747)
-
- 
-
- 
-
-
-
-

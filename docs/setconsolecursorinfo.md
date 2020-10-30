@@ -4,7 +4,7 @@ description: Définit la taille et la visibilité du curseur pour la mémoire ta
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi2/SetConsoleCursorInfo
 - wincon/SetConsoleCursorInfo
@@ -28,104 +28,67 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 81f16e8c9d9cf90008bbd2e8619c2fa105d04212
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 4bbb14dd501d483f35fbce5e1a729eaf002b1579
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059413"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039397"
 ---
 # <a name="setconsolecursorinfo-function"></a>SetConsoleCursorInfo fonction)
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Définit la taille et la visibilité du curseur pour la mémoire tampon d’écran de la console spécifiée.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 BOOL WINAPI SetConsoleCursorInfo(
-  _In_       HANDLE              hConsoleOutput,
-  _In_ const CONSOLE_CURSOR_INFO *lpConsoleCursorInfo
+  _In_       HANDLE              hConsoleOutput,
+  _In_ const CONSOLE_CURSOR_INFO *lpConsoleCursorInfo
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *hConsoleOutput* \[ dans\]  
-Handle vers la mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès ** \_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+Handle vers la mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès **\_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
 
 *lpConsoleCursorInfo* \[ dans\]  
 Pointeur vers une structure [**d' \_ \_ informations de curseur de console**](console-cursor-info-str.md) qui fournit les nouvelles spécifications pour le curseur de la mémoire tampon d’écran de la console.
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Si la fonction est réussie, la valeur de retour est différente de zéro.
 
 Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
-Lorsque le curseur d’une mémoire tampon d’écran est visible, son apparence peut varier, du remplissage complet d’une cellule de caractère à l’affichage sous forme de ligne horizontale au bas de la cellule. Le membre **dwSize nul** de la structure d' [** \_ \_ informations du curseur**](console-cursor-info-str.md) de la console spécifie le pourcentage d’une cellule de caractère qui est remplie par le curseur. Si ce membre est inférieur à 1 ou supérieur à 100, **SetConsoleCursorInfo** échoue.
+Lorsque le curseur d’une mémoire tampon d’écran est visible, son apparence peut varier, du remplissage complet d’une cellule de caractère à l’affichage sous forme de ligne horizontale au bas de la cellule. Le membre **dwSize nul** de la structure d' [**\_ \_ informations du curseur**](console-cursor-info-str.md) de la console spécifie le pourcentage d’une cellule de caractère qui est remplie par le curseur. Si ce membre est inférieur à 1 ou supérieur à 100, **SetConsoleCursorInfo** échoue.
 
-<a name="requirements"></a>Configuration requise
-------------
+> [!TIP]
+> Cette API a un **[terminal virtuel](console-virtual-terminal-sequences.md)** équivalent dans la section **[visibilité du curseur](console-virtual-terminal-sequences.md#cursor-visibility)** avec les `^[[?25h` `^[[?25l` séquences et. 
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi2. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+## <a name="requirements"></a>Spécifications
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
 
+## <a name="see-also"></a>Voir aussi
 
 [Fonctions de la console](console-functions.md)
 
-[Mémoires tampons d’écran de la console](console-screen-buffers.md)
+[Mémoires tampons d’écran d’une console](console-screen-buffers.md)
 
 [**\_informations sur le curseur de la console \_**](console-cursor-info-str.md)
 
 [**GetConsoleCursorInfo**](getconsolecursorinfo.md)
 
 [**SetConsoleCursorPosition**](setconsolecursorposition.md)
-
- 
-
- 
-
-
-
-

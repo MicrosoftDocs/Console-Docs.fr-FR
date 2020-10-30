@@ -4,7 +4,7 @@ description: Définit le descripteur pour l’appareil standard spécifié (entr
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - processenv/SetStdHandle
 - winbase/SetStdHandle
@@ -30,139 +30,70 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 6ab17a2162d31c956ec64dbb33696c20ae085298
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 36531872df90239e2b909c80fb75ad3011280c78
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89060534"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039297"
 ---
 # <a name="setstdhandle-function"></a>SetStdHandle fonction)
 
-
 Définit le descripteur pour l’appareil standard spécifié (entrée standard, sortie standard ou erreur standard).
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```cpp
 BOOL WINAPI SetStdHandle(
-  _In_ DWORD  nStdHandle,
-  _In_ HANDLE hHandle
+  _In_ DWORD  nStdHandle,
+  _In_ HANDLE hHandle
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *nStdHandle* \[ dans\]  
 Appareil standard pour lequel le descripteur doit être défini. Ce paramètre peut prendre l’une des valeurs suivantes.
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Value</th>
-<th>Signification</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span id="STD_INPUT_HANDLE"></span><span id="std_input_handle"></span>
-<strong>STD_INPUT_HANDLE</strong> (DWORD)-10</td>
-<td><p>Périphérique d’entrée standard.</p></td>
-</tr>
-<tr class="even">
-<td><span id="STD_OUTPUT_HANDLE"></span><span id="std_output_handle"></span>
-<strong>STD_OUTPUT_HANDLE</strong> (DWORD)-11</td>
-<td><p>Périphérique de sortie standard.</p></td>
-</tr>
-<tr class="odd">
-<td><span id="STD_ERROR_HANDLE"></span><span id="std_error_handle"></span>
-<strong>STD_ERROR_HANDLE</strong> (DWORD)-12</td>
-<td><p>Périphérique d’erreur standard.</p></td>
-</tr>
-</tbody>
-</table>
-
- 
+| Valeur | Signification |
+|-|-|
+| **STD_INPUT_HANDLE** (DWORD)-10 | Périphérique d’entrée standard. Initialement, il s’agit de la mémoire tampon d’entrée de la console, `CONIN$` . |
+| **STD_OUTPUT_HANDLE** (DWORD)-11 | Périphérique de sortie standard. Initialement, il s’agit de la mémoire tampon d’écran active de la console, `CONOUT$` . |
+| **STD_ERROR_HANDLE** (DWORD)-12 | Périphérique d’erreur standard. Initialement, il s’agit de la mémoire tampon d’écran active de la console, `CONOUT$` . |
 
 *hHandle* \[ dans\]  
 Handle pour l’appareil standard.
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Si la fonction est réussie, la valeur de retour est différente de zéro.
 
 Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
-Les handles standard d’un processus peuvent avoir été redirigés par un appel à **SetStdHandle**, auquel cas [**GetStdHandle**](getstdhandle.md) retourne le handle Redirigé. Si les handles standard ont été redirigés, vous pouvez spécifier la valeur CONIN $ dans un appel à la fonction [**CreateFile**](https://msdn.microsoft.com/library/windows/desktop/aa363858) pour obtenir un handle vers la mémoire tampon d’entrée d’une console. De même, vous pouvez spécifier la valeur CONOUT $ pour obtenir un descripteur de la mémoire tampon d’écran active de la console.
+Les handles standard d’un processus peuvent avoir été redirigés par un appel à **SetStdHandle** , auquel cas [**GetStdHandle**](getstdhandle.md) retourne le handle Redirigé. Si les handles standard ont été redirigés, vous pouvez spécifier la valeur CONIN $ dans un appel à la fonction [**CreateFile**](https://msdn.microsoft.com/library/windows/desktop/aa363858) pour obtenir un handle vers la mémoire tampon d’entrée d’une console. De même, vous pouvez spécifier la valeur CONOUT $ pour obtenir un descripteur de la mémoire tampon d’écran active de la console.
 
-<a name="examples"></a>Exemples
---------
+## <a name="examples"></a>Exemples
 
 Pour obtenir un exemple, consultez [création d’un processus enfant avec une entrée et une sortie redirigées](https://msdn.microsoft.com/library/windows/desktop/ms682499).
 
-<a name="requirements"></a>Configuration requise
-------------
+## <a name="requirements"></a>Spécifications
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ProcessEnv. h (via Winbase. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ProcessEnv. h (via Winbase. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
-
+## <a name="see-also"></a>Voir aussi
 
 [Fonctions de la console](console-functions.md)
 
-[Handles de la console](console-handles.md)
+[Handles de console](console-handles.md)
 
 [**CreateFile**](https://msdn.microsoft.com/library/windows/desktop/aa363858)
 
 [**GetStdHandle**](getstdhandle.md)
-
- 
-
- 
-
-
-
-

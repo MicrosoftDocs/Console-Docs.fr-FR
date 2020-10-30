@@ -4,7 +4,7 @@ description: Lit les données à partir d’une mémoire tampon d’entrée de l
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi/ReadConsoleInput
 - wincon/ReadConsoleInput
@@ -37,35 +37,32 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 38a5ee0d1572d6e40ab103cfc402d616a99d2ca5
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 38778931522dff8d1d000bb6f0ce13c2849d76db
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059469"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039487"
 ---
 # <a name="readconsoleinput-function"></a>ReadConsoleInput fonction)
 
-
 Lit les données à partir d’une mémoire tampon d’entrée de la console et les supprime de la mémoire tampon.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 BOOL WINAPI ReadConsoleInput(
-  _In_  HANDLE        hConsoleInput,
-  _Out_ PINPUT_RECORD lpBuffer,
-  _In_  DWORD         nLength,
-  _Out_ LPDWORD       lpNumberOfEventsRead
+  _In_  HANDLE        hConsoleInput,
+  _Out_ PINPUT_RECORD lpBuffer,
+  _In_  DWORD         nLength,
+  _Out_ LPDWORD       lpNumberOfEventsRead
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *hConsoleInput* \[ dans\]  
-Handle vers la mémoire tampon d’entrée de la console. Le handle doit avoir le droit d’accès ** \_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+Handle vers la mémoire tampon d’entrée de la console. Le handle doit avoir le droit d’accès **\_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
 
 *lpBuffer* \[ à\]  
 Pointeur vers un tableau de structures [**d' \_ enregistrements d’entrée**](input-record-str.md) qui reçoit les données de la mémoire tampon d’entrée.
@@ -76,15 +73,13 @@ Taille du tableau vers lequel pointe le paramètre *lpBuffer* , dans les éléme
 *lpNumberOfEventsRead* \[ à\]  
 Pointeur vers une variable qui reçoit le nombre d’enregistrements d’entrée lus.
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Si la fonction est réussie, la valeur de retour est différente de zéro.
 
 Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
 Si le nombre d’enregistrements demandés dans le paramètre *nLength* dépasse le nombre d’enregistrements disponibles dans la mémoire tampon, le nombre disponible est Read. La fonction ne retourne pas de données tant qu’au moins un enregistrement d’entrée n’a pas été lu.
 
@@ -92,59 +87,24 @@ Un processus peut spécifier un handle de mémoire tampon d’entrée de la cons
 
 Pour déterminer le nombre d’enregistrements d’entrée non lus dans la mémoire tampon d’entrée d’une console, utilisez la fonction [**GetNumberOfConsoleInputEvents**](getnumberofconsoleinputevents.md) . Pour lire les enregistrements d’entrée d’une mémoire tampon d’entrée de la console sans affecter le nombre d’enregistrements non lus, utilisez la fonction [**PeekConsoleInput**](peekconsoleinput.md) . Pour ignorer tous les enregistrements non lus dans le tampon d’entrée d’une console, utilisez la fonction [**FlushConsoleInputBuffer**](flushconsoleinputbuffer.md) .
 
-Cette fonction utilise des caractères Unicode ou 8 bits à partir de la page de codes actuelle de la console. La page de codes de la console est initialement définie par défaut sur la page de codes OEM du système. Pour modifier la page de codes de la console, utilisez les fonctions [**SetConsoleCP**](setconsolecp.md) ou [**SetConsoleOutputCP**](setconsoleoutputcp.md) , ou utilisez les commandes **chcp** ou **mode con CP Select =** .
+[!INCLUDE [setting-codepage-mode-remarks](./includes/setting-codepage-mode-remarks.md)]
 
-<a name="examples"></a>Exemples
---------
+## <a name="examples"></a>Exemples
 
 Pour obtenir un exemple, consultez [lecture des événements de mémoire tampon d’entrée](reading-input-buffer-events.md).
 
-<a name="requirements"></a>Configuration requise
-------------
+## <a name="requirements"></a>Spécifications
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi3. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-<td><p>Noms Unicode et ANSI</p></td>
-<td><p><strong>ReadConsoleInputW</strong> (Unicode) et <strong>ReadConsoleInputA</strong> (ANSI)</p></td>
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ConsoleApi. h (via WinCon. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
+| Noms Unicode et ANSI | **ReadConsoleInputW** (Unicode) et **ReadConsoleInputA** (ANSI) |
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
-
+## <a name="see-also"></a>Voir aussi
 
 [Fonctions de la console](console-functions.md)
 
@@ -167,11 +127,3 @@ Pour obtenir un exemple, consultez [lecture des événements de mémoire tampon 
 [**SetConsoleOutputCP**](setconsoleoutputcp.md)
 
 [**WriteConsoleInput**](writeconsoleinput.md)
-
- 
-
- 
-
-
-
-

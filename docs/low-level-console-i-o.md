@@ -1,10 +1,10 @@
 ---
-title: E/s de console de bas niveau
+title: E/s de la console Low-Level
 description: Les fonctions d’e/s de la console de bas niveau étendent le contrôle d’une application sur les e/s de la console en permettant un accès direct aux mémoires tampons d’entrée et d’écran d’une console.
 author: miniksa
 ms.author: miniksa
-ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+ms.topic: conceptual
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 MS-HAID:
 - '\_win32\_low\_level\_console\_i\_o'
 - base.low\_level\_console\_i\_o
@@ -13,15 +13,16 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: c874aff4-6129-4dbc-8949-24d46382d81c
-ms.openlocfilehash: b548a188189b597a270faac1cfbc83a2af699fab
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: b4ec834e44f7ff291466cfe1714442bc17ca7aca
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059472"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039547"
 ---
-# <a name="low-level-console-io"></a>E/s de console de bas niveau
+# <a name="low-level-console-io"></a>E/s de la console Low-Level
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Les fonctions d’e/s de la console de bas niveau étendent le contrôle d’une application sur les e/s de la console en permettant un accès direct aux mémoires tampons d’entrée et d’écran d’une console. Ces fonctions permettent à une application d’effectuer les tâches suivantes :
 
@@ -36,17 +37,9 @@ Les fonctions d’e/s de la console de bas niveau étendent le contrôle d’une
 - Lire et écrire des blocs rectangulaires de données de caractère et de couleur à un emplacement de mémoire tampon d’écran spécifié
 - Écrire un caractère Unicode ou ANSI unique, ou une combinaison d’attributs de couleur de texte et d’arrière-plan, à un nombre spécifié de cellules consécutives en commençant à l’emplacement de mémoire tampon d’écran spécifié
 
-Pour plus d'informations, voir les rubriques suivantes :
+Pour plus d'informations, consultez les rubriques suivantes :
 
 - [Modes de la console](console-modes.md)
 - [Modes de la console de bas niveau](low-level-console-modes.md)
 - [Fonctions d’entrée de la console de bas niveau](low-level-console-input-functions.md)
 - [Fonctions de sortie de la console de bas niveau](low-level-console-output-functions.md)
-
- 
-
- 
-
-
-
-

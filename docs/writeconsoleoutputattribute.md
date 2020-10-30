@@ -4,7 +4,7 @@ description: Copie un certain nombre d’attributs de caractères dans des cellu
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi2/WriteConsoleOutputAttribute
 - wincon/WriteConsoleOutputAttribute
@@ -28,39 +28,38 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: e7c684b2f450713eaa78730676a0148e9b090c79
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 04c7799cd98479d3b776b1933994b60f5ed9fc9f
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059509"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039277"
 ---
 # <a name="writeconsoleoutputattribute-function"></a>WriteConsoleOutputAttribute fonction)
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Copie un certain nombre d’attributs de caractères dans des cellules consécutives d’une mémoire tampon d’écran de la console, en commençant à un emplacement spécifié.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 BOOL WINAPI WriteConsoleOutputAttribute(
-  _In_        HANDLE  hConsoleOutput,
-  _In_  const WORD    *lpAttribute,
-  _In_        DWORD   nLength,
-  _In_        COORD   dwWriteCoord,
-  _Out_       LPDWORD lpNumberOfAttrsWritten
+  _In_        HANDLE  hConsoleOutput,
+  _In_  const WORD    *lpAttribute,
+  _In_        DWORD   nLength,
+  _In_        COORD   dwWriteCoord,
+  _Out_       LPDWORD lpNumberOfAttrsWritten
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *hConsoleOutput* \[ dans\]  
-Handle vers la mémoire tampon d’écran de la console. Le descripteur doit avoir le droit d’accès en ** \_ écriture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+Handle vers la mémoire tampon d’écran de la console. Le descripteur doit avoir le droit d’accès en **\_ écriture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
 
 *lpAttribute* \[ dans\]  
-Attributs à utiliser lors de l’écriture dans la mémoire tampon d’écran de la console. Pour plus d’informations, consultez [attributs de caractères](console-screen-buffers.md#_win32_font_attributes).
+Attributs à utiliser lors de l’écriture dans la mémoire tampon d’écran de la console. Pour plus d’informations, consultez [attributs de caractères](console-screen-buffers.md#character-attributes).
 
 *nLength* \[ dans\]  
 Nombre de cellules de caractères de la mémoire tampon d’écran vers lesquelles les attributs seront copiés.
@@ -71,60 +70,32 @@ Structure de [**repère**](coord-str.md) qui spécifie les coordonnées de carac
 *lpNumberOfAttrsWritten* \[ à\]  
 Pointeur vers une variable qui reçoit le nombre d’attributs réellement écrits dans la mémoire tampon d’écran de la console.
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Si la fonction est réussie, la valeur de retour est différente de zéro.
 
 Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
 Si le nombre d’attributs à écrire dans s’étend au-delà de la fin de la ligne spécifiée dans la mémoire tampon d’écran de la console, les attributs sont écrits sur la ligne suivante. Si le nombre d’attributs à écrire dans s’étend au-delà de la fin de la mémoire tampon d’écran de la console, les attributs sont écrits jusqu’à la fin de la mémoire tampon d’écran de la console.
 
 Les valeurs de caractère aux positions écrites dans ne sont pas modifiées.
 
-<a name="requirements"></a>Configuration requise
-------------
+> [!TIP]
+> Cette API possède un **[terminal virtuel](console-virtual-terminal-sequences.md)** équivalent dans les séquences de **[mise en forme du texte](console-virtual-terminal-sequences.md#text-formatting)** et de **[positionnement des curseurs](console-virtual-terminal-sequences.md#cursor-positioning)** . Placez le curseur à l’emplacement à insérer, appliquez la mise en forme souhaitée, puis écrivez le texte à remplir. Il n’existe aucun équivalent pour appliquer une couleur à une zone sans également émettre de texte. Cette décision aligne intentionnellement la plateforme Windows avec d’autres systèmes d’exploitation, où l’application cliente individuelle est supposée se souvenir de son propre État dessiné pour une manipulation ultérieure.
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi2. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+## <a name="requirements"></a>Spécifications
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
 
+## <a name="see-also"></a>Voir aussi
 
 [Fonctions de la console](console-functions.md)
 
@@ -141,11 +112,3 @@ Les valeurs de caractère aux positions écrites dans ne sont pas modifiées.
 [**WriteConsoleOutput**](writeconsoleoutput.md)
 
 [**WriteConsoleOutputCharacter**](writeconsoleoutputcharacter.md)
-
- 
-
- 
-
-
-
-

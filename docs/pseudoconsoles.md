@@ -3,19 +3,19 @@ title: Pseudoconsoles – Bureau Windows
 description: Un pseudoconsole est un concept utilisé pour fournir l’aspect d’hébergement ou de maintenance d’une application en mode caractère.
 author: miniksa
 ms.author: miniksa
-ms.topic: article
+ms.topic: conceptual
 ms.prod: console
 keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API console, conpty, pseudoconsole
-ms.openlocfilehash: ce2dfb14371e35a738e9c42ba2be8d2bb2758946
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 2b2d28065ec4f0e4121decb906e76b34ac1871fc
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059053"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039477"
 ---
 # <a name="pseudoconsoles"></a>Pseudoconsoles
 
-Un *pseudoconsole* est un type d’appareil qui permet aux applications de devenir l’hôte des applications en mode caractère. 
+Un *pseudoconsole* est un type d’appareil qui permet aux applications de devenir l’hôte des applications en mode caractère.
 
 Contrairement à une session de console classique, le système d’exploitation crée une fenêtre d’hébergement pour le compte de l’application en mode caractères pour gérer la sortie graphique et l’entrée utilisateur.
 

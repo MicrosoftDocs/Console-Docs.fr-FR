@@ -4,7 +4,7 @@ description: Consultez les informations de référence sur la fonction WriteCons
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi2/WriteConsoleInput
 - wincon/WriteConsoleInput
@@ -36,35 +36,34 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 784bed6c1a7b7f7ed9ed204b8483d30371e510a3
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: dc2c7930ab76587edc9ae1991d4493c858b0ec30
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89060566"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039287"
 ---
 # <a name="writeconsoleinput-function"></a>WriteConsoleInput fonction)
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Écrit les données directement dans la mémoire tampon d’entrée de la console.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 BOOL WINAPI WriteConsoleInput(
-  _In_        HANDLE       hConsoleInput,
-  _In_  const INPUT_RECORD *lpBuffer,
-  _In_        DWORD        nLength,
-  _Out_       LPDWORD      lpNumberOfEventsWritten
+  _In_        HANDLE       hConsoleInput,
+  _In_  const INPUT_RECORD *lpBuffer,
+  _In_        DWORD        nLength,
+  _Out_       LPDWORD      lpNumberOfEventsWritten
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *hConsoleInput* \[ dans\]  
-Handle vers la mémoire tampon d’entrée de la console. Le descripteur doit avoir le droit d’accès en ** \_ écriture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+Handle vers la mémoire tampon d’entrée de la console. Le descripteur doit avoir le droit d’accès en **\_ écriture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
 
 *lpBuffer* \[ dans\]  
 Pointeur vers un tableau de structures [**d' \_ enregistrements d’entrée**](input-record-str.md) qui contiennent les données à écrire dans la mémoire tampon d’entrée.
@@ -75,66 +74,33 @@ Nombre d’enregistrements d’entrée à écrire.
 *lpNumberOfEventsWritten* \[ à\]  
 Pointeur vers une variable qui reçoit le nombre d’enregistrements d’entrée réellement écrits.
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Si la fonction est réussie, la valeur de retour est différente de zéro.
 
 Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
 **WriteConsoleInput** place les enregistrements d’entrée dans la mémoire tampon d’entrée derrière les événements en attente dans la mémoire tampon. Le tampon d’entrée augmente de manière dynamique, si nécessaire, pour contenir autant d’événements que ceux écrits.
 
-Cette fonction utilise des caractères Unicode ou 8 bits à partir de la page de codes actuelle de la console. La page de codes de la console est initialement définie par défaut sur la page de codes OEM du système. Pour modifier la page de codes de la console, utilisez les fonctions [**SetConsoleCP**](setconsolecp.md) ou [**SetConsoleOutputCP**](setconsoleoutputcp.md) , ou utilisez les commandes **chcp** ou **mode con CP Select =** .
+[!INCLUDE [setting-codepage-mode-remarks](./includes/setting-codepage-mode-remarks.md)]
 
-<a name="requirements"></a>Configuration requise
-------------
+> [!TIP]
+> Cette API n’est pas recommandée et n’a pas d’équivalent de **[terminal virtuel](console-virtual-terminal-sequences.md)** . Cette décision aligne intentionnellement la plateforme Windows avec d’autres systèmes d’exploitation. Cette opération est considérée comme un **[verbe incorrect](console-buffer-security-and-access-rights.md#wrong-way-verbs)** pour cette mémoire tampon. La communication à distance des applications via des utilitaires multiplateforme et des transports comme SSH peut ne pas fonctionner comme prévu si vous utilisez cette API.
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi2. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-<td><p>Noms Unicode et ANSI</p></td>
-<td><p><strong>WriteConsoleInputW</strong> (Unicode) et <strong>WriteConsoleInputA</strong> (ANSI)</p></td>
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+## <a name="requirements"></a>Spécifications
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
+| Noms Unicode et ANSI | **WriteConsoleInputW** (Unicode) et **WriteConsoleInputA** (ANSI) |
 
+## <a name="see-also"></a>Voir aussi
 
 [Fonctions de la console](console-functions.md)
 
@@ -153,11 +119,3 @@ Cette fonction utilise des caractères Unicode ou 8 bits à partir de la page de
 [**SetConsoleOutputCP**](setconsoleoutputcp.md)
 
 [**VkKeyScan**](https://msdn.microsoft.com/library/windows/desktop/ms646329)
-
- 
-
- 
-
-
-
-

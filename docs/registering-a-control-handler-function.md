@@ -1,10 +1,10 @@
 ---
-title: Inscription d’une fonction de gestionnaire de contrôle
+title: Enregistrement d’une fonction du gestionnaire de contrôle
 description: Il s’agit d’un exemple de la fonction SetConsoleCtrlHandler utilisée pour installer un gestionnaire de contrôle.
 author: miniksa
 ms.author: miniksa
-ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+ms.topic: sample
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 MS-HAID:
 - '\_win32\_registering\_a\_control\_handler\_function'
 - base.registering\_a\_control\_handler\_function
@@ -13,23 +13,22 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: f1c72277-f06c-4147-a74c-6aaf6feb730e
-ms.openlocfilehash: cda72574b13c8c8fa1644e78310c66598c7b9dcf
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 4142f4f0871bd11a56085324195702ab47301227
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059441"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039447"
 ---
-# <a name="registering-a-control-handler-function"></a>Inscription d’une fonction de gestionnaire de contrôle
-
+# <a name="registering-a-control-handler-function"></a>Enregistrement d’une fonction du gestionnaire de contrôle
 
 Il s’agit d’un exemple de la fonction [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) utilisée pour installer un gestionnaire de contrôle.
 
-Quand un signal CTRL + C est reçu, le gestionnaire de contrôle retourne la **valeur true**, ce qui indique qu’il a géré le signal. Cela empêche l’appel d’autres gestionnaires de contrôle.
+Quand un signal CTRL + C est reçu, le gestionnaire de contrôle retourne la **valeur true** , ce qui indique qu’il a géré le signal. Cela empêche l’appel d’autres gestionnaires de contrôle.
 
-Lorsqu’un signal d' ** \_ \_ événement Ctrl Close** est reçu, le gestionnaire de contrôle retourne la **valeur true** et le processus se termine.
+Lorsqu’un signal d' **\_ \_ événement Ctrl Close** est reçu, le gestionnaire de contrôle retourne la **valeur true** et le processus se termine.
 
-Lors de la réception d’un événement **CTRL \_ break \_ **, d’un ** \_ \_ événement Ctrl Logoff**ou de **CTRL \_ Shutdown \_ ** , le gestionnaire de contrôle retourne la **valeur false**. Cela entraîne le passage du signal à la fonction de gestionnaire de contrôle suivante. Si aucun autre gestionnaire de contrôles n’a été inscrit ou si aucun des gestionnaires inscrits ne retourne la **valeur true**, le gestionnaire par défaut est utilisé, ce qui entraîne l’arrêt du processus.
+Lors de la réception d’un événement **CTRL \_ break \_** , d’un **\_ \_ événement Ctrl Logoff** ou de **CTRL \_ Shutdown \_** , le gestionnaire de contrôle retourne la **valeur false** . Cela entraîne le passage du signal à la fonction de gestionnaire de contrôle suivante. Si aucun autre gestionnaire de contrôles n’a été inscrit ou si aucun des gestionnaires inscrits ne retourne la **valeur true** , le gestionnaire par défaut est utilisé, ce qui entraîne l’arrêt du processus.
 
 ```C
 // CtrlHandler.cpp : This file contains the 'main' function. Program execution begins and ends there.
@@ -37,26 +36,26 @@ Lors de la réception d’un événement **CTRL \_ break \_ **, d’un ** \_ \_ 
 
 #include "pch.h"
 
-#include <windows.h> 
-#include <stdio.h> 
+#include <windows.h>
+#include <stdio.h>
 
 BOOL WINAPI CtrlHandler(DWORD fdwCtrlType)
 {
     switch (fdwCtrlType)
     {
-        // Handle the CTRL-C signal. 
+        // Handle the CTRL-C signal.
     case CTRL_C_EVENT:
         printf("Ctrl-C event\n\n");
         Beep(750, 300);
         return TRUE;
 
-        // CTRL-CLOSE: confirm that the user wants to exit. 
+        // CTRL-CLOSE: confirm that the user wants to exit.
     case CTRL_CLOSE_EVENT:
         Beep(600, 200);
         printf("Ctrl-Close event\n\n");
         return TRUE;
 
-        // Pass other signals to the next handler. 
+        // Pass other signals to the next handler.
     case CTRL_BREAK_EVENT:
         Beep(900, 200);
         printf("Ctrl-Break event\n\n");
@@ -96,11 +95,3 @@ int main(void)
     return 0;
 }
 ```
-
- 
-
- 
-
-
-
-

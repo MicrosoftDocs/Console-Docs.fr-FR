@@ -1,10 +1,10 @@
 ---
-title: Structure CONSOLE_SCREEN_BUFFER_INFO
+title: CONSOLE_SCREEN_BUFFER_INFO, structure
 description: Consultez les informations de référence sur la structure CONSOLE_SCREEN_BUFFER_INFO, qui contient des informations sur une mémoire tampon d’écran de la console.
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi2/CONSOLE_SCREEN_BUFFER_INFO
 - wincon/CONSOLE_SCREEN_BUFFER_INFO
@@ -25,36 +25,33 @@ topic_type:
 api_name:
 - CONSOLE_SCREEN_BUFFER_INFO
 api_location:
-- Wincon.h
+- WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: 4089541ddac93f5be61b7a21d5aa88a88061b261
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 8b3a739a9f66e25687b60a3450c9381822c16e53
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059296"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93039177"
 ---
 # <a name="console_screen_buffer_info-structure"></a>\_Structure des \_ informations de mémoire tampon de l’écran de la console \_
 
-
 Contient des informations sur une mémoire tampon d’écran de la console.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 typedef struct _CONSOLE_SCREEN_BUFFER_INFO {
-  COORD      dwSize;
-  COORD      dwCursorPosition;
-  WORD       wAttributes;
+  COORD      dwSize;
+  COORD      dwCursorPosition;
+  WORD       wAttributes;
   SMALL_RECT srWindow;
-  COORD      dwMaximumWindowSize;
+  COORD      dwMaximumWindowSize;
 } CONSOLE_SCREEN_BUFFER_INFO;
 ```
 
-<a name="members"></a>Membres
--------
+## <a name="members"></a>Membres
 
 **dwSize nul**  
 Structure de [**repère**](coord-str.md) qui contient la taille de la mémoire tampon d’écran de la console, dans les colonnes de caractères et les lignes.
@@ -63,7 +60,7 @@ Structure de [**repère**](coord-str.md) qui contient la taille de la mémoire t
 Structure de [**repère**](coord-str.md) qui contient les coordonnées de colonne et de ligne du curseur dans la mémoire tampon d’écran de la console.
 
 **wAttributes**  
-Attributs des caractères écrits dans une mémoire tampon d’écran par les fonctions [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) et [**WriteConsole**](writeconsole.md) , ou répercutés dans une mémoire tampon d’écran par les fonctions [**ReadFile**](https://msdn.microsoft.com/library/windows/desktop/aa365467) et [**ReadConsole**](readconsole.md) . Pour plus d’informations, consultez [attributs de caractères](console-screen-buffers.md#_win32_font_attributes).
+Attributs des caractères écrits dans une mémoire tampon d’écran par les fonctions [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) et [**WriteConsole**](writeconsole.md) , ou répercutés dans une mémoire tampon d’écran par les fonctions [**ReadFile**](https://msdn.microsoft.com/library/windows/desktop/aa365467) et [**ReadConsole**](readconsole.md) . Pour plus d’informations, consultez [attributs de caractères](console-screen-buffers.md#character-attributes).
 
 **srWindow**  
 [**Petite structure \_ Rect**](small-rect-str.md) qui contient les coordonnées de la mémoire tampon d’écran de la console des angles supérieur gauche et inférieur droit de la fenêtre d’affichage.
@@ -71,37 +68,19 @@ Attributs des caractères écrits dans une mémoire tampon d’écran par les fo
 **dwMaximumWindowSize**  
 Structure de [**repère**](coord-str.md) qui contient la taille maximale de la fenêtre de console, en colonnes de caractères et en lignes, en fonction de la taille et de la police de la mémoire tampon d’écran actuelle et de la taille de l’écran.
 
-<a name="examples"></a>Exemples
---------
+## <a name="examples"></a>Exemples
 
 Pour obtenir un exemple, consultez [défilement du contenu d’une mémoire tampon d’écran](scrolling-a-screen-buffer-s-contents.md).
 
-<a name="requirements"></a>Configuration requise
-------------
+## <a name="requirements"></a>Spécifications
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi2. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
-
+## <a name="see-also"></a>Voir aussi
 
 [**COORDONNÉES**](coord-str.md)
 
@@ -116,11 +95,3 @@ Pour obtenir un exemple, consultez [défilement du contenu d’une mémoire tamp
 [**WriteConsole**](writeconsole.md)
 
 [**Appel**](https://msdn.microsoft.com/library/windows/desktop/aa365747)
-
- 
-
- 
-
-
-
-
