@@ -19,20 +19,18 @@ api_location:
 - KernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: a4f6ff773538eda4d4c84c4b0bac2e647f6b80d8
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 0d5a4ff954c8ebea688573f23d3981ee9c5d7d2a
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059444"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93037537"
 ---
 # <a name="resizepseudoconsole-function"></a>ResizePseudoConsole fonction)
 
-
 Redimensionne les mémoires tampons internes pour un pseudoconsole à la taille donnée.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 HRESULT WINAPI ResizePseudoConsole(
@@ -41,66 +39,35 @@ HRESULT WINAPI ResizePseudoConsole(
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *hPC* \[ dans\]  
-Handle d’un psuedoconsole actif tel qu’il est ouvert par [CreatePseudoConsole](createpseudoconsole.md).
+Handle d’un pseudoconsole actif tel qu’il est ouvert par [CreatePseudoConsole](createpseudoconsole.md).
 
 *taille* \[ dans\]  
-Dimensions de la fenêtre/mémoire tampon en nombre de caractères qui seront utilisés pour la mémoire tampon interne de ce pseudoconsole. 
+Dimensions de la fenêtre/mémoire tampon en nombre de caractères qui seront utilisés pour la mémoire tampon interne de ce pseudoconsole.
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Type : **HRESULT**
 
-Si cette méthode est réussie, elle retourne **S_OK**. Sinon, elle retourne un code d’erreur **HRESULT** .
+Si cette méthode est réussie, elle retourne **S_OK** . Sinon, elle retourne un code d’erreur **HRESULT** .
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
-Cette fonction peut redimensionner les mémoires tampons internes de la session pseudoconsole pour qu’elles correspondent à la taille de la fenêtre/de la mémoire tampon utilisée pour l’affichage sur l’extrémité terminal. Cela permet de s’assurer que les applications de l’interface de ligne de commande (CUI) attachées utilisant les fonctions de la [console](console-functions.md) pour communiquer auront les dimensions correctes retournées dans leurs appels.
+Cette fonction peut redimensionner les mémoires tampons internes de la session pseudoconsole pour qu’elles correspondent à la taille de la fenêtre/de la mémoire tampon utilisée pour l’affichage sur l’extrémité terminal. Cela garantit que les applications CUI (attached Command-Line interface) utilisant les fonctions de la [console](console-functions.md) pour communiquer auront les dimensions correctes retournées dans leurs appels.
 
-<a name="requirements"></a>Configuration requise
-------------
+## <a name="requirements"></a>Spécifications
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 10 1809 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Windows Server 2019 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Windows 10 octobre 2018 mise à jour (version 1809) \[ applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows Server 2019 \[ uniquement\] |
+| En-tête | ConsoleApi. h (via WinCon. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
+## <a name="see-also"></a>Voir aussi
 
 [Pseudoconsoles](pseudoconsoles.md)
 

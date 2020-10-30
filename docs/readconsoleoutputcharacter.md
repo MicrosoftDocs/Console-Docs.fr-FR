@@ -4,7 +4,7 @@ description: Copie un nombre de caractères à partir de cellules consécutives 
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi2/ReadConsoleOutputCharacter
 - wincon/ReadConsoleOutputCharacter
@@ -36,36 +36,35 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 8f761d10951e6df77a54fd075c29379657204a99
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: fa70841d5dccf3289807d29c67fab86e3b445279
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059452"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93037720"
 ---
 # <a name="readconsoleoutputcharacter-function"></a>ReadConsoleOutputCharacter fonction)
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Copie un nombre de caractères à partir de cellules consécutives d’une mémoire tampon d’écran de la console, en commençant à un emplacement spécifié.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 BOOL WINAPI ReadConsoleOutputCharacter(
-  _In_  HANDLE  hConsoleOutput,
-  _Out_ LPTSTR  lpCharacter,
-  _In_  DWORD   nLength,
-  _In_  COORD   dwReadCoord,
-  _Out_ LPDWORD lpNumberOfCharsRead
+  _In_  HANDLE  hConsoleOutput,
+  _Out_ LPTSTR  lpCharacter,
+  _In_  DWORD   nLength,
+  _In_  COORD   dwReadCoord,
+  _Out_ LPDWORD lpNumberOfCharsRead
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *hConsoleOutput* \[ dans\]  
-Handle vers la mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès ** \_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+Handle vers la mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès **\_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
 
 *lpCharacter* \[ à\]  
 Pointeur vers une mémoire tampon qui reçoit les caractères lus à partir de la mémoire tampon d’écran de la console.
@@ -79,66 +78,32 @@ Coordonnées de la première cellule dans la mémoire tampon d’écran de la co
 *lpNumberOfCharsRead* \[ à\]  
 Pointeur vers une variable qui reçoit le nombre de caractères réellement lus.
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Si la fonction est réussie, la valeur de retour est différente de zéro.
 
 Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
 Si le nombre de caractères à lire à partir de s’étend au-delà de la fin de la ligne de mémoire tampon d’écran spécifiée, les caractères sont lus à partir de la ligne suivante. Si le nombre de caractères à lire à partir de s’étend au-delà de la fin de la mémoire tampon d’écran de la console, les caractères jusqu’à la fin de la mémoire tampon d’écran de la console sont lus.
 
-Cette fonction utilise des caractères Unicode ou 8 bits à partir de la page de codes actuelle de la console. La page de codes de la console est initialement définie par défaut sur la page de codes OEM du système. Pour modifier la page de codes de la console, utilisez les fonctions [**SetConsoleCP**](setconsolecp.md) ou [**SetConsoleOutputCP**](setconsoleoutputcp.md) , ou utilisez les commandes **chcp** ou **mode con CP Select =** .
+[!INCLUDE [setting-codepage-mode-remarks](./includes/setting-codepage-mode-remarks.md)]
 
-<a name="requirements"></a>Configuration requise
-------------
+[!INCLUDE [no-vt-equiv-banner](./includes/no-vt-equiv-banner.md)]
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi2. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-<td><p>Noms Unicode et ANSI</p></td>
-<td><p><strong>ReadConsoleOutputCharacterW</strong> (Unicode) et <strong>ReadConsoleOutputCharacterA</strong> (ANSI)</p></td>
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+## <a name="requirements"></a>Spécifications
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
+| Noms Unicode et ANSI | **ReadConsoleOutputCharacterW** (Unicode) et **ReadConsoleOutputCharacterA** (ANSI) |
 
+## <a name="see-also"></a>Voir aussi
 
 [Fonctions de la console](console-functions.md)
 
@@ -159,11 +124,3 @@ Cette fonction utilise des caractères Unicode ou 8 bits à partir de la page de
 [**WriteConsoleOutputAttribute**](writeconsoleoutputattribute.md)
 
 [**WriteConsoleOutputCharacter**](writeconsoleoutputcharacter.md)
-
- 
-
- 
-
-
-
-

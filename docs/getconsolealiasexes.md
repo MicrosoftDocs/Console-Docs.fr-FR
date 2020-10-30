@@ -4,7 +4,7 @@ description: Récupère les noms de tous les fichiers exécutables avec les alia
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi3/GetConsoleAliasExes
 - wincon/GetConsoleAliasExes
@@ -32,101 +32,66 @@ api_location:
 - Kernel32.dll
 api_type:
 - DllExport
-ms.openlocfilehash: e112112fc1510ab4c3f0a99ff9b208cc364e361a
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 0e818c8ecee8ac777f7cc3cf2394d8846bebd034
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059180"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93038077"
 ---
 # <a name="getconsolealiasexes-function"></a>GetConsoleAliasExes fonction)
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Récupère les noms de tous les fichiers exécutables avec les alias de console définis.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 DWORD WINAPI GetConsoleAliasExes(
-  _Out_ LPTSTR lpExeNameBuffer,
-  _In_  DWORD  ExeNameBufferLength
+  _Out_ LPTSTR lpExeNameBuffer,
+  _In_  DWORD  ExeNameBufferLength
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *lpExeNameBuffer* \[ à\]  
 Pointeur vers une mémoire tampon qui reçoit les noms des fichiers exécutables.
 
 *ExeNameBufferLength* \[ dans\]  
-Taille de la mémoire tampon vers laquelle pointe *lpExeNameBuffer*, en octets.
+Taille de la mémoire tampon vers laquelle pointe *lpExeNameBuffer* , en octets.
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Si la fonction est réussie, la valeur de retour est différente de zéro.
 
 Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
 Pour déterminer la taille requise pour la mémoire tampon *lpExeNameBuffer* , utilisez la fonction [**GetConsoleAliasExesLength**](getconsolealiasexeslength.md) .
 
-Pour compiler une application qui utilise cette fonction, définissez ** \_ Win32 \_ winnt** comme 0x0501 ou version ultérieure. Pour plus d’informations, consultez [utilisation des en-têtes Windows](https://msdn.microsoft.com/library/windows/desktop/aa383745).
+Pour compiler une application qui utilise cette fonction, définissez **\_ Win32 \_ winnt** comme 0x0501 ou version ultérieure. Pour plus d’informations, consultez [utilisation des en-têtes Windows](https://msdn.microsoft.com/library/windows/desktop/aa383745).
 
-<a name="requirements"></a>Configuration requise
-------------
+[!INCLUDE [no-vt-equiv-shell-banner](./includes/no-vt-equiv-shell-banner.md)]
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi3. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-<td><p>Noms Unicode et ANSI</p></td>
-<td><p><strong>GetConsoleAliasExesW</strong> (Unicode) et <strong>GetConsoleAliasExesA</strong> (ANSI)</p></td>
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+## <a name="requirements"></a>Spécifications
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ConsoleApi3. h (via WinCon. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
+| Noms Unicode et ANSI | **GetConsoleAliasExesW** (Unicode) et **GetConsoleAliasExesA** (ANSI) |
 
+## <a name="see-also"></a>Voir aussi
 
 [**AddConsoleAlias**](addconsolealias.md)
 
-[Alias de console](console-aliases.md)
+[Alias d’une console](console-aliases.md)
 
 [Fonctions de la console](console-functions.md)
 
@@ -135,11 +100,3 @@ Pour compiler une application qui utilise cette fonction, définissez ** \_ Win3
 [**GetConsoleAliasExesLength**](getconsolealiasexeslength.md)
 
 [**GetConsoleAliases**](getconsolealiases.md)
-
- 
-
- 
-
-
-
-

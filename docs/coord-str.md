@@ -4,7 +4,7 @@ description: Définit les coordonnées d’une cellule de caractère dans une m�
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - wincontypes/COORD
 - wincon/COORD
@@ -25,23 +25,21 @@ topic_type:
 api_name:
 - COORD
 api_location:
-- Wincon.h
+- WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: c29594cbddd69ae8ca6d3f958acd0eeb3cb60e9b
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: c8e6f87c3a2730a8af21b9bc064c71900fb82f5b
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059240"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93038307"
 ---
 # <a name="coord-structure"></a>COORD, structure
 
-
 Définit les coordonnées d’une cellule de caractère dans une mémoire tampon d’écran de la console. L’origine du système de coordonnées (0,0) se trouve dans la cellule supérieure gauche de la mémoire tampon.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 typedef struct _COORD {
@@ -50,8 +48,7 @@ typedef struct _COORD {
 } COORD, *PCOORD;
 ```
 
-<a name="members"></a>Membres
--------
+## <a name="members"></a>Membres
 
 **X**  
 Valeur de la coordonnée ou de la colonne horizontale. Les unités dépendent de l’appel de fonction.
@@ -59,37 +56,19 @@ Valeur de la coordonnée ou de la colonne horizontale. Les unités dépendent de
 **O**  
 Valeur de la coordonnée ou de la ligne verticale. Les unités dépendent de l’appel de fonction.
 
-<a name="examples"></a>Exemples
---------
+## <a name="examples"></a>Exemples
 
 Pour obtenir un exemple, consultez [défilement du contenu d’une mémoire tampon d’écran](scrolling-a-screen-buffer-s-contents.md).
 
-<a name="requirements"></a>Configuration requise
-------------
+## <a name="requirements"></a>Spécifications
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>WinConTypes. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | WinConTypes. h (via WinCon. h, incluez Windows. h) |
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
-
+## <a name="see-also"></a>Voir aussi
 
 [**\_informations sur la police de la console \_**](console-font-info-str.md)
 
@@ -128,11 +107,3 @@ Pour obtenir un exemple, consultez [défilement du contenu d’une mémoire tamp
 [**WriteConsoleOutputAttribute**](writeconsoleoutputattribute.md)
 
 [**WriteConsoleOutputCharacter**](writeconsoleoutputcharacter.md)
-
- 
-
- 
-
-
-
-

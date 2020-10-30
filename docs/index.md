@@ -3,14 +3,14 @@ title: Documentation de la console
 description: Parcourez la page d’accueil de la documentation de la console Windows, qui décrit comment vous pouvez contrôler et interagir programmatiquement avec la console Windows.
 author: miniksa
 ms.author: miniksa
-ms.topic: article
+ms.topic: landing-page
 keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
-ms.openlocfilehash: 7e78e0ab28a32dd43d1751491ddc9263d957bb11
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: e8dcb122f416c92e6d7a89a3090224e11198452e
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89058508"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93038567"
 ---
 # <a name="welcome-to-the-windows-console-documentation"></a>Bienvenue dans la documentation de la console Windows !
 

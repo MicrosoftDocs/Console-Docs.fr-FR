@@ -4,7 +4,7 @@ description: Récupère le titre et la taille du titre pour la fenêtre de conso
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - consoleapi2/GetConsoleTitle
 - wincon/GetConsoleTitle
@@ -38,30 +38,29 @@ api_location:
 - Kernel32Legacy.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 5b8e78e65e52c3f10be14afa6a122fa12609a2eb
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 23b52ba1d5dde40ef842297249fdd2f87cebcb12
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059120"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93037877"
 ---
 # <a name="getconsoletitle-function"></a>GetConsoleTitle fonction)
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Récupère le titre de la fenêtre de console active.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 DWORD WINAPI GetConsoleTitle(
-  _Out_ LPTSTR lpConsoleTitle,
-  _In_  DWORD  nSize
+  _Out_ LPTSTR lpConsoleTitle,
+  _In_  DWORD  nSize
 );
 ```
 
-<a name="parameters"></a>Paramètres
-----------
+## <a name="parameters"></a>Paramètres
 
 *lpConsoleTitle* \[ à\]  
 Pointeur vers une mémoire tampon qui reçoit une chaîne se terminant par null et contenant le titre. Si la mémoire tampon est trop petite pour stocker le titre, la fonction stocke autant de caractères du titre que ceux qui sont contenus dans la mémoire tampon, se terminant par une marque de fin null.
@@ -69,71 +68,37 @@ Pointeur vers une mémoire tampon qui reçoit une chaîne se terminant par null 
 *nSize* \[ dans\]  
 Taille de la mémoire tampon vers laquelle pointe le paramètre *lpConsoleTitle* , en caractères.
 
-<a name="return-value"></a>Valeur retournée
-------------
+## <a name="return-value"></a>Valeur retournée
 
 Si la fonction est réussie, la valeur de retour est la longueur du titre de la fenêtre de console, en caractères.
 
 Si la fonction échoue, la valeur de retour est zéro et [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360) retourne le code d’erreur.
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
 Pour définir le titre d’une fenêtre de console, utilisez la fonction [**SetConsoleTitle**](setconsoletitle.md) . Pour récupérer la chaîne de titre d’origine, utilisez la fonction [**GetConsoleOriginalTitle**](getconsoleoriginaltitle.md) .
 
-Cette fonction utilise des caractères Unicode ou 8 bits à partir de la page de codes actuelle de la console. La page de codes de la console est initialement définie par défaut sur la page de codes OEM du système. Pour modifier la page de codes de la console, utilisez les fonctions [**SetConsoleCP**](setconsolecp.md) ou [**SetConsoleOutputCP**](setconsoleoutputcp.md) , ou utilisez les commandes **chcp** ou **mode con CP Select =** .
+[!INCLUDE [setting-codepage-mode-remarks](./includes/setting-codepage-mode-remarks.md)]
 
-<a name="examples"></a>Exemples
---------
+> [!TIP]
+> Cette API n’est pas recommandée et n’a pas d’équivalent de **[terminal virtuel](console-virtual-terminal-sequences.md)** . Cette décision aligne intentionnellement la plateforme Windows avec d’autres systèmes d’exploitation. La communication à distance des applications via des utilitaires multiplateforme et des transports comme SSH peut ne pas fonctionner comme prévu si vous utilisez cette API.
+
+## <a name="examples"></a>Exemples
 
 Pour obtenir un exemple, consultez [**SetConsoleTitle**](setconsoletitle.md).
 
-<a name="requirements"></a>Configuration requise
-------------
+## <a name="requirements"></a>Spécifications
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows 2000 professionnel [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Serveur Windows 2000 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>ConsoleApi2. h (via wincon. h, incluez Windows. h)</td>
-</tr>
-<tr class="even">
-<td><p>Bibliothèque</p></td>
-<td>Kernel32. lib</td>
-</tr>
-<tr class="odd">
-<td><p>DLL</p></td>
-<td>Kernel32.dll</td>
-</tr>
-<tr class="even">
-<td><p>Noms Unicode et ANSI</p></td>
-<td><p><strong>GetConsoleTitleW</strong> (Unicode) et <strong>GetConsoleTitleA</strong> (ANSI)</p></td>
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-<tr class="odd">
-</tr>
-<tr class="even">
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
+| Bibliothèque | Kernel32. lib |
+| DLL | Kernel32.dll |
+| Noms Unicode et ANSI | **GetConsoleTitleW** (Unicode) et **GetConsoleTitleA** (ANSI) |
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
-
+## <a name="see-also"></a>Voir aussi
 
 [Fonctions de la console](console-functions.md)
 
@@ -144,11 +109,3 @@ Pour obtenir un exemple, consultez [**SetConsoleTitle**](setconsoletitle.md).
 [**SetConsoleOutputCP**](setconsoleoutputcp.md)
 
 [**SetConsoleTitle**](setconsoletitle.md)
-
- 
-
- 
-
-
-
-

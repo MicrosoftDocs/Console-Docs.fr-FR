@@ -1,10 +1,10 @@
 ---
-title: Consoles
+title: Applications en mode caractère
 description: Les consoles gèrent les entrées et sorties (e/s) des applications en mode caractère (les applications qui ne fournissent pas leur propre interface utilisateur graphique).
 author: miniksa
 ms.author: miniksa
-ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+ms.topic: conceptual
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 MS-HAID:
 - '\_win32\_character\_mode\_applications'
 - base.character\_mode\_applications
@@ -13,15 +13,14 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: ea3ea214-892c-4953-bc22-7905efbc173f
-ms.openlocfilehash: 99f351efbf6b68733b5c3e7b94cee03708d6cbef
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 5e1b0b2b5162360122580f3ea7a100750b96272e
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059372"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93037347"
 ---
-# <a name="consoles"></a>Consoles
-
+# <a name="character-mode-applications"></a>Applications en mode caractère
 
 Les consoles gèrent les entrées et sorties (e/s) des applications en mode caractère (les applications qui ne fournissent pas leur propre interface utilisateur graphique).
 
@@ -32,11 +31,3 @@ Cette vue d’ensemble décrit la prise en charge des applications en mode carac
 - [À propos des consoles](about-character-mode-applications.md)
 - [Utilisation de la console](using-the-console.md)
 - [Informations de référence sur la console](console-reference.md)
-
- 
-
- 
-
-
-
-

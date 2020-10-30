@@ -4,7 +4,7 @@ description: Consultez les informations de référence sur la structure CONSOLE_
 author: miniksa
 ms.author: miniksa
 ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 f1_keywords:
 - wincontypes/CONSOLE_FONT_INFO
 - wincon/CONSOLE_FONT_INFO
@@ -25,23 +25,23 @@ topic_type:
 api_name:
 - CONSOLE_FONT_INFO
 api_location:
-- Wincon.h
+- WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: c4218c53eacd95d67f3dc9056f5a1024ac1a8ab0
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 6c437e626ed6d207da4672a3a5ea60c2ea0ee008
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059333"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93037137"
 ---
 # <a name="console_font_info-structure"></a>Structure des informations de \_ police de la console \_
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 Contient des informations pour une police de console.
 
-<a name="syntax"></a>Syntaxe
-------
+## <a name="syntax"></a>Syntaxe
 
 ```C
 typedef struct _CONSOLE_FONT_INFO {
@@ -50,8 +50,7 @@ typedef struct _CONSOLE_FONT_INFO {
 } CONSOLE_FONT_INFO, *PCONSOLE_FONT_INFO;
 ```
 
-<a name="members"></a>Membres
--------
+## <a name="members"></a>Membres
 
 **nFont**  
 Index de la police dans la table des polices de la console du système.
@@ -59,46 +58,20 @@ Index de la police dans la table des polices de la console du système.
 **dwFontSize**  
 Structure de [**repère**](coord-str.md) qui contient la largeur et la hauteur de chaque caractère de la police, en unités logiques. Le membre **X** contient la largeur, tandis que le membre **Y** contient la hauteur.
 
-<a name="remarks"></a>Remarques
--------
+## <a name="remarks"></a>Remarques
 
 Pour obtenir la taille de la police, transmettez l’index de la police à la fonction [**GetConsoleFontSize**](getconsolefontsize.md) .
 
-<a name="requirements"></a>Configuration requise
-------------
+## <a name="requirements"></a>Spécifications
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Client minimal pris en charge</p></td>
-<td><p>Windows XP [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="even">
-<td><p>Serveur minimal pris en charge</p></td>
-<td><p>Windows Server 2003 [applications de bureau uniquement]</p></td>
-</tr>
-<tr class="odd">
-<td><p>En-tête</p></td>
-<td>Wincon. h (inclure Windows. h)</td>
-</tr>
-</tbody>
-</table>
+| &nbsp; | &nbsp; |
+|-|-|
+| Client minimal pris en charge | Applications de \[ Bureau Windows XP uniquement\] |
+| Serveur minimal pris en charge | Applications de bureau Windows Server 2003 \[ uniquement\] |
+| En-tête | WinCon. h (inclure Windows. h) |
 
-## <a name="span-idsee_alsospansee-also"></a><span id="see_also"></span>Voir aussi
-
+## <a name="see-also"></a>Voir aussi
 
 [**COORDONNÉES**](coord-str.md)
 
 [**GetCurrentConsoleFont**](getcurrentconsolefont.md)
-
- 
-
- 
-
-
-
-

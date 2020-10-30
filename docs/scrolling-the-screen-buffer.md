@@ -3,8 +3,8 @@ title: Défilement de la mémoire tampon d’écran
 description: Décrit comment la fenêtre de console affiche une partie de la mémoire tampon d’écran active.
 author: miniksa
 ms.author: miniksa
-ms.topic: article
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API de console
+ms.topic: conceptual
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, API console
 MS-HAID:
 - '\_win32\_scrolling\_the\_screen\_buffer'
 - base.scrolling\_the\_screen\_buffer
@@ -13,15 +13,16 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: c8404e78-9807-4bed-bc12-25377fa96151
-ms.openlocfilehash: 5146d84ffc176b160bfd34d59c14cfe3792e3722
-ms.sourcegitcommit: b75f4688e080d300b80c552d0711fdd86b9974bf
+ms.openlocfilehash: 1582b6232461469e10048ed8711c766a6821264f
+ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "89059428"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93037597"
 ---
 # <a name="scrolling-the-screen-buffer"></a>Défilement de la mémoire tampon d’écran
 
+[!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
 La fenêtre de console affiche une partie de la mémoire tampon d’écran active. Chaque mémoire tampon d’écran gère son propre rectangle de fenêtre active qui spécifie les coordonnées des cellules de caractères supérieure gauche et inférieure droite à afficher dans la fenêtre de console. Pour déterminer le rectangle de la fenêtre active d’une mémoire tampon d’écran, utilisez [**GetConsoleScreenBufferInfo**](getconsolescreenbufferinfo.md). Lorsqu’une mémoire tampon d’écran est créée, l’angle supérieur gauche de la fenêtre se trouve dans l’angle supérieur gauche de la mémoire tampon de l’écran de la console, à (0,0).
 
@@ -29,7 +30,7 @@ Le rectangle de la fenêtre peut être modifié pour afficher différentes parti
 
 - Quand [**SetConsoleWindowInfo**](setconsolewindowinfo.md) est appelé pour spécifier un nouveau rectangle de fenêtre, il fait défiler la vue de la mémoire tampon d’écran de la console en modifiant la position du rectangle de la fenêtre sans modifier la taille de la fenêtre. Pour obtenir des exemples de défilement du contenu de la fenêtre, consultez défilement de la [fenêtre d’une mémoire tampon d’écran](scrolling-a-screen-buffer-s-window.md).
 
-  ![fenêtre de mémoire tampon d’écran](images/cscon-01.png)
+  ![fenêtre de mémoire tampon d’écran panoramique autour de la grande mémoire tampon du contenu](images/cscon-01.png)
 
 - Lorsque vous utilisez la fonction [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) pour écrire dans une mémoire tampon d’écran avec l’option encapsuler au mode de sortie de fin de ligne (EOL) activé, le rectangle de la fenêtre se déplace automatiquement, de sorte que le curseur est toujours affiché.
 - Lorsque la fonction [**SetConsoleCursorPosition**](setconsolecursorposition.md) spécifie une nouvelle position de curseur qui se trouve en dehors des limites du rectangle de la fenêtre active, le rectangle de la fenêtre se déplace automatiquement pour afficher le curseur.
@@ -44,14 +45,6 @@ Dans chacune de ces situations, le rectangle de la fenêtre se déplace pour aff
 
 L’illustration montre une opération [**ScrollConsoleScreenBuffer**](scrollconsolescreenbuffer.md) qui fait défiler le contenu entier de la mémoire tampon de l’écran de la console vers le haut de plusieurs lignes. Le contenu des lignes du haut est supprimé et les lignes du bas sont remplies avec un caractère et une couleur spécifiés.
 
-![fenêtre de mémoire tampon d’écran](images/cscon-02.png)
+![fenêtre de mémoire tampon d’écran le contenu défilant du haut vers l’écart](images/cscon-02.png)
 
-Les effets de [**ScrollConsoleScreenBuffer**](scrollconsolescreenbuffer.md) peuvent être limités en spécifiant un rectangle de découpage facultatif afin que le contenu de la mémoire tampon d’écran de la console en dehors du rectangle de découpage ne soit pas modifié. L’effet du découpage consiste à créer une sous-fenêtre (rectangle de découpage) dont le contenu défile sans affecter le reste de la mémoire tampon d’écran de la console. Pour obtenir un exemple qui utilise **ScrollConsoleScreenBuffer**, consultez [défilement du contenu d’une mémoire tampon d’écran](scrolling-a-screen-buffer-s-contents.md).
-
- 
-
- 
-
-
-
-
+Les effets de [**ScrollConsoleScreenBuffer**](scrollconsolescreenbuffer.md) peuvent être limités en spécifiant un rectangle de découpage facultatif afin que le contenu de la mémoire tampon d’écran de la console en dehors du rectangle de découpage ne soit pas modifié. L’effet du découpage consiste à créer une sous-fenêtre (rectangle de découpage) dont le contenu défile sans affecter le reste de la mémoire tampon d’écran de la console. Pour obtenir un exemple qui utilise **ScrollConsoleScreenBuffer** , consultez [défilement du contenu d’une mémoire tampon d’écran](scrolling-a-screen-buffer-s-contents.md).
