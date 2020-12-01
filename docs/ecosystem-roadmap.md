@@ -1,19 +1,20 @@
 ---
-title: Guide de la console Windows et de l’écosystème des terminaux
+title: Feuille de route de l’écosystème de la console et du terminal Windows
 description: Fournit une vue d’ensemble des interactions entre les plans et pour l’hôte de console Windows, les API de console, le sous-système de console et le produit terminal.
 author: miniksa
 ms.author: miniksa
 ms.topic: conceptual
 keywords: console, terminal, terminal virtuel, hôte de console, ligne de commande, sous-système, feuille de route, écosystème
 ms.prod: console
-ms.openlocfilehash: e47b72a6f66e54b5f2904770f7c1a87e08d927e2
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.localizationpriority: high
+ms.openlocfilehash: e5d28a06789f230943d70a49e7c89642b17fdb5c
+ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039586"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420258"
 ---
-# <a name="windows-console-and-terminal-ecosystem-roadmap"></a>Guide de la console Windows et de l’écosystème des terminaux
+# <a name="windows-console-and-terminal-ecosystem-roadmap"></a>Feuille de route de l’écosystème de la console et du terminal Windows
 
 Ce document est un guide de haut niveau de la console Windows et des produits Windows Terminal Server. Il couvre les sujets suivants :
 

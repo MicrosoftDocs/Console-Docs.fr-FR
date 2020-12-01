@@ -13,12 +13,13 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: f94995fc-5f5f-4fcd-969d-7e10020634c2
-ms.openlocfilehash: c3121a53f654bd2fa85fa140c2efc6d6217b7796
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.localizationpriority: high
+ms.openlocfilehash: 4c5740be3b60d54f9e7b586b41e962a4102222a0
+ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039167"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420198"
 ---
 # <a name="console-screen-buffers"></a>Mémoires tampons d’écran d’une console
 
@@ -34,7 +35,7 @@ Un certain nombre de propriétés associées à une mémoire tampon d’écran p
 - Attributs de texte (couleurs de premier plan et d’arrière-plan pour l’affichage de texte à écrire par la fonction [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) ou [**WriteConsole**](writeconsole.md) ).
 - Taille et emplacement de la fenêtre (zone rectangulaire de la mémoire tampon d’écran de la console affichée dans la fenêtre de console).
 - Position, apparence et visibilité du curseur.
-- Modes de sortie ( **activer la \_ \_ sortie traitée** et **activer le \_ Retour à la ligne \_ à la \_ \_ sortie de EOL** ). Pour plus d’informations sur les modes de sortie de la console, consultez [modes de console de haut niveau](high-level-console-modes.md).
+- Modes de sortie (**activer la \_ \_ sortie traitée** et **activer le \_ Retour à la ligne \_ à la \_ \_ sortie de EOL**). Pour plus d’informations sur les modes de sortie de la console, consultez [modes de console de haut niveau](high-level-console-modes.md).
 
 Lorsqu’une mémoire tampon d’écran est créée, elle contient des espaces à chaque position. Son curseur est visible et positionné à l’origine de la mémoire tampon (0,0), et la fenêtre est positionnée avec son coin supérieur gauche à l’origine de la mémoire tampon. La taille de la mémoire tampon d’écran de la console, la taille de la fenêtre, les attributs de texte et l’apparence du curseur sont déterminés par l’utilisateur ou par les valeurs par défaut du système. Pour récupérer les valeurs actuelles des différentes propriétés associées à la mémoire tampon d’écran de la console, utilisez les fonctions [**GetConsoleScreenBufferInfo**](getconsolescreenbufferinfo.md), [**GetConsoleCursorInfo**](getconsolecursorinfo.md)et [**GetConsoleMode**](getconsolemode.md) .
 
@@ -100,4 +101,4 @@ La fonction [**GetCurrentConsoleFont**](getcurrentconsolefont.md) récupère des
 La fonction [**GetConsoleFontSize**](getconsolefontsize.md) récupère la taille de la police utilisée par la mémoire tampon d’écran de la console spécifiée.
 
 > [!NOTE]
-> L’utilisation de fonctions pour rechercher et manipuler les informations de police est déconseillée. Il est recommandé d’utiliser des applications en ligne de commande de manière neutre pour garantir la compatibilité entre plateformes, ainsi que la compatibilité avec les environnements d’hôte qui permettent à l’utilisateur de personnaliser la police. Plus d’informations préférences utilisateur et environnements hôtes, y compris les terminaux, consultez la feuille de route pour l' **[écosystème](ecosystem-roadmap.md)** .
+> L’utilisation de fonctions pour rechercher et manipuler les informations de police est déconseillée. Il est recommandé d’utiliser des applications en ligne de commande de manière neutre pour garantir la compatibilité entre plateformes, ainsi que la compatibilité avec les environnements d’hôte qui permettent à l’utilisateur de personnaliser la police. Plus d’informations préférences utilisateur et environnements hôtes, y compris les terminaux, consultez la feuille de route pour l' **[écosystème](ecosystem-roadmap.md)**.

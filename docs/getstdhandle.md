@@ -30,12 +30,13 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: e1cac9a8b2636f5272c6d1ecc358eb59f33295b5
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.localizationpriority: high
+ms.openlocfilehash: 42857417cedb661014de869536b798d29c9eb884
+ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93038697"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420208"
 ---
 # <a name="getstdhandle-function"></a>GetStdHandle fonction)
 
@@ -64,9 +65,9 @@ Appareil standard. Ce paramètre peut prendre l’une des valeurs suivantes.
 
 Si la fonction s’exécute correctement, la valeur de retour est un handle vers l’appareil spécifié, ou un handle Redirigé défini par un appel précédent à [**SetStdHandle**](setstdhandle.md). Le descripteur dispose de droits d’accès en **\_ écriture** génériques **\_ en lecture** et génériques, sauf si l’application a utilisé **SetStdHandle** pour définir un descripteur standard avec un accès plus faible.
 
-Si la fonction échoue, la valeur de retour est une **\_ \_ valeur de handle non valide** . Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est une **\_ \_ valeur de handle non valide**. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
-Si une application n’a pas de descripteurs standard associés, comme un service s’exécutant sur un bureau interactif, et n’a pas été redirigée, la valeur de retour est **null** .
+Si une application n’a pas de descripteurs standard associés, comme un service s’exécutant sur un bureau interactif, et n’a pas été redirigée, la valeur de retour est **null**.
 
 ## <a name="remarks"></a>Remarques
 
@@ -84,7 +85,7 @@ Certaines applications peuvent également modifier leur comportement sur le type
 
 Lors de l’attachement à une nouvelle console, les handles standard sont toujours remplacés par des handles de console, sauf si **STARTF \_ USESTDHANDLES** a été spécifié lors de la création du processus.
 
-Si la valeur existante du handle standard est **null** , ou si la valeur existante du handle standard ressemble à un pseudohandle de console, le handle est remplacé par un handle de console.
+Si la valeur existante du handle standard est **null**, ou si la valeur existante du handle standard ressemble à un pseudohandle de console, le handle est remplacé par un handle de console.
 
 Lorsqu’un parent utilise à la fois **Create \_ New \_ console** et **STARTF \_ USESTDHANDLES** pour créer un processus de console, les handles standard ne sont pas remplacés, sauf si la valeur existante du handle standard est **null** ou un pseudohandle de console.
 

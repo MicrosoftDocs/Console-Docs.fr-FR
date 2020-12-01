@@ -37,12 +37,13 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 9023372cf585e9b3645e7dc0a54e46a665935ad4
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.localizationpriority: high
+ms.openlocfilehash: 426aa6711e46e0d5cda1eb1b7dab7b2b0b7156d6
+ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93037127"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420288"
 ---
 # <a name="writeconsole-function"></a>WriteConsole fonction)
 
@@ -69,12 +70,12 @@ Handle vers la mémoire tampon d’écran de la console. Le descripteur doit avo
 Pointeur vers une mémoire tampon qui contient les caractères à écrire dans la mémoire tampon d’écran de la console. Il doit s’agir d’un tableau de `char` pour `WriteConsoleA` ou `wchar_t` pour `WriteConsoleW` .
 
 *nNumberOfCharsToWrite* \[ dans\]  
-Nombre de caractères à écrire. Si la taille totale du nombre spécifié de caractères dépasse le tas disponible, la fonction échoue avec une **erreur \_ de \_ \_ mémoire insuffisante** .
+Nombre de caractères à écrire. Si la taille totale du nombre spécifié de caractères dépasse le tas disponible, la fonction échoue avec une **erreur \_ de \_ \_ mémoire insuffisante**.
 
 *lpNumberOfCharsWritten* \[ out, facultatif\]  
 Pointeur vers une variable qui reçoit le nombre de caractères réellement écrits.
 
-*lpReserved* Réservé doit avoir la **valeur null** .
+*lpReserved* Réservé doit avoir la **valeur null**.
 
 ## <a name="return-value"></a>Valeur retournée
 
@@ -88,11 +89,11 @@ La fonction **WriteConsole** écrit des caractères dans la mémoire tampon d’
 
 Les caractères sont écrits à l’aide des attributs de couleur de premier plan et d’arrière-plan associés à la mémoire tampon d’écran de la console. La fonction [**SetConsoleTextAttribute**](setconsoletextattribute.md) modifie ces couleurs. Pour déterminer les attributs de couleur actuelle et la position actuelle du curseur, utilisez [**GetConsoleScreenBufferInfo**](getconsolescreenbufferinfo.md).
 
-Tous les modes d’entrée qui affectent le comportement de la fonction [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) ont le même effet sur **WriteConsole** . Pour récupérer et définir les modes de sortie d’une mémoire tampon d’écran de la console, utilisez les fonctions [**GetConsoleMode**](getconsolemode.md) et [**SetConsoleMode**](setconsolemode.md) .
+Tous les modes d’entrée qui affectent le comportement de la fonction [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) ont le même effet sur **WriteConsole**. Pour récupérer et définir les modes de sortie d’une mémoire tampon d’écran de la console, utilisez les fonctions [**GetConsoleMode**](getconsolemode.md) et [**SetConsoleMode**](setconsolemode.md) .
 
 [!INCLUDE [setting-codepage-mode-remarks](./includes/setting-codepage-mode-remarks.md)]
 
-**WriteConsole** échoue s’il est utilisé avec un handle standard qui est redirigé vers un fichier. Si une application traite une sortie multilingue qui peut être redirigée, déterminez si le descripteur de sortie est un handle de console (une méthode consiste à appeler la fonction [**GetConsoleMode**](getconsolemode.md) et à vérifier si elle est réussie). Si le handle est un handle de console, appelez **WriteConsole** . Si le handle n’est pas un handle de console, la sortie est redirigée et vous devez appeler [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) pour effectuer les e/s. Veillez à faire précéder un fichier texte brut Unicode d’une marque d’ordre d’octet. Pour plus d’informations, consultez [utilisation des marques d’ordre des octets](https://msdn.microsoft.com/library/windows/desktop/dd374101).
+**WriteConsole** échoue s’il est utilisé avec un handle standard qui est redirigé vers un fichier. Si une application traite une sortie multilingue qui peut être redirigée, déterminez si le descripteur de sortie est un handle de console (une méthode consiste à appeler la fonction [**GetConsoleMode**](getconsolemode.md) et à vérifier si elle est réussie). Si le handle est un handle de console, appelez **WriteConsole**. Si le handle n’est pas un handle de console, la sortie est redirigée et vous devez appeler [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) pour effectuer les e/s. Veillez à faire précéder un fichier texte brut Unicode d’une marque d’ordre d’octet. Pour plus d’informations, consultez [utilisation des marques d’ordre des octets](https://msdn.microsoft.com/library/windows/desktop/dd374101).
 
 Bien qu’une application puisse utiliser **WriteConsole** en mode ANSI pour écrire des caractères ANSI, les consoles ne prennent pas en charge les séquences « ANSI Escape » ou « terminal virtuel », sauf si elles sont activées. Pour plus d’informations et pour la version d’applicabilité du système d’exploitation, consultez [**séquences de terminaux virtuels de la console**](console-virtual-terminal-sequences.md) .
 

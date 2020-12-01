@@ -29,12 +29,13 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 1c5c67bc5900a36bb50c0da90516fab0cec2e366
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.localizationpriority: high
+ms.openlocfilehash: 208eebc92b718fed9856a48dfaf5cbebdaddc1e1
+ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039417"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420268"
 ---
 # <a name="setconsolectrlhandler-function"></a>SetConsoleCtrlHandler fonction)
 
@@ -54,12 +55,12 @@ BOOL WINAPI SetConsoleCtrlHandler(
 ## <a name="parameters"></a>Paramètres
 
 *HandlerRoutine* \[ dans, facultatif\]  
-Pointeur vers la fonction [**HandlerRoutine**](handlerroutine.md) définie par l’application à ajouter ou à supprimer. Ce paramètre peut avoir la **valeur null** .
+Pointeur vers la fonction [**HandlerRoutine**](handlerroutine.md) définie par l’application à ajouter ou à supprimer. Ce paramètre peut avoir la **valeur null**.
 
 *Ajouter* \[ dans\]  
-Si ce paramètre a la **valeur true** , le gestionnaire est ajouté ; Si la **valeur est false** , le gestionnaire est supprimé.
+Si ce paramètre a la **valeur true**, le gestionnaire est ajouté ; Si la **valeur est false**, le gestionnaire est supprimé.
 
-Si le paramètre *HandlerRoutine* est **null** , une **valeur true** fait que le processus appelant ignore l’entrée <kbd>CTRL</kbd> + <kbd>c</kbd> , et une valeur **false** restaure le traitement normal de l’entrée <kbd>CTRL</kbd> + <kbd>c</kbd> . Cet attribut de l’ignorance ou du traitement de <kbd>CTRL</kbd> + <kbd>C</kbd> est hérité par les processus enfants.
+Si le paramètre *HandlerRoutine* est **null**, une **valeur true** fait que le processus appelant ignore l’entrée <kbd>CTRL</kbd> + <kbd>c</kbd> , et une valeur **false** restaure le traitement normal de l’entrée <kbd>CTRL</kbd> + <kbd>c</kbd> . Cet attribut de l’ignorance ou du traitement de <kbd>CTRL</kbd> + <kbd>C</kbd> est hérité par les processus enfants.
 
 ## <a name="return-value"></a>Valeur retournée
 
@@ -69,11 +70,11 @@ Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher l
 
 ## <a name="remarks"></a>Remarques
 
-Cette fonction fournit une notification similaire pour l’application console et les services que [**WM \_ QUERYENDSESSION**](https://msdn.microsoft.com/library/windows/desktop/aa376890) fournit pour les applications graphiques avec une pompe de messages. Vous pouvez également utiliser cette fonction à partir d’une application graphique, mais il n’y a aucune garantie qu’elle arriverait avant la notification de **WM \_ QUERYENDSESSION** .
+Cette fonction fournit une notification similaire pour l’application console et les services que [**WM \_ QUERYENDSESSION**](https://msdn.microsoft.com/library/windows/desktop/aa376890) fournit pour les applications graphiques avec une pompe de messages. Vous pouvez également utiliser cette fonction à partir d’une application graphique, mais il n’y a aucune garantie qu’elle arriverait avant la notification de **WM \_ QUERYENDSESSION**.
 
 Chaque processus de console possède sa propre liste de fonctions [**HandlerRoutine**](handlerroutine.md) définies par l’application qui gèrent les signaux d’arrêt <kbd>CTRL</kbd> + <kbd>C</kbd> et <kbd>CTRL</kbd> + <kbd>BREAK</kbd> . Les fonctions de gestionnaire gèrent également les signaux générés par le système lorsque l’utilisateur ferme la console, se déconnecte ou arrête le système. Initialement, la liste de gestionnaires de chaque processus contient uniquement une fonction de gestionnaire par défaut qui appelle la fonction [**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658) . Un processus de console ajoute ou supprime des fonctions gestionnaires supplémentaires en appelant la fonction **SetConsoleCtrlHandler** , qui n’affecte pas la liste des fonctions de gestionnaire pour d’autres processus. Lorsqu’un processus de console reçoit l’un des signaux de contrôle, ses fonctions de gestionnaire sont appelées sur une base de dernier enregistrement, première appel, jusqu’à ce que l’un des gestionnaires retourne `TRUE` . Si aucun des gestionnaires `TRUE` ne retourne, le gestionnaire par défaut est appelé.
 
-Pour les processus de console, les combinaisons de touches de séparation <kbd>CTRL</kbd> + <kbd>c</kbd> et <kbd>CTRL</kbd> + <kbd>BREAK</kbd> sont généralement traitées comme des signaux (événement **CTRL + \_ c \_** et **CTRL + \_ \_ événement** ). Quand une fenêtre de console avec le focus clavier reçoit la <kbd>touche Ctrl</kbd> + <kbd>C</kbd> ou <kbd>CTRL</kbd> + <kbd>BREAK</kbd>, le signal est généralement passé à tous les processus qui partagent cette console.
+Pour les processus de console, les combinaisons de touches de séparation <kbd>CTRL</kbd> + <kbd>c</kbd> et <kbd>CTRL</kbd> + <kbd>BREAK</kbd> sont généralement traitées comme des signaux (événement **CTRL + \_ c \_** et **CTRL + \_ \_ événement**). Quand une fenêtre de console avec le focus clavier reçoit la <kbd>touche Ctrl</kbd> + <kbd>C</kbd> ou <kbd>CTRL</kbd> + <kbd>BREAK</kbd>, le signal est généralement passé à tous les processus qui partagent cette console.
 
 <kbd>CTRL</kbd> + L' <kbd>interruption</kbd> est toujours traitée comme un signal, mais le comportement par défaut de <kbd>CTRL</kbd> + <kbd>C</kbd> peut être modifié de trois manières qui empêchent l’appel des fonctions du gestionnaire :
 
@@ -83,7 +84,7 @@ Pour les processus de console, les combinaisons de touches de séparation <kbd>C
 
 Un processus de console peut utiliser la fonction [**GenerateConsoleCtrlEvent**](generateconsolectrlevent.md) pour envoyer un signal d’interruption <kbd>CTRL</kbd> + <kbd>C</kbd> ou <kbd>CTRL</kbd> + <kbd>BREAK</kbd> à un groupe de processus de la console.
 
-Le système génère des signaux d’événement **CTRL \_ Close \_** , **CTRL de fermeture de \_ session \_** et **CTRL \_ Shutdown \_** quand l’utilisateur ferme la console, ferme une session ou arrête le système afin que le processus puisse effectuer un nettoyage avant son arrêt. Les fonctions de console, ou toutes les fonctions runtime C qui appellent des fonctions de console, peuvent ne pas fonctionner de manière fiable pendant le traitement de l’un des trois signaux mentionnés précédemment. En effet, une partie ou la totalité des routines de nettoyage de la console interne peut avoir été appelée avant l’exécution du gestionnaire de signal de processus.
+Le système génère des signaux d’événement **CTRL \_ Close \_**, **CTRL de fermeture de \_ session \_** et **CTRL \_ Shutdown \_** quand l’utilisateur ferme la console, ferme une session ou arrête le système afin que le processus puisse effectuer un nettoyage avant son arrêt. Les fonctions de console, ou toutes les fonctions runtime C qui appellent des fonctions de console, peuvent ne pas fonctionner de manière fiable pendant le traitement de l’un des trois signaux mentionnés précédemment. En effet, une partie ou la totalité des routines de nettoyage de la console interne peut avoir été appelée avant l’exécution du gestionnaire de signal de processus.
 
 **Windows 7, Windows 8, Windows 8.1 et Windows 10 :**
 

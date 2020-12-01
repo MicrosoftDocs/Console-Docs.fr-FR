@@ -13,21 +13,22 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: 84ec2559-cade-447e-8594-5b824d3d3e81
-ms.openlocfilehash: 78a77044452fe2287a7cea0bfe5a6542eceef337
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.localizationpriority: high
+ms.openlocfilehash: 09de42ced585e4a644fbbcc04211d5cb6037c2af
+ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93038237"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420278"
 ---
 # <a name="creation-of-a-console"></a>Création d’une console
 
-Le système crée une nouvelle console lorsqu’il démarre un *processus de console* , un processus en mode caractère dont le point d’entrée est la fonction **principale** . Par exemple, le système crée une nouvelle console lorsqu’il démarre le processeur de commandes `cmd.exe` . Lorsque le processeur de commande démarre un nouveau processus de console, l’utilisateur peut spécifier si le système crée une nouvelle console pour le nouveau processus ou s’il hérite de la console du processeur de commandes.
+Le système crée une nouvelle console lorsqu’il démarre un *processus de console*, un processus en mode caractère dont le point d’entrée est la fonction **principale** . Par exemple, le système crée une nouvelle console lorsqu’il démarre le processeur de commandes `cmd.exe` . Lorsque le processeur de commande démarre un nouveau processus de console, l’utilisateur peut spécifier si le système crée une nouvelle console pour le nouveau processus ou s’il hérite de la console du processeur de commandes.
 
 Un processus peut créer une console à l’aide de l’une des méthodes suivantes :
 
 - Une interface utilisateur graphique (GUI) ou un processus de console peut utiliser la fonction [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) avec **Create \_ New \_ console** pour créer un processus de console avec une nouvelle console. (Par défaut, un processus de console hérite de la console de son parent, et il n’y a aucune garantie que l’entrée est reçue par le processus auquel elle était destinée.)
-- Une interface utilisateur graphique ou un processus de console qui n’est pas actuellement attaché à une console peut utiliser la fonction [**AllocConsole**](allocconsole.md) pour créer une nouvelle console. (Les processus GUI ne sont pas attachés à une console lorsqu’ils sont créés. Les processus de console ne sont pas attachés à une console s’ils sont créés à l’aide de [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) avec un **\_ processus détaché** .)
+- Une interface utilisateur graphique ou un processus de console qui n’est pas actuellement attaché à une console peut utiliser la fonction [**AllocConsole**](allocconsole.md) pour créer une nouvelle console. (Les processus GUI ne sont pas attachés à une console lorsqu’ils sont créés. Les processus de console ne sont pas attachés à une console s’ils sont créés à l’aide de [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) avec un **\_ processus détaché**.)
 
 En règle générale, un processus utilise [**AllocConsole**](allocconsole.md) pour créer une console lorsqu’une erreur se produit et nécessite une interaction avec l’utilisateur. Par exemple, un processus d’interface graphique utilisateur peut créer une console lorsqu’une erreur se produit, l’empêchant d’utiliser son interface graphique normale, ou un processus de console qui n’interagit normalement pas avec l’utilisateur peut créer une console pour afficher une erreur.
 

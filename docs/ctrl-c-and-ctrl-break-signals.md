@@ -13,12 +13,13 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: 5357ed99-920b-47a0-a922-d5faed7bf23e
-ms.openlocfilehash: 12a4541d51cb18109caa6d1c15c25479c9e91a7a
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.localizationpriority: high
+ms.openlocfilehash: 38cc3486a9e945635147c2e17a4d2f0d197d1d3c
+ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039097"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420188"
 ---
 # <a name="ctrlc-and-ctrlbreak-signals"></a>Touches CTRL + C et CTRL + ATTN
 

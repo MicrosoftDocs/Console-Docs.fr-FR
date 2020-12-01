@@ -29,12 +29,13 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: db010f60f1661d67e77de841fc243c24f32e2d1f
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.localizationpriority: high
+ms.openlocfilehash: c63c9a176c0d8ca2ef4342f7bee1b427eae00014
+ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93037507"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420168"
 ---
 # <a name="allocconsole-function"></a>AllocConsole fonction)
 

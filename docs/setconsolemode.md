@@ -29,12 +29,13 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: b382e6567d2099e2d6eacf33c8e19233f20c6400
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.localizationpriority: high
+ms.openlocfilehash: 2af598f465be6e1a33f5a8f9a2c9abe98d6ed0d2
+ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039357"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420298"
 ---
 # <a name="setconsolemode-function"></a>SetConsoleMode fonction)
 
