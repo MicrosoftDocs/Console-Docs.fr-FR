@@ -1,5 +1,5 @@
 ---
-title: WriteConsole fonction)
+title: Fonction WriteConsole
 description: Écrit une chaîne de caractères dans une mémoire tampon d’écran de console en commençant à l’emplacement actuel du curseur.
 author: miniksa
 ms.author: miniksa
@@ -40,12 +40,12 @@ api_type:
 ms.localizationpriority: high
 ms.openlocfilehash: 426aa6711e46e0d5cda1eb1b7dab7b2b0b7156d6
 ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 12/04/2020
 ms.locfileid: "96420288"
 ---
-# <a name="writeconsole-function"></a>WriteConsole fonction)
+# <a name="writeconsole-function"></a>Fonction WriteConsole
 
 Écrit une chaîne de caractères dans une mémoire tampon d’écran de console en commençant à l’emplacement actuel du curseur.
 
@@ -63,56 +63,56 @@ BOOL WINAPI WriteConsole(
 
 ## <a name="parameters"></a>Paramètres
 
-*hConsoleOutput* \[ dans\]  
-Handle vers la mémoire tampon d’écran de la console. Le descripteur doit avoir le droit d’accès en **\_ écriture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+*hConsoleOutput* \[entrée\]  
+Handle vers la mémoire tampon d’écran de console. Le handle doit avoir le droit d’accès **GENERIC\_WRITE**. Pour plus d’informations, consultez [Sécurité de la mémoire tampon et droits d’accès d’une console](console-buffer-security-and-access-rights.md).
 
-*lpBuffer* \[ dans\]  
-Pointeur vers une mémoire tampon qui contient les caractères à écrire dans la mémoire tampon d’écran de la console. Il doit s’agir d’un tableau de `char` pour `WriteConsoleA` ou `wchar_t` pour `WriteConsoleW` .
+*lpBuffer* \[entrée\]  
+Pointeur vers une mémoire tampon qui contient les caractères à écrire dans la mémoire tampon d’écran de console. Il doit s’agir d’un tableau de `char` pour `WriteConsoleA` ou de `wchar_t` pour `WriteConsoleW`.
 
-*nNumberOfCharsToWrite* \[ dans\]  
-Nombre de caractères à écrire. Si la taille totale du nombre spécifié de caractères dépasse le tas disponible, la fonction échoue avec une **erreur \_ de \_ \_ mémoire insuffisante**.
+*nNumberOfCharsToWrite* \[entrée\]  
+Nombre de caractères à écrire. Si la taille totale du nombre spécifié de caractères dépasse le tas disponible, la fonction échoue avec **ERROR\_NOT\_ENOUGH\_MEMORY**.
 
-*lpNumberOfCharsWritten* \[ out, facultatif\]  
+*lpNumberOfCharsWritten* \[sortie, facultatif\]  
 Pointeur vers une variable qui reçoit le nombre de caractères réellement écrits.
 
-*lpReserved* Réservé doit avoir la **valeur null**.
+*lpReserved* Réservé ; doit être **NULL**.
 
 ## <a name="return-value"></a>Valeur retournée
 
-Si la fonction est réussie, la valeur de retour est différente de zéro.
+Si la fonction réussit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
 ## <a name="remarks"></a>Remarques
 
-La fonction **WriteConsole** écrit des caractères dans la mémoire tampon d’écran de la console à la position actuelle du curseur. La position du curseur avance à mesure que des caractères sont écrits. La fonction [**SetConsoleCursorPosition**](setconsolecursorposition.md) définit la position actuelle du curseur.
+La fonction **WriteConsole** écrit des caractères dans la mémoire tampon d’écran de console, à la position actuelle du curseur. La position du curseur avance à mesure que des caractères sont écrits. La fonction [**SetConsoleCursorPosition**](setconsolecursorposition.md) définit la position actuelle du curseur.
 
-Les caractères sont écrits à l’aide des attributs de couleur de premier plan et d’arrière-plan associés à la mémoire tampon d’écran de la console. La fonction [**SetConsoleTextAttribute**](setconsoletextattribute.md) modifie ces couleurs. Pour déterminer les attributs de couleur actuelle et la position actuelle du curseur, utilisez [**GetConsoleScreenBufferInfo**](getconsolescreenbufferinfo.md).
+Les caractères sont écrits en utilisant les attributs de couleur de premier plan et d’arrière-plan associés à la mémoire tampon d’écran de console. La fonction [**SetConsoleTextAttribute**](setconsoletextattribute.md) change ces couleurs. Pour déterminer les attributs de couleur actuels et la position actuelle du curseur, utilisez [**GetConsoleScreenBufferInfo**](getconsolescreenbufferinfo.md).
 
-Tous les modes d’entrée qui affectent le comportement de la fonction [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) ont le même effet sur **WriteConsole**. Pour récupérer et définir les modes de sortie d’une mémoire tampon d’écran de la console, utilisez les fonctions [**GetConsoleMode**](getconsolemode.md) et [**SetConsoleMode**](setconsolemode.md) .
+Tous les modes d’entrée qui affectent le comportement de la fonction [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) ont le même effet sur **WriteConsole**. Pour récupérer et définir les modes de sortie d’une mémoire tampon d’écran de console, utilisez les fonctions [**GetConsoleMode**](getconsolemode.md) et [**SetConsoleMode**](setconsolemode.md).
 
 [!INCLUDE [setting-codepage-mode-remarks](./includes/setting-codepage-mode-remarks.md)]
 
-**WriteConsole** échoue s’il est utilisé avec un handle standard qui est redirigé vers un fichier. Si une application traite une sortie multilingue qui peut être redirigée, déterminez si le descripteur de sortie est un handle de console (une méthode consiste à appeler la fonction [**GetConsoleMode**](getconsolemode.md) et à vérifier si elle est réussie). Si le handle est un handle de console, appelez **WriteConsole**. Si le handle n’est pas un handle de console, la sortie est redirigée et vous devez appeler [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) pour effectuer les e/s. Veillez à faire précéder un fichier texte brut Unicode d’une marque d’ordre d’octet. Pour plus d’informations, consultez [utilisation des marques d’ordre des octets](https://msdn.microsoft.com/library/windows/desktop/dd374101).
+**WriteConsole** échoue si elle est utilisée avec un handle standard qui est redirigé vers un fichier. Si une application traite une sortie multilingue qui peut être redirigée, déterminez si le handle de sortie est un handle de console (une méthode consiste à appeler la fonction [**GetConsoleMode**](getconsolemode.md) et à vérifier si elle a réussi). Si le handle est un handle de console, appelez **WriteConsole**. Si le handle n’est pas un handle de console, la sortie est redirigée et vous devez appeler [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) pour effectuer les E/S. Veillez à faire précéder un fichier texte brut Unicode par une marque d’ordre des octets. Pour plus d’informations, consultez [Utilisation des marques d’ordre des octets](https://msdn.microsoft.com/library/windows/desktop/dd374101).
 
-Bien qu’une application puisse utiliser **WriteConsole** en mode ANSI pour écrire des caractères ANSI, les consoles ne prennent pas en charge les séquences « ANSI Escape » ou « terminal virtuel », sauf si elles sont activées. Pour plus d’informations et pour la version d’applicabilité du système d’exploitation, consultez [**séquences de terminaux virtuels de la console**](console-virtual-terminal-sequences.md) .
+Bien qu’une application puisse utiliser **WriteConsole** en mode ANSI pour écrire des caractères ANSI, les consoles ne prennent pas en charge les séquences « échappement ANSI » ou « terminal virtuel », sauf si elles sont activées. Pour plus d’informations et l’applicabilité selon la version du système d’exploitation, consultez [**Séquences de terminal virtuel de la console**](console-virtual-terminal-sequences.md).
 
-Lorsque les séquences d’échappement des terminaux virtuels ne sont pas activées, les fonctions de la console peuvent fournir des fonctionnalités équivalentes. Pour plus d’informations, consultez [**SetCursorPos**](https://msdn.microsoft.com/library/windows/desktop/ms648394(v=vs.85).aspx), [**SetConsoleTextAttribute**](setconsoletextattribute.md)et [**GetConsoleCursorInfo**](getconsolecursorinfo.md).
+Quand les séquences d’échappement du terminal virtuel ne sont pas activées, les fonctions de la console peuvent fournir des fonctionnalités équivalentes. Pour plus d’informations, consultez [**SetCursorPos**](https://msdn.microsoft.com/library/windows/desktop/ms648394(v=vs.85).aspx), [**SetConsoleTextAttribute**](setconsoletextattribute.md) et [**GetConsoleCursorInfo**](getconsolecursorinfo.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
-| En-tête | ConsoleApi. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
+| En-tête | ConsoleApi.h (via WinCon.h, inclure Windows.h) |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 | Noms Unicode et ANSI | **WriteConsoleW** (Unicode) et **WriteConsoleA** (ANSI) |
 
 ## <a name="see-also"></a>Voir aussi
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [**GetConsoleCursorInfo**](getconsolecursorinfo.md)
 
@@ -136,4 +136,4 @@ Lorsque les séquences d’échappement des terminaux virtuels ne sont pas activ
 
 [**SetCursorPos**](https://msdn.microsoft.com/library/windows/desktop/ms648394(v=vs.85).aspx)
 
-[**Appel**](https://msdn.microsoft.com/library/windows/desktop/aa365747)
+[**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747)

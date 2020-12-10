@@ -1,49 +1,49 @@
 ---
-title: Création d’une session Pseudoconsole
-description: Une session pseudoconsole permettra à une application d’héberger les activités d’une application en mode caractère
+title: Création d’une session pseudoconsole
+description: Une session pseudoconsole permet à une application d’héberger les activités d’une application en mode caractère.
 author: miniksa
 ms.author: miniksa
 ms.topic: conceptual
 ms.prod: console
-keywords: console, applications en mode caractère, applications en ligne de commande, applications Terminal Server, API console, conpty, pseudoconsole, Windows Pty, Pseudo console
+keywords: console, applications en mode caractère, applications en ligne de commande, applications de terminal, api console, conpty, pseudoconsole, windows pty, pseudo console
 ms.localizationpriority: high
 ms.openlocfilehash: 8cd057d3e74659fdeff6c569ddb053c881af1de8
 ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 12/04/2020
 ms.locfileid: "96420228"
 ---
-# <a name="creating-a-pseudoconsole-session"></a>Création d’une session Pseudoconsole
+# <a name="creating-a-pseudoconsole-session"></a>Création d’une session pseudoconsole
 
-Le Pseudoconsole Windows, parfois également appelé Pseudo console, ConPTY ou Windows PTY, est un mécanisme conçu pour créer un hôte externe pour les activités du sous-système en mode caractère qui remplacent la partie interactivité de l’utilisateur de la fenêtre hôte de la console par défaut.
+La pseudoconsole Windows, également appelée ConPTY ou Windows PTY, est un mécanisme qui a été conçu dans le but de créer un hôte externe pour les activités de sous-système en mode caractère qui remplacent la partie interactivité avec l’utilisateur dans la fenêtre hôte de la console par défaut.
 
-L’hébergement d’une session pseudoconsole est un peu différent d’une session de console traditionnelle. Les sessions de console traditionnelles démarrent automatiquement lorsque le système d’exploitation reconnaît qu’une application en mode caractères est sur le point de s’exécuter. En revanche, une session pseudoconsole et les canaux de communication doivent être créés par l’application d’hébergement avant de créer le processus avec l’application en mode caractère enfant à héberger. Le processus enfant sera toujours créé à l’aide de la fonction [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) , mais avec des informations supplémentaires qui indiqueront au système d’exploitation d’établir l’environnement approprié.
+L’hébergement d’une session pseudoconsole est un peu différent d’une session de console traditionnelle. Les sessions de console traditionnelles démarrent automatiquement lorsque le système d’exploitation reconnaît qu’une application en mode caractère est sur le point de s’exécuter. En revanche, il faut que l’application d’hébergement crée une session pseudoconsole et les canaux de communication nécessaires avant la création du processus impliquant l’application enfant en mode caractère qui doit être hébergée. Le processus enfant est toujours créé à l’aide de la fonction [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425), mais avec des informations supplémentaires qui indiquent au système d’exploitation d’établir l’environnement approprié.
 
-Vous trouverez des informations générales supplémentaires sur ce système dans le billet de [blog d’annonce initiale](https://blogs.msdn.microsoft.com/commandline/2018/08/02/windows-command-line-introducing-the-windows-pseudo-console-conpty/).
+Vous trouverez des informations générales sur ce système dans le [billet de blog présentant la pseudoconsole Windows](https://blogs.msdn.microsoft.com/commandline/2018/08/02/windows-command-line-introducing-the-windows-pseudo-console-conpty/).
 
-Des exemples complets d’utilisation de Pseudoconsole sont disponibles dans notre référentiel GitHub [Microsoft/Terminal](https://github.com/microsoft/terminal) dans le répertoire Samples.
+Des exemples complets d’utilisation de la pseudoconsole sont disponibles dans le référentiel samples du dépôt GitHub [microsoft/terminal](https://github.com/microsoft/terminal).
 
 ## <a name="preparing-the-communication-channels"></a>Préparation des canaux de communication
 
-La première étape consiste à créer une paire de canaux de communication synchrones qui sera fournie lors de la création de la session pseudoconsole pour une communication bidirectionnelle avec l’application hébergée. Ces canaux sont traités par le système pseudoconsole à l’aide de [**ReadFile**](https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-readfile) et [**WriteFile**](https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-writefile) avec des [e/s synchrones](https://docs.microsoft.com/windows/desktop/Sync/synchronization-and-overlapped-input-and-output). Les handles de fichiers ou d’e/s d’appareil comme un flux de fichier ou un canal sont acceptables tant qu’une structure [**OVERLAPPED**](https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-_overlapped) n’est pas requise pour la communication asynchrone.
+La première étape consiste à créer une paire de canaux de communication synchrones devant être fournie lors de la création de la session pseudoconsole pour une communication bidirectionnelle avec l’application hébergée. Ces canaux sont traités par le système pseudoconsole à l’aide de [**ReadFile**](https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-readfile) et [**WriteFile**](https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-writefile) avec des [E/S synchrones](https://docs.microsoft.com/windows/desktop/Sync/synchronization-and-overlapped-input-and-output). Les handles de fichier ou de dispositif d’E/S, comme les flux de fichier ou les canaux, sont acceptables tant qu’une structure [**OVERLAPPED**](https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-_overlapped) n’est pas demandée pour une communication asynchrone.
 
 > [!WARNING]
->Pour éviter les blocages et les conditions de concurrence, nous vous recommandons vivement de traiter chacun des canaux de communication sur un thread distinct qui gère son propre état de tampon client et sa file d’attente de messagerie dans votre application. La maintenance de toutes les activités pseudoconsole sur le même thread peut entraîner un interblocage dans lequel l’une des mémoires tampons de communication est remplie et en attente de votre action pendant que vous tentez de distribuer une demande de blocage sur un autre canal.
+>Pour éviter les blocages et les conditions de concurrence, nous vous recommandons vivement de traiter chacun des canaux de communication sur un thread distinct qui gère sa propre mémoire tampon cliente et sa propre file d’attente de messagerie à l’intérieur de votre application. Le fait de gérer toutes les activités de pseudoconsole sur un même thread peut entraîner un blocage, où l’une des mémoires tampons de communication est pleine et attend votre action pendant que vous tentez de distribuer une requête de blocage sur un autre canal.
 
-## <a name="creating-the-pseudoconsole"></a>Création du Pseudoconsole
+## <a name="creating-the-pseudoconsole"></a>Création de la pseudoconsole
 
-Avec les canaux de communication qui ont été établis, identifiez l’extrémité « Read » du canal d’entrée et l’extrémité « Write » du canal de sortie. Cette paire de handles est fournie lors de l’appel de [**CreatePseudoConsole**](createpseudoconsole.md) pour créer l’objet.
+Avec les canaux de communication qui ont été établis, identifiez l’extrémité « read » du canal d’entrée et l’extrémité « write » du canal de sortie. Cette paire de handles est fournie lorsque vous appelez [**CreatePseudoConsole**](createpseudoconsole.md) pour créer l’objet.
 
-À la création, une taille représentant les dimensions X et Y (en nombre de caractères) est requise. Il s’agit des dimensions qui s’appliqueront à la surface d’affichage pour la fenêtre de présentation finale (terminal). Les valeurs sont utilisées pour créer une mémoire tampon en mémoire à l’intérieur du système pseudoconsole.
+Lors de la création, vous devez indiquer une taille représentant les dimensions X et Y (en nombre de caractères). Il s’agit des dimensions qui s’appliqueront à la zone d’affichage pour la fenêtre de présentation finale (terminal). Ces valeurs sont utilisées pour créer une mémoire tampon en mémoire à l’intérieur du système pseudoconsole.
 
-La taille de la mémoire tampon fournit des réponses aux applications en mode caractère du client qui sondent les informations à l’aide des fonctions de la [console côté client](console-functions.md) comme [**GetConsoleScreenBufferInfoEx**](getconsolescreenbufferinfoex.md) et déterminent la disposition et le positionnement du texte lorsque les clients utilisent des fonctions telles que [**WriteConsoleOutput**](writeconsoleoutput.md).
+La taille de la mémoire tampon fournit des réponses aux applications clientes en mode caractère qui sondent les informations à l’aide des [fonctions de console côté client](console-functions.md) comme [**GetConsoleScreenBufferInfoEx**](getconsolescreenbufferinfoex.md), et déterminent la disposition et le positionnement du texte lorsque les clients utilisent des fonctions comme [**WriteConsoleOutput**](writeconsoleoutput.md).
 
-Enfin, un champ Flags est fourni lors de la création d’un pseudoconsole pour effectuer des fonctionnalités spéciales. Par défaut, affectez-lui la valeur 0 pour ne pas avoir de fonctionnalités spéciales.
+Enfin, un champ d’indicateur est fourni lors de la création d’une pseudoconsole pour exécuter des fonctionnalités spéciales. Par défaut, affectez-lui la valeur 0 pour ne pas avoir de fonctionnalités spéciales.
 
-À ce stade, un seul indicateur spécial est disponible pour demander l’héritage de la position du curseur à partir d’une session de console déjà attachée à l’appelant de l’API pseudoconsole. Elle est destinée à être utilisée dans des scénarios plus avancés où une application d’hébergement qui prépare une session pseudoconsole est elle-même une application cliente en mode caractère d’un autre environnement de console.
+À ce stade, un seul indicateur spécial permet de demander l’héritage de la position du curseur à partir d’une session de console déjà attachée à l’appelant de l’API pseudoconsole. Cet indicateur est destiné à être utilisé dans des scénarios plus avancés, dans lesquels une application d’hébergement qui prépare une session pseudoconsole est elle-même une application cliente en mode caractère dans un autre environnement de console.
 
-Un exemple d’extrait de code est fourni ci-dessous en utilisant [**CreatePipe**](https://msdn.microsoft.com/library/windows/desktop/aa365152(v=vs.85).aspx) pour établir une paire de canaux de communication et créer le pseudoconsole.
+L’exemple d’extrait de code fourni ci-dessous utilise [**CreatePipe**](https://msdn.microsoft.com/library/windows/desktop/aa365152(v=vs.85).aspx) pour établir une paire de canaux de communication et créer la pseudoconsole.
 
 ```C
 
@@ -82,19 +82,19 @@ HRESULT SetUpPseudoConsole(COORD size)
 ```
 
 > [!NOTE]
->Cet extrait de code est incomplet et utilisé pour la démonstration de cet appel spécifique uniquement. Vous devez gérer la durée de vie des **Handles** de manière appropriée. L’échec de la gestion de la durée de vie des **Handles** peut entraîner des scénarios de blocage, en particulier avec les appels d’e/s synchrones.
+>Cet extrait de code est incomplet. Nous l’utilisons uniquement pour la démonstration de cet appel. Vous devrez gérer la durée de vie des **handles** en conséquence. Si vous ne parvenez pas à gérer correctement la durée de vie des **handles**, cela peut entraîner des blocages, en particulier avec les appels d’E/S synchrones.
 
-À la fin de l’appel [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) pour créer l’application cliente en mode caractère attachée à pseudoconsole, les handles donnés lors de la création doivent être libérés de ce processus. Cela réduira le décompte de références sur l’objet périphérique sous-jacent et autorisera les opérations d’e/s à détecter correctement un canal rompu lorsque la session pseudoconsole ferme sa copie des handles.
+À la fin de l’appel à [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) pour créer l’application cliente en mode caractère qui est attachée à la pseudoconsole, les handles reçus lors de la création doivent être libérés de ce processus. Cela réduira le nombre de références de l’objet d’appareil sous-jacent et permettra aux opérations d’E/S de détecter correctement un canal interrompu lorsque la session pseudoconsole ferme sa copie des handles.
 
 ## <a name="preparing-for-creation-of-the-child-process"></a>Préparation de la création du processus enfant
 
-La phase suivante consiste à préparer la structure [**STARTUPINFOEX**](https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-_startupinfoexw) qui communiquera les informations de pseudoconsole lors du démarrage du processus enfant.
+La phase suivante consiste à préparer la structure [**STARTUPINFOEX**](https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-_startupinfoexw) qui communiquera les informations sur la pseudoconsole lors du démarrage du processus enfant.
 
-Cette structure contient la possibilité de fournir des informations de démarrage complexes, y compris des attributs pour la création de processus et de threads.
+Cette structure donne la possibilité de fournir des informations complexes sur le démarrage, y compris des attributs pour la création des processus et des threads.
 
-Utilisez [**InitializeProcThreadAttributeList**](https://docs.microsoft.com/windows/desktop/api/processthreadsapi/nf-processthreadsapi-initializeprocthreadattributelist) à deux reprises pour calculer d’abord le nombre d’octets requis pour contenir la liste, allouer la mémoire demandée, puis appeler à nouveau en fournissant le pointeur de mémoire opaque pour qu’il soit configuré comme liste d’attributs.
+Utilisez [**InitializeProcThreadAttributeList**](https://docs.microsoft.com/windows/desktop/api/processthreadsapi/nf-processthreadsapi-initializeprocthreadattributelist) dans un double appel afin de calculer le nombre d’octets nécessaires pour contenir la liste, puis allouez la mémoire demandée et effectuez un nouvel appel en indiquant le pointeur de mémoire opaque pour qu’il soit configuré comme la liste d’attributs.
 
-Ensuite, appelez [**UpdateProcThreadAttribute**](https://docs.microsoft.com/windows/desktop/api/processthreadsapi/nf-processthreadsapi-updateprocthreadattribute) en transmettant la liste d’attributs initialisée avec l’indicateur **PROC_THREAD_ATTRIBUTE_PSEUDOCONSOLE**, le handle PSEUDOCONSOLE et la taille du descripteur PSEUDOCONSOLE.
+Ensuite, appelez [**UpdateProcThreadAttribute**](https://docs.microsoft.com/windows/desktop/api/processthreadsapi/nf-processthreadsapi-updateprocthreadattribute) en passant la liste d’attributs initialisée avec l’indicateur **PROC_THREAD_ATTRIBUTE_PSEUDOCONSOLE**, le handle de la pseudoconsole et la taille du handle de la pseudoconsole.
 
 ```C
 
@@ -145,7 +145,7 @@ HRESULT PrepareStartupInformation(HPCON hpc, STARTUPINFOEX* psi)
 
 ## <a name="creating-the-hosted-process"></a>Création du processus hébergé
 
-Ensuite, appelez [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) en passant la structure [**STARTUPINFOEX**](https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-_startupinfoexw) avec le chemin d’accès à l’exécutable et toutes les informations de configuration supplémentaires, le cas échéant. Il est important de définir l’indicateur **EXTENDED_STARTUPINFO_PRESENT** lors de l’appel de pour alerter le système que la référence pseudoconsole est contenue dans les informations étendues.
+Ensuite, appelez [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) en passant la structure [**STARTUPINFOEX**](https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-_startupinfoexw), ainsi que le chemin du fichier exécutable et toute autre information de configuration, le cas échéant. Il est important de définir l’indicateur **EXTENDED_STARTUPINFO_PRESENT** lors de l’appel, afin d’alerter le système que la référence à la pseudoconsole est contenue dans les informations détaillées.
 
 ```C
 HRESULT SetUpPseudoConsole(COORD size)
@@ -189,19 +189,19 @@ HRESULT SetUpPseudoConsole(COORD size)
 ```
 
 > [!NOTE]
-> La fermeture de la session pseudoconsole pendant que le processus hébergé est toujours en cours de démarrage et la connexion peut entraîner l’affichage d’une boîte de dialogue d’erreur par l’application cliente. La même boîte de dialogue d’erreur s’affiche si le processus hébergé reçoit un handle pseudoconsole non valide pour le démarrage. Dans le code d’initialisation du processus hébergé, les deux circonstances sont identiques. La boîte de dialogue contextuelle de l’application cliente hébergée en cas d’échec est lue `0xc0000142` avec un message localisé détaillant l’échec de l’initialisation.
+> Si vous fermez la session pseudoconsole alors que le processus hébergé est toujours en cours de démarrage et de connexion, l’application cliente peut afficher une boîte de dialogue d’erreur. La même boîte de dialogue d’erreur s’affichera si le processus hébergé reçoit un handle de pseudoconsole non valide pour le démarrage. Dans le code d’initialisation du processus hébergé, les deux circonstances sont identiques. La boîte de dialogue qui est affichée par l’application cliente hébergée en cas d’échec indique `0xc0000142`, ainsi qu’un message détaillant l’échec de l’initialisation.
 
-## <a name="communicating-with-the-pseudoconsole-session"></a>Communication avec la session Pseudoconsole
+## <a name="communicating-with-the-pseudoconsole-session"></a>Communication avec la session pseudoconsole
 
-Une fois le processus créé, l’application d’hébergement peut utiliser l’extrémité écriture du canal d’entrée pour envoyer des informations sur l’interaction de l’utilisateur dans le pseudoconsole et l’extrémité de lecture du canal de sortie pour recevoir des informations graphiques de présentation à partir de la console.
+Une fois le processus créé, l’application d’hébergement peut utiliser l’extrémité d’écriture du canal d’entrée pour envoyer des informations sur l’interaction avec l’utilisateur dans la pseudoconsole, et l’extrémité de lecture du canal de sortie pour recevoir des informations graphiques provenant de la console.
 
-Il revient entièrement à l’application d’hébergement de décider comment gérer les activités supplémentaires. L’application d’hébergement peut lancer une fenêtre dans un autre thread pour collecter l’entrée d’interaction de l’utilisateur et la sérialiser dans l’extrémité d’écriture du canal d’entrée pour le pseudoconsole et l’application en mode caractères hébergée. Un autre thread peut être lancé pour vider l’extrémité de lecture du canal de sortie pour le pseudoconsole, décoder les informations de [séquence de terminal virtuel](console-virtual-terminal-sequences.md) et de texte, et le présenter à l’écran.
+Il revient entièrement à l’application d’hébergement de décider comment gérer les activités qui suivront. L’application d’hébergement peut lancer une fenêtre dans un autre thread pour collecter les entrées d’interaction utilisateur, et les sérialiser dans l’extrémité d’écriture du canal d’entrée pour la pseudoconsole et l’application en mode caractère hébergée. Un autre thread peut être lancé pour vider l’extrémité de lecture du canal de sortie de la pseudoconsole, décoder le texte et les informations sur les [séquences de terminal virtuel](console-virtual-terminal-sequences.md), et afficher le tout à l’écran.
 
-Les threads peuvent également être utilisés pour relayer les informations des canaux pseudoconsole vers un autre canal ou périphérique, y compris un réseau vers des informations distantes vers un autre processus ou un autre ordinateur, tout en évitant tout transcodage local des informations.
+Les threads peuvent également être utilisés afin de relayer des informations entre les canaux de la pseudoconsole et un autre canal ou appareil (par exemple, des informations réseau vers un autre processus ou ordinateur), évitant ainsi tout transcodage local des informations.
 
-## <a name="resizing-the-pseudoconsole"></a>Redimensionnement du Pseudoconsole
+## <a name="resizing-the-pseudoconsole"></a>Redimensionnement de la pseudoconsole
 
-Tout au long du runtime, il peut y avoir une circonstance selon laquelle la taille de la mémoire tampon doit être modifiée en raison d’une interaction de l’utilisateur ou d’une demande reçue hors bande à partir d’un autre périphérique d’affichage/interaction.
+Pendant l’exécution, il peut arriver que la taille de la mémoire tampon doive être modifiée en raison d’une interaction avec l’utilisateur ou d’une demande reçue hors bande, provenant d’un autre appareil d’affichage ou d’interaction.
 
 Pour ce faire, vous pouvez utiliser la fonction [**ResizePseudoConsole**](resizepseudoconsole.md) en spécifiant à la fois la hauteur et la largeur de la mémoire tampon en nombre de caractères.
 
@@ -224,9 +224,9 @@ void OnWindowResize(Event e)
 }
 ```
 
-## <a name="ending-the-pseudoconsole-session"></a>Fin de la session Pseudoconsole
+## <a name="ending-the-pseudoconsole-session"></a>Fermeture d’une session pseudoconsole
 
-Pour mettre fin à la session, appelez la fonction [**ClosePseudoConsole**](closepseudoconsole.md) avec le descripteur de la création du pseudoconsole d’origine. Toutes les applications en mode caractère du client jointes, telles que celles de l’appel [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) , sont arrêtées lorsque la session est fermée. Si l’enfant d’origine était une application de type Shell qui crée d’autres processus, tous les processus attachés associés dans l’arborescence seront également arrêtés.
+Pour mettre fin à la session, appelez la fonction [**ClosePseudoConsole**](closepseudoconsole.md) avec le handle issu de la création de la pseudoconsole d’origine. Toutes les applications clientes en mode caractère qui sont jointes, comme celle de l’appel [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425), seront arrêtées à la fermeture de la session. Si l’enfant d’origine était une application de type shell qui créait d’autres processus, tous les processus attachés associés de l’arborescence seront également arrêtés.
 
 > [!WARNING]
->La fermeture de la session a plusieurs effets secondaires qui peuvent entraîner une condition de blocage si le pseudoconsole est utilisé en mode synchrone à thread unique. Le fait de fermer la session pseudoconsole peut émettre une mise à jour de frame finale `hOutput` qui doit être vidée de la mémoire tampon du canal de communication. En outre, si `PSEUDOCONSOLE_INHERIT_CURSOR` a été sélectionné lors de la création du pseudoconsole, la tentative de fermeture du pseudoconsole sans répondre au message de requête d’héritage de curseur (reçue sur `hOutput` et ayant répondu à via `hInput` ) peut entraîner une autre condition de blocage. Il est recommandé de traiter les canaux de communication pour les pseudoconsole sur des threads individuels et de les traiter jusqu’à ce qu’ils soient interrompus par l’application cliente en cours de fermeture ou par l’achèvement des activités de destruction lors de l’appel de la fonction [**ClosePseudoConsole**](closepseudoconsole.md) .
+>La fermeture de la session a plusieurs effets secondaires qui peuvent entraîner un blocage si la pseudoconsole est utilisée en mode synchrone à thread unique. Le fait de fermer la session pseudoconsole peut envoyer une mise à jour de frame finale à `hOutput`, qui devra être vidée de la mémoire tampon du canal de communication. En outre, si vous avez sélectionné `PSEUDOCONSOLE_INHERIT_CURSOR` lors de la création de la pseudoconsole et tentez de fermer la pseudoconsole sans répondre au message de requête concernant l’héritage de curseur (reçu sur `hOutput` avec une réponse via `hInput`), un autre blocage peut se produire. Il est recommandé de s’occuper de chacun des canaux de communication de la pseudoconsole sur un thread distinct, ainsi que de les vider et de les traiter jusqu’à ce qu’ils donnent leur accord pour être interrompus par l’application cliente qui se ferme ou par les activités de désactivation lors de l’appel de la fonction [**ClosePseudoConsole**](closepseudoconsole.md).

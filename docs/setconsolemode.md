@@ -1,6 +1,6 @@
 ---
-title: SetConsoleMode fonction)
-description: Définit le mode d’entrée de la mémoire tampon d’entrée d’une console ou le mode de sortie d’une mémoire tampon d’écran de la console.
+title: Fonction SetConsoleMode
+description: Définit le mode d’entrée d’une mémoire tampon d’entrée de console ou le mode de sortie d’une mémoire tampon d’écran de console.
 author: miniksa
 ms.author: miniksa
 ms.topic: article
@@ -32,14 +32,14 @@ api_type:
 ms.localizationpriority: high
 ms.openlocfilehash: 2af598f465be6e1a33f5a8f9a2c9abe98d6ed0d2
 ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 12/04/2020
 ms.locfileid: "96420298"
 ---
-# <a name="setconsolemode-function"></a>SetConsoleMode fonction)
+# <a name="setconsolemode-function"></a>Fonction SetConsoleMode
 
-Définit le mode d’entrée de la mémoire tampon d’entrée d’une console ou le mode de sortie d’une mémoire tampon d’écran de la console.
+Définit le mode d’entrée d’une mémoire tampon d’entrée de console ou le mode de sortie d’une mémoire tampon d’écran de console.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -52,43 +52,43 @@ BOOL WINAPI SetConsoleMode(
 
 ## <a name="parameters"></a>Paramètres
 
-*hConsoleHandle* \[ dans\]  
-Handle vers la mémoire tampon d’entrée de la console ou une mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès **\_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+*hConsoleHandle* \[entrée\]  
+Handle vers la mémoire tampon d’entrée de console ou mémoire tampon d’écran de console. Le handle doit avoir le droit d’accès **GENERIC\_READ**. Pour plus d’informations, consultez [Sécurité de la mémoire tampon et droits d’accès d’une console](console-buffer-security-and-access-rights.md).
 
-*dwMode* \[ dans\]  
+*dwMode* \[entrée\]  
 Mode d’entrée ou de sortie à définir.
 
 [!INCLUDE [console-mode-flags](./includes/console-mode-flags.md)]
 
 ## <a name="return-value"></a>Valeur retournée
 
-Si la fonction est réussie, la valeur de retour est différente de zéro.
+Si la fonction réussit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
 
 ## <a name="remarks"></a>Remarques
 
 [!INCLUDE [console-mode-remarks](./includes/console-mode-remarks.md)]
 
-Pour déterminer le mode actuel d’une mémoire tampon d’entrée de console ou d’une mémoire tampon d’écran, utilisez la fonction [**GetConsoleMode**](getconsolemode.md) .
+Pour déterminer le mode actuel d’une mémoire tampon d’entrée de console ou d’une mémoire tampon d’écran, utilisez la fonction [**GetConsoleMode**](getconsolemode.md).
 
 ## <a name="examples"></a>Exemples
 
-Pour obtenir un exemple, consultez [lecture des événements de mémoire tampon d’entrée](reading-input-buffer-events.md).
+Pour obtenir un exemple, consultez [Lecture des événements de mémoire tampon d’entrée](reading-input-buffer-events.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
-| En-tête | ConsoleApi. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
+| En-tête | ConsoleApi.h (via WinCon.h, inclure Windows.h) |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 
 ## <a name="see-also"></a>Voir aussi
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [Modes de la console](console-modes.md)
 
@@ -104,4 +104,4 @@ Pour obtenir un exemple, consultez [lecture des événements de mémoire tampon 
 
 [**WriteConsole**](writeconsole.md)
 
-[**Appel**](https://msdn.microsoft.com/library/windows/desktop/aa365747)
+[**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747)

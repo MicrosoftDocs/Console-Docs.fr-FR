@@ -1,6 +1,6 @@
 ---
-title: Touches CTRL + C et CTRL + ATTN
-description: Les combinaisons de touches CTRL + C et CTRL + ATTN reçoivent un traitement spécial par les processus de la console.
+title: Signaux CTRL+C et CTRL+ATTN
+description: Les combinaisons de touches CTRL+C et CTRL+ATTN reçoivent un traitement spécial par les processus de console.
 author: miniksa
 ms.author: miniksa
 ms.topic: conceptual
@@ -16,18 +16,18 @@ ms.assetid: 5357ed99-920b-47a0-a922-d5faed7bf23e
 ms.localizationpriority: high
 ms.openlocfilehash: 38cc3486a9e945635147c2e17a4d2f0d197d1d3c
 ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 12/04/2020
 ms.locfileid: "96420188"
 ---
-# <a name="ctrlc-and-ctrlbreak-signals"></a>Touches CTRL + C et CTRL + ATTN
+# <a name="ctrlc-and-ctrlbreak-signals"></a>Signaux CTRL+C et CTRL+ATTN
 
-Les combinaisons de touches <kbd>CTRL</kbd> + <kbd>C</kbd> et <kbd>CTRL +</kbd> + <kbd>Attn</kbd> reçoivent un traitement spécial par les processus de la console. Par défaut, lorsqu’une fenêtre de console a le focus clavier, la <kbd>touche Ctrl</kbd> + <kbd>C</kbd> ou <kbd>CTRL</kbd> + <kbd>BREAK</kbd> est traitée comme un signal (SIGINT ou SIGBREAK) et non pas comme une entrée au clavier. Par défaut, ces signaux sont passés à tous les processus de console qui sont attachés à la console. (Les processus détachés ne sont pas affectés. Consultez [**création d’une console**](creation-of-a-console.md).) Le système crée un nouveau thread dans chaque processus client pour gérer l’événement. Le thread lève une exception si le processus est en cours de débogage. Le débogueur peut gérer l’exception ou continuer avec l’exception non gérée.
+Les combinaisons de touches <kbd>CTRL</kbd>+<kbd>C</kbd> et <kbd>CTRL</kbd>+<kbd>ATTN</kbd> reçoivent un traitement spécial par les processus de console. Par défaut, quand une fenêtre de console a le focus clavier, la combinaison de touches <kbd>CTRL</kbd>+<kbd>C</kbd> ou <kbd>CTRL</kbd>+<kbd>ATTN</kbd> est traitée comme un signal (SIGINT ou SIGBREAK) et non comme une entrée de clavier. Par défaut, ces signaux sont passés à tous les processus de console qui sont attachés à la console. (Les processus détachés ne sont pas affectés. Consultez [**Création d’une console**](creation-of-a-console.md).) Le système crée un thread dans chaque processus client pour gérer l’événement. Le thread lève une exception si le processus est en cours de débogage. Le débogueur peut gérer l’exception ou continuer avec l’exception non gérée.
 
-<kbd>CTRL</kbd> + La fonction <kbd>break</kbd> est toujours traitée comme un signal, mais une application peut modifier le comportement par défaut de la <kbd>touche Ctrl</kbd> + <kbd>C</kbd> de deux manières qui empêchent l’appel des fonctions du gestionnaire :
+La combinaison de touches <kbd>CTRL</kbd>+<kbd>ATTN</kbd> est toujours traitée comme un signal, mais une application peut changer le comportement par défaut de <kbd>CTRL</kbd>+<kbd>C</kbd> de deux manières qui empêchent l’appel des fonctions du gestionnaire :
 
-- La fonction [**SetConsoleMode**](setconsolemode.md) peut désactiver l’activation du mode d’entrée **\_ traité \_** pour la mémoire tampon d’entrée d’une console. par conséquent, Ctrl + C est signalé comme entrée au clavier plutôt que comme signal.
-- Quand [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) est appelé avec des valeurs **null** et **true** pour ses paramètres, le processus appelant ignore les signaux Ctrl + C. Le traitement normal CTRL + C est restauré en appelant **SetConsoleCtrlHandler** avec des valeurs **null** et **false** . Cet attribut qui ignore ou ignore les signaux CTRL + C est hérité par les processus enfants, mais il peut être activé ou désactivé par n’importe quel processus sans affecter les processus existants.
+- La fonction [**SetConsoleMode**](setconsolemode.md) peut désactiver le mode d’entrée **ENABLE\_PROCESSED\_INPUT** pour la mémoire tampon d’entrée d’une console. Par conséquent, CTRL+C est signalé comme étant une entrée du clavier plutôt que comme un signal.
+- Quand [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) est appelé avec les valeurs **NULL** et **TRUE** pour ses paramètres, le processus appelant ignore les signaux CTRL+C. Le traitement normal de CTRL+C est restauré en appelant **SetConsoleCtrlHandler** avec les valeurs **NULL** et **FALSE**. Cet attribut permettant d’ignorer ou de ne pas ignorer les signaux CTRL+C est hérité par les processus enfants, mais il peut être activé ou désactivé par n’importe quel processus sans affecter les processus existants.
 
-Pour plus d’informations sur le traitement de ces signaux, y compris les délais d’attente, consultez la documentation sur le rappel de [**routine du gestionnaire**](handlerroutine.md) .
+Pour plus d’informations sur la façon dont ces signaux sont traités, notamment les délais d’attente, consultez la documentation de rappel sur la [**routine des gestionnaires**](handlerroutine.md).
