@@ -19,12 +19,12 @@ api_location:
 - KernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: f10a77781d555a76fdfcea8c8f10ae6bc1f72047
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: b015f224684a53a8bb654f04b1797ac1af794fc3
+ms.sourcegitcommit: f16996b9c7deead9bcfa44954be93a6ba087abcb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93038297"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97601476"
 ---
 # <a name="createpseudoconsole-function"></a>CreatePseudoConsole fonction)
 
@@ -59,7 +59,7 @@ Il peut s'agir de l'une des valeurs suivantes :
 | Valeur | Signification |
 |-|-|
 | **0** | Effectuez une création pseudoconsole standard. |
-| **PSEUDOCONSOLE_INHERIT_CURSOR** (DWORD) 1 | La session pseudoconsole créée va essayer d’hériter de la position du curseur de la console paernt. |
+| **PSEUDOCONSOLE_INHERIT_CURSOR** (DWORD) 1 | La session pseudoconsole créée va essayer d’hériter de la position du curseur de la console parente. |
 
 *phPC* \[ à\]  
 Pointeur vers un emplacement qui recevra un handle vers le nouvel appareil pseudoconsole.
@@ -68,7 +68,7 @@ Pointeur vers un emplacement qui recevra un handle vers le nouvel appareil pseud
 
 Type : **HRESULT**
 
-Si cette méthode est réussie, elle retourne **S_OK** . Sinon, elle retourne un code d’erreur **HRESULT** .
+Si cette méthode est réussie, elle retourne **S_OK**. Sinon, elle retourne un code d’erreur **HRESULT** .
 
 ## <a name="remarks"></a>Remarques
 
@@ -88,14 +88,14 @@ Si `PSEUDOCONSOLE_INHERIT_CURSOR` vous utilisez, l’application appelante doit 
 
 Pour une procédure pas à pas complète sur l’utilisation de cette fonction pour établir une session pseudoconsole, consultez [création d’une session pseudoconsole](creating-a-pseudoconsole-session.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
 | Client minimal pris en charge | Windows 10 octobre 2018 mise à jour (version 1809) \[ applications de bureau uniquement\] |
 | Serveur minimal pris en charge | Applications de bureau Windows Server 2019 \[ uniquement\] |
-| En-tête | ConsoleApi. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| En-tête | ConsoleApi.h (via WinCon.h, inclure Windows.h) |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 
 ## <a name="see-also"></a>Voir aussi
