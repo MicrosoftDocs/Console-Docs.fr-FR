@@ -28,12 +28,12 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: ddaa4716886fccaaa87e86362719020eb2408765
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 3fe4ddf83f25f1951defed52eaf8fea18e1ff2dc
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93037837"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358869"
 ---
 # <a name="getlargestconsolewindowsize-function"></a>GetLargestConsoleWindowSize fonction)
 
@@ -51,14 +51,14 @@ COORD WINAPI GetLargestConsoleWindowSize(
 
 ## <a name="parameters"></a>Paramètres
 
-*hConsoleOutput* \[ dans\]  
-Handle vers la mémoire tampon d’écran de la console.
+*hConsoleOutput* \[entrée\]  
+Handle vers la mémoire tampon d’écran de console.
 
-## <a name="return-value"></a>Valeur retournée
+## <a name="return-value"></a>Valeur de retour
 
 Si la fonction est réussie, la valeur de retour est une structure de [**repère**](coord-str.md) qui spécifie le nombre de colonnes de cellule de caractères (membre **X** ) et de lignes (membre **Y** ) dans la plus grande fenêtre de console possible. Sinon, les membres de la structure sont nuls.
 
-Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
@@ -66,19 +66,19 @@ La fonction ne prend pas en compte la taille de la mémoire tampon d’écran de
 
 [!INCLUDE [no-vt-equiv-user-priv](./includes/no-vt-equiv-user-priv.md)]
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 
 ## <a name="see-also"></a>Voir aussi
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [**COORDONNÉES**](coord-str.md)
 

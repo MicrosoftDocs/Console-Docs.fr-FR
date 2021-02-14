@@ -30,12 +30,12 @@ api_location:
 api_type:
 - DllExport
 ms.localizationpriority: high
-ms.openlocfilehash: c63c9a176c0d8ca2ef4342f7bee1b427eae00014
-ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
+ms.openlocfilehash: 3b48570424a4c60a56094f5c41934f9946f67203
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96420168"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357859"
 ---
 # <a name="allocconsole-function"></a>Fonction AllocConsole
 
@@ -55,7 +55,7 @@ Cette fonction n’a pas de paramètres.
 
 Si la fonction aboutit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
@@ -65,7 +65,7 @@ Si le processus appelant crée un processus enfant, l’enfant hérite de la nou
 
 **AllocConsole** Initialise une entrée standard, une sortie standard et des handles d’erreur standard pour la nouvelle console. Le handle d’entrée standard est un handle vers la mémoire tampon d’entrée de la console, et les handles de sortie standard et d’erreur standard sont des handles vers la mémoire tampon d’écran de la console. Pour récupérer ces handles, utilisez la fonction [**GetStdHandle**](getstdhandle.md).
 
-Cette fonction est principalement utilisée par une application d’interface graphique utilisateur (GUI) pour créer une fenêtre de console. Les applications GUI sont initialisées sans console. Les applications console sont initialisées à l’aide d’une console, sauf si elles sont créées en tant que processus détachés (en appelant la fonction [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) avec l’indicateur **DETACHED\_PROCESS**).
+Cette fonction est principalement utilisée par une application d’interface graphique utilisateur (GUI) pour créer une fenêtre de console. Les applications GUI sont initialisées sans console. Les applications console sont initialisées à l’aide d’une console, sauf si elles sont créées en tant que processus détachés (en appelant la fonction [**CreateProcess**](/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa) avec l’indicateur **DETACHED\_PROCESS**).
 
 ## <a name="requirements"></a>Configuration requise
 
@@ -85,7 +85,7 @@ Cette fonction est principalement utilisée par une application d’interface gr
 
 [**AttachConsole**](attachconsole.md)
 
-[**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425)
+[**CreateProcess**](/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa)
 
 [**FreeConsole**](freeconsole.md)
 

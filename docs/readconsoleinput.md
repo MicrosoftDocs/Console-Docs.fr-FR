@@ -37,12 +37,12 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 38778931522dff8d1d000bb6f0ce13c2849d76db
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 06e784ebaebde2ed68ed17f75f4e54932aa463f5
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039487"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358719"
 ---
 # <a name="readconsoleinput-function"></a>ReadConsoleInput fonction)
 
@@ -62,7 +62,7 @@ BOOL WINAPI ReadConsoleInput(
 ## <a name="parameters"></a>Paramètres
 
 *hConsoleInput* \[ dans\]  
-Handle vers la mémoire tampon d’entrée de la console. Le handle doit avoir le droit d’accès **\_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+Handle vers la mémoire tampon d’entrée de la console. Le handle doit avoir le droit d’accès **GENERIC\_READ**. Pour plus d’informations, consultez [Sécurité de la mémoire tampon et droits d’accès d’une console](console-buffer-security-and-access-rights.md).
 
 *lpBuffer* \[ à\]  
 Pointeur vers un tableau de structures [**d' \_ enregistrements d’entrée**](input-record-str.md) qui reçoit les données de la mémoire tampon d’entrée.
@@ -75,15 +75,15 @@ Pointeur vers une variable qui reçoit le nombre d’enregistrements d’entrée
 
 ## <a name="return-value"></a>Valeur retournée
 
-Si la fonction est réussie, la valeur de retour est différente de zéro.
+Si la fonction réussit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
 Si le nombre d’enregistrements demandés dans le paramètre *nLength* dépasse le nombre d’enregistrements disponibles dans la mémoire tampon, le nombre disponible est Read. La fonction ne retourne pas de données tant qu’au moins un enregistrement d’entrée n’a pas été lu.
 
-Un processus peut spécifier un handle de mémoire tampon d’entrée de la console dans l’une des [fonctions Wait](https://msdn.microsoft.com/library/windows/desktop/ms687069) pour déterminer le moment où une entrée de console n’est pas lue. Lorsque la mémoire tampon d’entrée n’est pas vide, l’état d’un handle de mémoire tampon d’entrée de la console est signalé.
+Un processus peut spécifier un handle de mémoire tampon d’entrée de la console dans l’une des [fonctions Wait](/windows/win32/sync/wait-functions) pour déterminer le moment où une entrée de console n’est pas lue. Lorsque la mémoire tampon d’entrée n’est pas vide, l’état d’un handle de mémoire tampon d’entrée de la console est signalé.
 
 Pour déterminer le nombre d’enregistrements d’entrée non lus dans la mémoire tampon d’entrée d’une console, utilisez la fonction [**GetNumberOfConsoleInputEvents**](getnumberofconsoleinputevents.md) . Pour lire les enregistrements d’entrée d’une mémoire tampon d’entrée de la console sans affecter le nombre d’enregistrements non lus, utilisez la fonction [**PeekConsoleInput**](peekconsoleinput.md) . Pour ignorer tous les enregistrements non lus dans le tampon d’entrée d’une console, utilisez la fonction [**FlushConsoleInputBuffer**](flushconsoleinputbuffer.md) .
 
@@ -91,22 +91,22 @@ Pour déterminer le nombre d’enregistrements d’entrée non lus dans la mémo
 
 ## <a name="examples"></a>Exemples
 
-Pour obtenir un exemple, consultez [lecture des événements de mémoire tampon d’entrée](reading-input-buffer-events.md).
+Pour obtenir un exemple, consultez [Lecture des événements de mémoire tampon d’entrée](reading-input-buffer-events.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
-| En-tête | ConsoleApi. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
+| En-tête | ConsoleApi.h (via WinCon.h, inclure Windows.h) |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 | Noms Unicode et ANSI | **ReadConsoleInputW** (Unicode) et **ReadConsoleInputA** (ANSI) |
 
 ## <a name="see-also"></a>Voir aussi
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [**FlushConsoleInputBuffer**](flushconsoleinputbuffer.md)
 
@@ -120,7 +120,7 @@ Pour obtenir un exemple, consultez [lecture des événements de mémoire tampon 
 
 [**ReadConsole**](readconsole.md)
 
-[**ReadFile**](https://msdn.microsoft.com/library/windows/desktop/aa365467)
+[**ReadFile**](/windows/win32/api/fileapi/nf-fileapi-readfile)
 
 [**SetConsoleCP**](setconsolecp.md)
 

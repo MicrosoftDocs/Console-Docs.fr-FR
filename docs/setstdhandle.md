@@ -30,12 +30,12 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 36531872df90239e2b909c80fb75ad3011280c78
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 317acd84289e5138e1a947251e745077ba581083
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039297"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358509"
 ---
 # <a name="setstdhandle-function"></a>SetStdHandle fonction)
 
@@ -52,48 +52,48 @@ BOOL WINAPI SetStdHandle(
 
 ## <a name="parameters"></a>Paramètres
 
-*nStdHandle* \[ dans\]  
-Appareil standard pour lequel le descripteur doit être défini. Ce paramètre peut prendre l’une des valeurs suivantes.
+*nStdHandle* \[entrée\]  
+Appareil standard pour lequel le descripteur doit être défini. Ce paramètre peut prendre les valeurs suivantes.
 
 | Valeur | Signification |
 |-|-|
-| **STD_INPUT_HANDLE** (DWORD)-10 | Périphérique d’entrée standard. Initialement, il s’agit de la mémoire tampon d’entrée de la console, `CONIN$` . |
-| **STD_OUTPUT_HANDLE** (DWORD)-11 | Périphérique de sortie standard. Initialement, il s’agit de la mémoire tampon d’écran active de la console, `CONOUT$` . |
-| **STD_ERROR_HANDLE** (DWORD)-12 | Périphérique d’erreur standard. Initialement, il s’agit de la mémoire tampon d’écran active de la console, `CONOUT$` . |
+| **STD_INPUT_HANDLE** (DWORD) -10 | Périphérique d’entrée standard. À la base, il s’agit de la mémoire tampon d’entrée de la console, `CONIN$`. |
+| **STD_OUTPUT_HANDLE** (DWORD) -11 | Périphérique de sortie standard. À la base, il s’agit de la mémoire tampon d’écran de la console active, `CONOUT$`. |
+| **STD_ERROR_HANDLE** (DWORD) -12 | Périphérique d’erreur standard. À la base, il s’agit de la mémoire tampon d’écran de la console active, `CONOUT$`. |
 
 *hHandle* \[ dans\]  
 Handle pour l’appareil standard.
 
 ## <a name="return-value"></a>Valeur retournée
 
-Si la fonction est réussie, la valeur de retour est différente de zéro.
+Si la fonction réussit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
-Les handles standard d’un processus peuvent avoir été redirigés par un appel à **SetStdHandle** , auquel cas [**GetStdHandle**](getstdhandle.md) retourne le handle Redirigé. Si les handles standard ont été redirigés, vous pouvez spécifier la valeur CONIN $ dans un appel à la fonction [**CreateFile**](https://msdn.microsoft.com/library/windows/desktop/aa363858) pour obtenir un handle vers la mémoire tampon d’entrée d’une console. De même, vous pouvez spécifier la valeur CONOUT $ pour obtenir un descripteur de la mémoire tampon d’écran active de la console.
+Les handles standard d’un processus peuvent avoir été redirigés par un appel à **SetStdHandle**, auquel cas [**GetStdHandle**](getstdhandle.md) retourne le handle Redirigé. Si les handles standard ont été redirigés, vous pouvez spécifier la valeur CONIN $ dans un appel à la fonction [**CreateFile**](/windows/win32/api/fileapi/nf-fileapi-createfilea) pour obtenir un handle vers la mémoire tampon d’entrée d’une console. De même, vous pouvez spécifier la valeur CONOUT $ pour obtenir un descripteur de la mémoire tampon d’écran active de la console.
 
 ## <a name="examples"></a>Exemples
 
-Pour obtenir un exemple, consultez [création d’un processus enfant avec une entrée et une sortie redirigées](https://msdn.microsoft.com/library/windows/desktop/ms682499).
+Pour obtenir un exemple, consultez [création d’un processus enfant avec une entrée et une sortie redirigées](/windows/win32/procthread/creating-a-child-process-with-redirected-input-and-output).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
-| En-tête | ProcessEnv. h (via Winbase. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
+| En-tête | ProcessEnv.h (via Winbase.h, inclure Windows.h) |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 
 ## <a name="see-also"></a>Voir aussi
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [Handles de console](console-handles.md)
 
-[**CreateFile**](https://msdn.microsoft.com/library/windows/desktop/aa363858)
+[**CreateFile**](/windows/win32/api/fileapi/nf-fileapi-createfilea)
 
 [**GetStdHandle**](getstdhandle.md)

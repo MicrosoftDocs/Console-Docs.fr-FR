@@ -28,12 +28,12 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: dc1190aee7cb1a29c60579f5e00daf1f7280d292
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: af3f9d63b01697a2ab0735014a4836d9ab11d8cf
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039307"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358529"
 ---
 # <a name="setconsolewindowinfo-function"></a>SetConsoleWindowInfo fonction)
 
@@ -53,20 +53,20 @@ BOOL WINAPI SetConsoleWindowInfo(
 
 ## <a name="parameters"></a>Paramètres
 
-*hConsoleOutput* \[ dans\]  
-Handle vers la mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès **\_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+*hConsoleOutput* \[entrée\]  
+Handle vers la mémoire tampon d’écran de console. Le handle doit avoir le droit d’accès **GENERIC\_READ**. Pour plus d’informations, consultez [Sécurité de la mémoire tampon et droits d’accès d’une console](console-buffer-security-and-access-rights.md).
 
 *bAbsolute* \[ dans\]  
-Si ce paramètre a la **valeur true** , les coordonnées spécifient les nouveaux angles supérieur gauche et inférieur droit de la fenêtre. Si la **valeur est false** , les coordonnées sont relatives aux coordonnées de l’angle de la fenêtre active.
+Si ce paramètre a la **valeur true**, les coordonnées spécifient les nouveaux angles supérieur gauche et inférieur droit de la fenêtre. Si la **valeur est false**, les coordonnées sont relatives aux coordonnées de l’angle de la fenêtre active.
 
 *lpConsoleWindow* \[ dans\]  
 Pointeur vers une [**petite structure \_ Rect**](small-rect-str.md) qui spécifie les nouveaux angles supérieur gauche et inférieur droit de la fenêtre.
 
 ## <a name="return-value"></a>Valeur retournée
 
-Si la fonction est réussie, la valeur de retour est différente de zéro.
+Si la fonction réussit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
@@ -84,19 +84,19 @@ Pour déterminer la taille actuelle et la position de la fenêtre d’une mémoi
 
 Pour obtenir un exemple, consultez [défilement de la fenêtre d’une mémoire tampon d’écran](scrolling-a-screen-buffer-s-window.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 
 ## <a name="see-also"></a>Voir aussi
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [**GetConsoleScreenBufferInfo**](getconsolescreenbufferinfo.md)
 

@@ -29,12 +29,12 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 30276765b35e9179767fa4e82fc40643ee3b2558
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 858b0de83c7b1c4678e992b5f9d0ca3d4876ba49
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93038817"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358949"
 ---
 # <a name="getconsoleoutputcp-function"></a>GetConsoleOutputCP fonction)
 
@@ -52,31 +52,31 @@ Cette fonction n’a pas de paramètres.
 
 ## <a name="return-value"></a>Valeur retournée
 
-La valeur de retour est un code qui identifie la page de codes. Pour obtenir la liste des identificateurs, consultez [identificateurs de page de codes](https://msdn.microsoft.com/library/windows/desktop/dd317756).
+La valeur de retour est un code qui identifie la page de codes. Pour obtenir la liste des identificateurs, consultez [identificateurs de page de codes](/windows/win32/intl/code-page-identifiers).
 
-Si la valeur de retour est égale à zéro, la fonction a échoué. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la valeur de retour est égale à zéro, la fonction a échoué. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
-Une page de codes mappe 256 codes de caractères à des caractères individuels. Les différentes pages de code incluent des caractères spéciaux différents, généralement personnalisés pour une langue ou un groupe de langues. Pour obtenir plus d’informations sur une page de codes, y compris son nom, consultez la fonction [**GetCPInfoEx**](https://msdn.microsoft.com/library/windows/desktop/dd318081) .
+Une page de codes mappe 256 codes de caractères à des caractères individuels. Les différentes pages de code incluent des caractères spéciaux différents, généralement personnalisés pour une langue ou un groupe de langues. Pour obtenir plus d’informations sur une page de codes, y compris son nom, consultez la fonction [**GetCPInfoEx**](/windows/win32/api/winnls/nf-winnls-getcpinfoexa) .
 
 Pour définir la page de codes de sortie d’une console, utilisez la fonction [**SetConsoleOutputCP**](setconsoleoutputcp.md) . Pour définir et interroger la page de codes d’entrée d’une console, utilisez les fonctions [**SetConsoleCP**](setconsolecp.md) et [**GetConsoleCP**](getconsolecp.md) .
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
-| En-tête | ConsoleApi. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
+| En-tête | ConsoleApi.h (via WinCon.h, inclure Windows.h) |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 
 ## <a name="see-also"></a>Voir aussi
 
 [Pages de code d’une console](console-code-pages.md)
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [**GetConsoleCP**](getconsolecp.md)
 

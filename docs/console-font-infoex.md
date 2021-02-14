@@ -27,12 +27,12 @@ api_location:
 - WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: ef89d1bf47a4153d44140d3f9f4845bb7496680e
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 3ab4424be99ba9eceda54db1ebf7c7e13560f722
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039257"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358149"
 ---
 # <a name="console_font_infoex-structure"></a>Structure de la police de la CONSOLE \_ \_ INFOEX
 
@@ -65,7 +65,7 @@ Index de la police dans la table des polices de la console du système.
 Structure de [**repère**](coord-str.md) qui contient la largeur et la hauteur de chaque caractère de la police, en unités logiques. Le membre **X** contient la largeur, tandis que le membre **Y** contient la hauteur.
 
 **FontFamily**  
-L’espacement de la police et la famille. Pour plus d’informations sur les valeurs possibles de ce membre, consultez la description du membre **tmPitchAndFamily** de la structure [**TEXTMETRIC**](https://msdn.microsoft.com/library/windows/desktop/dd145132) .
+L’espacement de la police et la famille. Pour plus d’informations sur les valeurs possibles de ce membre, consultez la description du membre **tmPitchAndFamily** de la structure [**TEXTMETRIC**](/windows/win32/api/wingdi/ns-wingdi-textmetrica) .
 
 **FontWeight**  
 Épaisseur de la police. Le poids peut être compris entre 100 et 1000, par multiples de 100. Par exemple, le poids normal est 400, tandis que 700 est gras.
@@ -73,11 +73,11 @@ L’espacement de la police et la famille. Pour plus d’informations sur les va
 **FaceName**  
 Nom du type de caractères (Courier ou Arial, par exemple).
 
-## <a name="remarks"></a>Remarques
+## <a name="remarks"></a>Notes
 
 Pour obtenir la taille de la police, transmettez l’index de la police à la fonction [**GetConsoleFontSize**](getconsolefontsize.md) .
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|

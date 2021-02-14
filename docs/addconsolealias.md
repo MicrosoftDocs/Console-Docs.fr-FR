@@ -32,12 +32,12 @@ api_location:
 - Kernel32.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 2f2396122e693ab76ddf4e4e0bcdb2d38a2c042b
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 9ff901615fa2a17ee9902bd028a2f63ee6b7a4b4
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93037550"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357869"
 ---
 # <a name="addconsolealias-function"></a>AddConsoleAlias fonction)
 
@@ -58,23 +58,23 @@ BOOL WINAPI AddConsoleAlias(
 ## <a name="parameters"></a>Paramètres
 
 *Source* \[ dans\]  
-Alias de la console à mapper au texte spécifié par la *cible* .
+Alias de la console à mapper au texte spécifié par la *cible*.
 
 *Cible* \[ dans\]  
-Texte à substituer à la *source* . Si ce paramètre a la **valeur null** , l’alias de la console est supprimé.
+Texte à substituer à la *source*. Si ce paramètre a la **valeur null**, l’alias de la console est supprimé.
 
 *ExeName* \[ dans\]  
 Nom du fichier exécutable pour lequel l’alias de console doit être défini.
 
-## <a name="return-value"></a>Valeur retournée
+## <a name="return-value"></a>Valeur de retour
 
-Si la fonction est réussie, la valeur de retour est **true** .
+Si la fonction est réussie, la valeur de retour est **true**.
 
-Si la fonction échoue, la valeur de retour est **false** . Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est **false**. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
-Pour compiler une application qui utilise cette fonction, définissez **\_ Win32 \_ winnt** comme 0x0501 ou version ultérieure. Pour plus d’informations, consultez [utilisation des en-têtes Windows](https://msdn.microsoft.com/library/windows/desktop/aa383745).
+Pour compiler une application qui utilise cette fonction, définissez **\_ Win32 \_ winnt** comme 0x0501 ou version ultérieure. Pour plus d’informations, consultez [utilisation des en-têtes Windows](/windows/win32/winprog/using-the-windows-headers).
 
 [!INCLUDE [no-vt-equiv-shell-banner](./includes/no-vt-equiv-shell-banner.md)]
 
@@ -82,14 +82,14 @@ Pour compiler une application qui utilise cette fonction, définissez **\_ Win32
 
 Pour obtenir un exemple, consultez [alias de console](console-aliases.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | ConsoleApi3. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 | Noms Unicode et ANSI | **AddConsoleAliasW** (Unicode) et **AddConsoleAliasA** (ANSI) |
 
@@ -97,7 +97,7 @@ Pour obtenir un exemple, consultez [alias de console](console-aliases.md).
 
 [Alias d’une console](console-aliases.md)
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [**GetConsoleAlias**](getconsolealias.md)
 

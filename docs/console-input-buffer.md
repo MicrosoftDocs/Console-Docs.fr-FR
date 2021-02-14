@@ -13,18 +13,18 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: 6e536658-8a27-478e-82ee-d1e11f351301
-ms.openlocfilehash: 9b210e07fd2531b2f58130f4b96ad31a374923f4
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: d5d3604d3d4f2738af01ae1bc051c10af6249c62
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039207"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358109"
 ---
 # <a name="console-input-buffer"></a>Mémoire tampon d’entrée d’une console
 
 Chaque console possède une mémoire tampon d’entrée qui contient une file d’attente d’enregistrements d’événements d’entrée. Lorsque la fenêtre d’une console a le focus clavier, une console met en forme chaque événement d’entrée (par exemple, une frappe de touche, un mouvement de la souris ou un clic sur le bouton de la souris) comme un enregistrement d’entrée qu’il place dans la mémoire tampon d’entrée de la console.
 
-Les applications peuvent accéder indirectement à la mémoire tampon d’entrée d’une console à l’aide des [fonctions d’e/s de console de haut niveau](high-level-console-input-and-output-functions.md), ou directement à l’aide des [fonctions d’entrée de la console de bas niveau](low-level-console-input-functions.md). Les fonctions d’entrée de haut niveau filtrent et traitent les données dans la mémoire tampon d’entrée, en retournant uniquement un flux de caractères d’entrée. Les fonctions d’entrée de bas niveau permettent aux applications de lire des enregistrements d’entrée directement à partir de la mémoire tampon d’entrée d’une console, ou de placer des enregistrements d’entrée dans la mémoire tampon d’entrée. Pour ouvrir un handle vers la mémoire tampon d’entrée d’une console, spécifiez la valeur **CONIN $** dans un appel à la fonction [**CreateFile**](https://msdn.microsoft.com/library/windows/desktop/aa363858) .
+Les applications peuvent accéder indirectement à la mémoire tampon d’entrée d’une console à l’aide des [fonctions d’e/s de console de haut niveau](high-level-console-input-and-output-functions.md), ou directement à l’aide des [fonctions d’entrée de la console de bas niveau](low-level-console-input-functions.md). Les fonctions d’entrée de haut niveau filtrent et traitent les données dans la mémoire tampon d’entrée, en retournant uniquement un flux de caractères d’entrée. Les fonctions d’entrée de bas niveau permettent aux applications de lire des enregistrements d’entrée directement à partir de la mémoire tampon d’entrée d’une console, ou de placer des enregistrements d’entrée dans la mémoire tampon d’entrée. Pour ouvrir un handle vers la mémoire tampon d’entrée d’une console, spécifiez la valeur **CONIN $** dans un appel à la fonction [**CreateFile**](/windows/win32/api/fileapi/nf-fileapi-createfilea) .
 
 Un enregistrement d’entrée est une structure contenant des informations sur le type d’événement qui s’est produit (clavier, souris, redimensionnement de fenêtre, focus ou événement de menu), ainsi que des détails spécifiques sur l’événement. Le membre **eventType** dans une structure [**d' \_ enregistrement d’entrée**](input-record-str.md) indique quel type d’événement est contenu dans l’enregistrement.
 

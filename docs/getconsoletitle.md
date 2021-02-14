@@ -38,12 +38,12 @@ api_location:
 - Kernel32Legacy.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 23b52ba1d5dde40ef842297249fdd2f87cebcb12
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 6a4c4634316442ac2b03602b6c931b05385d77df
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93037877"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358329"
 ---
 # <a name="getconsoletitle-function"></a>GetConsoleTitle fonction)
 
@@ -68,13 +68,13 @@ Pointeur vers une mémoire tampon qui reçoit une chaîne se terminant par null 
 *nSize* \[ dans\]  
 Taille de la mémoire tampon vers laquelle pointe le paramètre *lpConsoleTitle* , en caractères.
 
-## <a name="return-value"></a>Valeur retournée
+## <a name="return-value"></a>Valeur de retour
 
 Si la fonction est réussie, la valeur de retour est la longueur du titre de la fenêtre de console, en caractères.
 
-Si la fonction échoue, la valeur de retour est zéro et [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360) retourne le code d’erreur.
+Si la fonction échoue, la valeur de retour est zéro et [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror) retourne le code d’erreur.
 
-## <a name="remarks"></a>Remarques
+## <a name="remarks"></a>Notes
 
 Pour définir le titre d’une fenêtre de console, utilisez la fonction [**SetConsoleTitle**](setconsoletitle.md) . Pour récupérer la chaîne de titre d’origine, utilisez la fonction [**GetConsoleOriginalTitle**](getconsoleoriginaltitle.md) .
 
@@ -87,20 +87,20 @@ Pour définir le titre d’une fenêtre de console, utilisez la fonction [**SetC
 
 Pour obtenir un exemple, consultez [**SetConsoleTitle**](setconsoletitle.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 | Noms Unicode et ANSI | **GetConsoleTitleW** (Unicode) et **GetConsoleTitleA** (ANSI) |
 
 ## <a name="see-also"></a>Voir aussi
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [**GetConsoleOriginalTitle**](getconsoleoriginaltitle.md)
 

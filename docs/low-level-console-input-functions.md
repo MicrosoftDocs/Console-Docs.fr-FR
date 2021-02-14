@@ -13,12 +13,12 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: 41488614-ca7c-4207-b706-f7776423c7ba
-ms.openlocfilehash: c214a90147fae2fbf876746078ce0301af15b7ad
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: fc2969cb266479a0acdde890f4ad3710ca8d7e42
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93038547"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357819"
 ---
 # <a name="low-level-console-input-functions"></a>Fonctions d’entrée de la console Low-Level
 
@@ -46,4 +46,4 @@ Voici les descriptions des fonctions d’entrée de la console de bas niveau.
 | [**WriteConsoleInput**](writeconsoleinput.md) | Place les enregistrements d’entrée dans la mémoire tampon d’entrée derrière les enregistrements en attente dans la mémoire tampon. Le tampon d’entrée augmente de manière dynamique, si nécessaire, pour conserver autant d’enregistrements que le nombre écrit. Pour utiliser cette fonction, le handle de mémoire tampon d’entrée spécifié doit avoir le \_ droit d’accès en écriture générique. |
 | [**FlushConsoleInputBuffer**](flushconsoleinputbuffer.md) | Ignore tous les événements non lus dans la mémoire tampon d’entrée. Pour utiliser cette fonction, le handle de mémoire tampon d’entrée spécifié doit avoir le \_ droit d’accès en écriture générique. |
 
-Un thread du processus d’une application peut effectuer une opération d’attente pour attendre que l’entrée soit disponible dans une mémoire tampon d’entrée. Pour initier une opération d’attente, spécifiez un handle vers la mémoire tampon d’entrée dans un appel à l’une des [fonctions d’attente](https://msdn.microsoft.com/library/windows/desktop/ms687069). Ces fonctions peuvent retourner lorsque l’état d’un ou plusieurs objets est signalé. L’état d’un descripteur d’entrée de la console devient signalé lorsqu’il y a des enregistrements non lus dans sa mémoire tampon d’entrée. L’État est réinitialisé sur non signalé lorsque la mémoire tampon d’entrée est vide. Si aucune entrée n’est disponible, le thread appelant passe à un état d’attente efficace, ce qui consomme très peu de temps processeur en attendant que les conditions de l’opération d’attente soient satisfaites.
+Un thread du processus d’une application peut effectuer une opération d’attente pour attendre que l’entrée soit disponible dans une mémoire tampon d’entrée. Pour initier une opération d’attente, spécifiez un handle vers la mémoire tampon d’entrée dans un appel à l’une des [fonctions d’attente](/windows/win32/sync/wait-functions). Ces fonctions peuvent retourner lorsque l’état d’un ou plusieurs objets est signalé. L’état d’un descripteur d’entrée de la console devient signalé lorsqu’il y a des enregistrements non lus dans sa mémoire tampon d’entrée. L’État est réinitialisé sur non signalé lorsque la mémoire tampon d’entrée est vide. Si aucune entrée n’est disponible, le thread appelant passe à un état d’attente efficace, ce qui consomme très peu de temps processeur en attendant que les conditions de l’opération d’attente soient satisfaites.

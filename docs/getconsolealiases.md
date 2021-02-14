@@ -32,12 +32,12 @@ api_location:
 - Kernel32.dll
 api_type:
 - DllExport
-ms.openlocfilehash: a84579ce7bf27787e986ded2e1f21520f8d442b9
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: a2a59f75c41f929660f6f4af1573b470fccd6511
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93038117"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357569"
 ---
 # <a name="getconsolealiases-function"></a>GetConsoleAliases fonction)
 
@@ -63,33 +63,33 @@ Pointeur vers une mémoire tampon qui reçoit les alias.
 Le format des données est le suivant : *Source1* = *target1* \\ 0 *source2* = *TARGET2* \\ 0... *SourceN* = *Ciblen* \\ 0, où *N* est le nombre d’alias de console définis.
 
 *AliasBufferLength* \[ dans\]  
-Taille de la mémoire tampon vers laquelle pointe *lpAliasBuffer* , en octets.
+Taille de la mémoire tampon vers laquelle pointe *lpAliasBuffer*, en octets.
 
 *lpExeName* \[ dans\]  
 Fichier exécutable dont les alias doivent être récupérés.
 
 ## <a name="return-value"></a>Valeur retournée
 
-Si la fonction est réussie, la valeur de retour est différente de zéro.
+Si la fonction réussit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
 Pour déterminer la taille requise pour la mémoire tampon *lpExeName* , utilisez la fonction [**GetConsoleAliasesLength**](getconsolealiaseslength.md) .
 
-Pour compiler une application qui utilise cette fonction, définissez **\_ Win32 \_ winnt** comme 0x0501 ou version ultérieure. Pour plus d’informations, consultez [utilisation des en-têtes Windows](https://msdn.microsoft.com/library/windows/desktop/aa383745).
+Pour compiler une application qui utilise cette fonction, définissez **\_ Win32 \_ winnt** comme 0x0501 ou version ultérieure. Pour plus d’informations, consultez [utilisation des en-têtes Windows](/windows/win32/winprog/using-the-windows-headers).
 
 [!INCLUDE [no-vt-equiv-shell-banner](./includes/no-vt-equiv-shell-banner.md)]
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | ConsoleApi3. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 | Noms Unicode et ANSI | **GetConsoleAliasesW** (Unicode) et **GetConsoleAliasesA** (ANSI) |
 
@@ -99,7 +99,7 @@ Pour compiler une application qui utilise cette fonction, définissez **\_ Win32
 
 [Alias d’une console](console-aliases.md)
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [**GetConsoleAlias**](getconsolealias.md)
 

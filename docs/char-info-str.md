@@ -28,14 +28,14 @@ api_location:
 - WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: b07938d6ac58744533711c91a04b1a0188f7daf6
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: a16fb23d148f75480437211204a0fd7c1f161bfe
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93037377"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357849"
 ---
-# <a name="char_info-structure"></a>CHAR \_ info (structure)
+# `CHAR\_INFO structure`
 
 [!INCLUDE [not-recommended-banner](./includes/not-recommended-banner.md)]
 
@@ -69,32 +69,32 @@ Attributs de caractère. Ce membre peut être égal à zéro ou n’importe quel
 
 | Valeur | Signification |
 |-|-|
-| **FOREGROUND_BLUE**`0x0001` | La couleur du texte contient le bleu. |
+| **FOREGROUND_BLUE**`0x0001` | La couleur du texte contient du bleu. |
 | **FOREGROUND_GREEN**`0x0002` | La couleur du texte contient du vert. |
-| **FOREGROUND_RED**`0x0004` | La couleur du texte contient le rouge. |
+| **FOREGROUND_RED**`0x0004` | La couleur du texte contient du rouge. |
 | **FOREGROUND_INTENSITY**`0x0008` | La couleur du texte est intensifiée. |
-| **BACKGROUND_BLUE**`0x0010` | La couleur d’arrière-plan contient le bleu. |
+| **BACKGROUND_BLUE**`0x0010` | La couleur d’arrière-plan contient du bleu. |
 | **BACKGROUND_GREEN**`0x0020` | La couleur d’arrière-plan contient du vert. |
-| **BACKGROUND_RED**`0x0040` | La couleur d’arrière-plan contient le rouge. |
+| **BACKGROUND_RED**`0x0040` | La couleur d’arrière-plan contient du rouge. |
 | **BACKGROUND_INTENSITY**`0x0080` | La couleur d’arrière-plan est intensifiée. |
 | **COMMON_LVB_LEADING_BYTE**`0x0100` | Octet de début. |
 | **COMMON_LVB_TRAILING_BYTE**`0x0200` | Octet de fin. |
-| **COMMON_LVB_GRID_HORIZONTAL**`0x0400` | Horizontal supérieur. |
-| **COMMON_LVB_GRID_LVERTICAL**`0x0800` | Vertical gauche. |
-| **COMMON_LVB_GRID_RVERTICAL**`0x1000` | Verticale droite. |
+| **COMMON_LVB_GRID_HORIZONTAL**`0x0400` | Supérieur horizontal. |
+| **COMMON_LVB_GRID_LVERTICAL**`0x0800` | Gauche vertical. |
+| **COMMON_LVB_GRID_RVERTICAL**`0x1000` | Droite vertical. |
 | **COMMON_LVB_REVERSE_VIDEO**`0x4000` | Attribut de premier plan et d’arrière-plan inversé. |
-| **COMMON_LVB_UNDERSCORE**`0x8000` | Soulignement. |
+| **COMMON_LVB_UNDERSCORE**`0x8000` | Caractère de soulignement. |
 
 ## <a name="examples"></a>Exemples
 
 Pour obtenir un exemple, consultez [défilement du contenu d’une mémoire tampon d’écran](scrolling-a-screen-buffer-s-contents.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | WinCon. h (inclure Windows. h) |
 
 ## <a name="see-also"></a>Voir aussi

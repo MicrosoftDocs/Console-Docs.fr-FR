@@ -28,12 +28,12 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: f074ad87676673221d34461e8bae484895781f56
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 4002ec67000edda38c7b14476528a0167e521bbf
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93038137"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357529"
 ---
 # <a name="generateconsolectrlevent-function"></a>GenerateConsoleCtrlEvent fonction)
 
@@ -51,7 +51,7 @@ BOOL WINAPI GenerateConsoleCtrlEvent(
 ## <a name="parameters"></a>Paramètres
 
 *dwCtrlEvent* \[ dans\]  
-Type de signal à générer. Ce paramètre peut prendre l’une des valeurs suivantes.
+Type de signal à générer. Ce paramètre peut prendre les valeurs suivantes.
 
 | Valeur | Signification |
 |-|-|
@@ -59,40 +59,40 @@ Type de signal à générer. Ce paramètre peut prendre l’une des valeurs suiv
 | **CTRL_BREAK_EVENT** 1 | Génère un signal CTRL + ATTN. |
 
 *dwProcessGroupId* \[ dans\]  
-Identificateur du groupe de processus devant recevoir le signal. Un groupe de processus est créé lorsque l’indicateur de création d’un **\_ nouveau \_ \_ groupe de processus** est spécifié dans un appel à la fonction [**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425) . L’identificateur de processus du nouveau processus est également l’identificateur de groupe de processus d’un nouveau groupe de processus. Le groupe de processus comprend tous les processus qui sont des descendants du processus racine. Seuls les processus du groupe qui partagent la même console que le processus appelant reçoivent le signal. En d’autres termes, si un processus du groupe crée une nouvelle console, ce processus ne reçoit pas le signal, ni ses descendants.
+Identificateur du groupe de processus devant recevoir le signal. Un groupe de processus est créé lorsque l’indicateur de création d’un **\_ nouveau \_ \_ groupe de processus** est spécifié dans un appel à la fonction [**CreateProcess**](/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa) . L’identificateur de processus du nouveau processus est également l’identificateur de groupe de processus d’un nouveau groupe de processus. Le groupe de processus comprend tous les processus qui sont des descendants du processus racine. Seuls les processus du groupe qui partagent la même console que le processus appelant reçoivent le signal. En d’autres termes, si un processus du groupe crée une nouvelle console, ce processus ne reçoit pas le signal, ni ses descendants.
 
 Si ce paramètre est égal à zéro, le signal est généré dans tous les processus qui partagent la console du processus appelant.
 
 ## <a name="return-value"></a>Valeur retournée
 
-Si la fonction est réussie, la valeur de retour est différente de zéro.
+Si la fonction réussit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
-**GenerateConsoleCtrlEvent** entraîne l’appel des fonctions du gestionnaire de contrôle des processus dans le groupe cible. Tous les processus de console ont une fonction de gestionnaire par défaut qui appelle la fonction [**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658) . Un processus de console peut utiliser la fonction [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) pour installer ou supprimer d’autres fonctions de gestionnaire.
+**GenerateConsoleCtrlEvent** entraîne l’appel des fonctions du gestionnaire de contrôle des processus dans le groupe cible. Tous les processus de console ont une fonction de gestionnaire par défaut qui appelle la fonction [**ExitProcess**](/windows/win32/api/processthreadsapi/nf-processthreadsapi-exitprocess) . Un processus de console peut utiliser la fonction [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) pour installer ou supprimer d’autres fonctions de gestionnaire.
 
 [**SetConsoleCtrlHandler**](setconsolectrlhandler.md) peut également activer un attribut pouvant être hérité qui amène le processus appelant à ignorer les signaux Ctrl + C. Si **GenerateConsoleCtrlEvent** envoie un signal Ctrl + C à un processus pour lequel cet attribut est activé, les fonctions de gestionnaire pour ce processus ne sont pas appelées. Les signaux CTRL + ATTN entraînent toujours l’appel des fonctions du gestionnaire.
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 
 ## <a name="see-also"></a>Voir aussi
 
 [Gestionnaires de contrôle d’une console](console-control-handlers.md)
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
-[**CreateProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682425)
+[**CreateProcess**](/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa)
 
-[**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658)
+[**ExitProcess**](/windows/win32/api/processthreadsapi/nf-processthreadsapi-exitprocess)
 
 [**SetConsoleCtrlHandler**](setconsolectrlhandler.md)

@@ -28,12 +28,12 @@ api_location:
 - API-MS-Win-DownLevel-Kernel32-l1-1-0.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 0b8f5b33233f49167c67a47f33e5a95b8864f7bd
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 0e7e4606e561454a2037650cc8d1f3b685ff2d5d
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039130"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357959"
 ---
 # <a name="createconsolescreenbuffer-function"></a>CreateConsoleScreenBuffer fonction)
 
@@ -67,19 +67,19 @@ Ce paramètre peut être égal à zéro, ce qui indique que la mémoire tampon n
 | **FILE_SHARE_WRITE** 0x00000002 | D’autres opérations ouvertes peuvent être effectuées dans la mémoire tampon d’écran de la console pour l’accès en écriture. |
 
 *lpSecurityAttributes* \[ dans, facultatif\]  
-Pointeur vers une structure [**d' \_ attributs de sécurité**](https://msdn.microsoft.com/library/windows/desktop/aa379560) qui détermine si le handle retourné peut être hérité par les processus enfants. Si *lpSecurityAttributes* a la **valeur null** , le handle ne peut pas être hérité. Le membre **lpSecurityDescriptor** de la structure spécifie un descripteur de sécurité pour la nouvelle mémoire tampon d’écran de la console. Si *lpSecurityAttributes* a la **valeur null** , la mémoire tampon d’écran de la console obtient un descripteur de sécurité par défaut. Les listes de contrôle d’accès dans le descripteur de sécurité par défaut pour une mémoire tampon d’écran de console proviennent du jeton principal ou d’emprunt d’identité du créateur.
+Pointeur vers une structure [**d' \_ attributs de sécurité**](/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)) qui détermine si le handle retourné peut être hérité par les processus enfants. Si *lpSecurityAttributes* a la **valeur null**, le handle ne peut pas être hérité. Le membre **lpSecurityDescriptor** de la structure spécifie un descripteur de sécurité pour la nouvelle mémoire tampon d’écran de la console. Si *lpSecurityAttributes* a la **valeur null**, la mémoire tampon d’écran de la console obtient un descripteur de sécurité par défaut. Les listes de contrôle d’accès dans le descripteur de sécurité par défaut pour une mémoire tampon d’écran de console proviennent du jeton principal ou d’emprunt d’identité du créateur.
 
 *dwFlags* \[ dans\]  
 Type de mémoire tampon d’écran de console à créer. Le seul type de mémoire tampon d’écran pris en charge est la **\_ \_ mémoire tampon** de la console.
 
 *lpScreenBufferData*  
-Réservé doit avoir la **valeur null** .
+Réservé doit avoir la **valeur null**.
 
-## <a name="return-value"></a>Valeur retournée
+## <a name="return-value"></a>Valeur de retour
 
 Si la fonction est réussie, la valeur de retour est un handle vers la nouvelle mémoire tampon d’écran de la console.
 
-Si la fonction échoue, la valeur de retour est une **\_ \_ valeur de handle non valide** . Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est **INVALID\_HANDLE\_VALUE**. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
@@ -89,15 +89,15 @@ La mémoire tampon d’écran nouvellement créée copie des propriétés à par
 
 - `Font` -copié à partir de la mémoire tampon d’écran active
 - `Display Window Size` -copié à partir de la mémoire tampon d’écran active
-- `Buffer Size` -correspond à `Display Window Size` ( **non** copié)
+- `Buffer Size` -correspond à `Display Window Size` (**non** copié)
 - `Default Attributes` (couleurs)-copié à partir de la mémoire tampon d’écran active
 - `Default Popup Attributes` (couleurs)-copié à partir de la mémoire tampon d’écran active
 
 Le processus appelant peut utiliser le handle retourné dans toute fonction qui requiert un handle vers une mémoire tampon d’écran de la console, selon les limitations d’accès spécifiées par le paramètre *dwDesiredAccess* .
 
-Le processus appelant peut utiliser la fonction [**DuplicateHandle**](https://msdn.microsoft.com/library/windows/desktop/ms724251) pour créer un handle de mémoire tampon d’écran en double qui a un accès ou une héritage différent du handle d’origine. Toutefois, vous ne pouvez pas utiliser **DuplicateHandle** pour créer un doublon valide pour un autre processus (sauf par héritage).
+Le processus appelant peut utiliser la fonction [**DuplicateHandle**](/windows/win32/api/handleapi/nf-handleapi-duplicatehandle) pour créer un handle de mémoire tampon d’écran en double qui a un accès ou une héritage différent du handle d’origine. Toutefois, vous ne pouvez pas utiliser **DuplicateHandle** pour créer un doublon valide pour un autre processus (sauf par héritage).
 
-Pour fermer le descripteur de la mémoire tampon de l’écran de la console, utilisez la fonction [**CloseHandle**](https://msdn.microsoft.com/library/windows/desktop/ms724211) .
+Pour fermer le descripteur de la mémoire tampon de l’écran de la console, utilisez la fonction [**CloseHandle**](/windows/win32/api/handleapi/nf-handleapi-closehandle) .
 
 [!INCLUDE [no-vt-equiv-alt-buf](./includes/no-vt-equiv-alt-buf.md)]
 
@@ -105,29 +105,29 @@ Pour fermer le descripteur de la mémoire tampon de l’écran de la console, ut
 
 Pour obtenir un exemple, consultez [lecture et écriture de blocs de caractères et d’attributs](reading-and-writing-blocks-of-characters-and-attributes.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | ConsoleApi2. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 
 ## <a name="see-also"></a>Voir aussi
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [Mémoires tampons d’écran d’une console](console-screen-buffers.md)
 
-[**CloseHandle**](https://msdn.microsoft.com/library/windows/desktop/ms724211)
+[**CloseHandle**](/windows/win32/api/handleapi/nf-handleapi-closehandle)
 
-[**DuplicateHandle**](https://msdn.microsoft.com/library/windows/desktop/ms724251)
+[**DuplicateHandle**](/windows/win32/api/handleapi/nf-handleapi-duplicatehandle)
 
 [**GetConsoleScreenBufferInfo**](getconsolescreenbufferinfo.md)
 
-[**attributs de sécurité \_**](https://msdn.microsoft.com/library/windows/desktop/aa379560)
+[**attributs de sécurité \_**](/previous-versions/windows/desktop/legacy/aa379560(v=vs.85))
 
 [**SetConsoleActiveScreenBuffer**](setconsoleactivescreenbuffer.md)
 

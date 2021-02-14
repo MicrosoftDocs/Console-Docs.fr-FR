@@ -13,12 +13,12 @@ MSHAttr:
 - PreferredSiteName:MSDN
 - PreferredLib:/library/windows/desktop
 ms.assetid: 0226cd94-86d0-452b-80e6-e0fed8af0a62
-ms.openlocfilehash: 13ad97a30459ba3abd0ed197352e69e6e8b45d47
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: a520c1688bf9e682e5c6696738f5b81d30679d7b
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93037067"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358479"
 ---
 # <a name="using-the-high-level-input-and-output-functions"></a>Utilisation des fonctions d’entrée et de sortie High-Level
 
@@ -26,7 +26,7 @@ ms.locfileid: "93037067"
 
 L’exemple suivant utilise les fonctions d’e/s de console de haut niveau pour les e/s de la console. Pour plus d’informations sur les fonctions d’e/s de console de niveau supérieur, consultez [e/s de console de haut niveau](high-level-console-i-o.md).
 
-L’exemple part du principe que les modes d’e/s par défaut sont activés initialement pour les premiers appels aux fonctions [**ReadFile**](https://msdn.microsoft.com/library/windows/desktop/aa365467) et [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) . Le mode d’entrée est ensuite modifié pour activer le mode d’entrée hors connexion et le mode d’entrée d’écho pour les deuxièmes appels à **ReadFile** et **WriteFile** . La fonction [**SetConsoleTextAttribute**](setconsoletextattribute.md) est utilisée pour définir les couleurs dans lesquelles le texte écrit par la suite sera affiché. Avant de quitter, le programme restaure les attributs de couleur et de mode d’entrée de la console d’origine.
+L’exemple part du principe que les modes d’e/s par défaut sont activés initialement pour les premiers appels aux fonctions [**ReadFile**](/windows/win32/api/fileapi/nf-fileapi-readfile) et [**WriteFile**](/windows/win32/api/fileapi/nf-fileapi-writefile) . Le mode d’entrée est ensuite modifié pour activer le mode d’entrée hors connexion et le mode d’entrée d’écho pour les deuxièmes appels à **ReadFile** et **WriteFile**. La fonction [**SetConsoleTextAttribute**](setconsoletextattribute.md) est utilisée pour définir les couleurs dans lesquelles le texte écrit par la suite sera affiché. Avant de quitter, le programme restaure les attributs de couleur et de mode d’entrée de la console d’origine.
 
 La fonction de l’exemple `NewLine` est utilisée lorsque le mode de saisie de ligne est désactivé. Elle gère les retours chariot en déplaçant la position du curseur vers la première cellule de la ligne suivante. Si le curseur se trouve déjà dans la dernière ligne de la mémoire tampon de l’écran de la console, le contenu de la mémoire tampon de l’écran de la console fait défiler d’une ligne vers le haut.
 

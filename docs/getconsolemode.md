@@ -29,12 +29,12 @@ api_location:
 - MinKernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: 54667d92509687111cb562f517d488c8adbc2181
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 3f98797b0662dadcf696f76ffda5f42e759bf930
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93038870"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357277"
 ---
 # <a name="getconsolemode-function"></a>GetConsoleMode fonction)
 
@@ -51,8 +51,8 @@ BOOL WINAPI GetConsoleMode(
 
 ## <a name="parameters"></a>Paramètres
 
-*hConsoleHandle* \[ dans\]  
-Handle vers la mémoire tampon d’entrée de la console ou la mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès **\_ en lecture générique** . Pour plus d’informations, consultez sécurité de la [mémoire tampon de la console et droits d’accès](console-buffer-security-and-access-rights.md).
+*hConsoleHandle* \[entrée\]  
+Handle vers la mémoire tampon d’entrée de la console ou la mémoire tampon d’écran de la console. Le handle doit avoir le droit d’accès **GENERIC\_READ**. Pour plus d’informations, consultez [Sécurité de la mémoire tampon et droits d’accès d’une console](console-buffer-security-and-access-rights.md).
 
 *lpMode* \[ à\]  
 Pointeur vers une variable qui reçoit le mode actuel de la mémoire tampon spécifiée.
@@ -61,9 +61,9 @@ Pointeur vers une variable qui reçoit le mode actuel de la mémoire tampon spé
 
 ## <a name="return-value"></a>Valeur retournée
 
-Si la fonction est réussie, la valeur de retour est différente de zéro.
+Si la fonction réussit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour afficher les informations d’erreur étendues, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
@@ -73,21 +73,21 @@ Pour modifier les modes d’e/s d’une console, appelez la fonction [**SetConso
 
 ## <a name="examples"></a>Exemples
 
-Pour obtenir un exemple, consultez [lecture des événements de mémoire tampon d’entrée](reading-input-buffer-events.md).
+Pour obtenir un exemple, consultez [Lecture des événements de mémoire tampon d’entrée](reading-input-buffer-events.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
-| En-tête | ConsoleApi. h (via WinCon. h, incluez Windows. h) |
-| Bibliothèque | Kernel32. lib |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
+| En-tête | ConsoleApi.h (via WinCon.h, inclure Windows.h) |
+| Bibliothèque | Kernel32.lib |
 | DLL | Kernel32.dll |
 
 ## <a name="see-also"></a>Voir aussi
 
-[Fonctions de la console](console-functions.md)
+[Fonctions de console](console-functions.md)
 
 [Modes de la console](console-modes.md)
 
@@ -95,10 +95,10 @@ Pour obtenir un exemple, consultez [lecture des événements de mémoire tampon 
 
 [**ReadConsoleInput**](readconsoleinput.md)
 
-[**ReadFile**](https://msdn.microsoft.com/library/windows/desktop/aa365467)
+[**ReadFile**](/windows/win32/api/fileapi/nf-fileapi-readfile)
 
 [**SetConsoleMode**](setconsolemode.md)
 
 [**WriteConsole**](writeconsole.md)
 
-[**Appel**](https://msdn.microsoft.com/library/windows/desktop/aa365747)
+[**WriteFile**](/windows/win32/api/fileapi/nf-fileapi-writefile)

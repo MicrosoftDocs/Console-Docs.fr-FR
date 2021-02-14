@@ -19,12 +19,12 @@ api_location:
 - KernelBase.dll
 api_type:
 - DllExport
-ms.openlocfilehash: b015f224684a53a8bb654f04b1797ac1af794fc3
-ms.sourcegitcommit: f16996b9c7deead9bcfa44954be93a6ba087abcb
+ms.openlocfilehash: 91958b23348895f7454c9228e3c730d231dc4f0b
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97601476"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357939"
 ---
 # <a name="createpseudoconsole-function"></a>CreatePseudoConsole fonction)
 
@@ -48,10 +48,10 @@ HRESULT WINAPI CreatePseudoConsole(
 Dimensions de la fenêtre/mémoire tampon en nombre de caractères qui seront utilisés lors de la création initiale du pseudoconsole. Cela peut être ajusté ultérieurement avec [ResizePseudoConsole](resizepseudoconsole.md).
 
 *hInput* \[ dans\]  
-Handle ouvert d’un flux de données qui représente l’entrée d’utilisateur sur l’appareil. Cela est actuellement limité à des e/s [synchrones](https://docs.microsoft.com/windows/desktop/Sync/synchronization-and-overlapped-input-and-output) .
+Handle ouvert d’un flux de données qui représente l’entrée d’utilisateur sur l’appareil. Cela est actuellement limité à des e/s [synchrones](/windows/desktop/Sync/synchronization-and-overlapped-input-and-output) .
 
 *hOutput* \[ dans\]  
-Handle ouvert d’un flux de données qui représente la sortie de l’application à partir de l’appareil. Cela est actuellement limité à des e/s [synchrones](https://docs.microsoft.com/windows/desktop/Sync/synchronization-and-overlapped-input-and-output) .
+Handle ouvert d’un flux de données qui représente la sortie de l’application à partir de l’appareil. Cela est actuellement limité à des e/s [synchrones](/windows/desktop/Sync/synchronization-and-overlapped-input-and-output) .
 
 *dwFlags* \[ dans\]  
 Il peut s'agir de l'une des valeurs suivantes :
@@ -64,13 +64,13 @@ Il peut s'agir de l'une des valeurs suivantes :
 *phPC* \[ à\]  
 Pointeur vers un emplacement qui recevra un handle vers le nouvel appareil pseudoconsole.
 
-## <a name="return-value"></a>Valeur retournée
+## <a name="return-value"></a>Valeur de retour
 
 Type : **HRESULT**
 
 Si cette méthode est réussie, elle retourne **S_OK**. Sinon, elle retourne un code d’erreur **HRESULT** .
 
-## <a name="remarks"></a>Remarques
+## <a name="remarks"></a>Notes
 
 Cette fonction est principalement utilisée par les applications qui tentent d’être une fenêtre de terminal pour une application d’interface utilisateur de ligne de commande (CUI). Les appelants sont responsables de la présentation des informations sur le flux de sortie et de la collecte des entrées d’utilisateur et de leur sérialisation dans le flux d’entrée.
 

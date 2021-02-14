@@ -7,12 +7,12 @@ ms.topic: conceptual
 keywords: console, terminal, terminal virtuel, hôte de console, ligne de commande, sous-système, feuille de route, écosystème
 ms.prod: console
 ms.localizationpriority: high
-ms.openlocfilehash: e5d28a06789f230943d70a49e7c89642b17fdb5c
-ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
+ms.openlocfilehash: 3db266b761d4a8ee1fd8ec24d640bb277ab76edb
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96420258"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357899"
 ---
 # <a name="windows-console-and-terminal-ecosystem-roadmap"></a>Feuille de route de l’écosystème de la console et du terminal Windows
 
@@ -78,11 +78,11 @@ Cette section sur les principaux jalons du sous-système de console décrit l’
 
 ### <a name="initial-implementation"></a>Implémentation initiale
 
-**\[1989-Années 1990]** Le système hôte de console initial a été implémenté en tant qu’émulation de l’environnement DOS au sein du système d’exploitation Windows. Son code est enchevêtré et coopératif avec l’[invite de commandes](https://docs.microsoft.com/windows-server/administration/windows-commands/cmd), `cmd.exe`, qui est une représentation de cet environnement DOS. Le code du système hôte de console partage les responsabilités et les privilèges avec l’interpréteur de commandes. Il fournit également un niveau de base de services pour d’autres utilitaires en ligne de commande, afin d’exécuter des services d’une manière semblable à CMD.
+**\[1989-Années 1990]** Le système hôte de console initial a été implémenté en tant qu’émulation de l’environnement DOS au sein du système d’exploitation Windows. Son code est enchevêtré et coopératif avec l’[invite de commandes](/windows-server/administration/windows-commands/cmd), `cmd.exe`, qui est une représentation de cet environnement DOS. Le code du système hôte de console partage les responsabilités et les privilèges avec l’interpréteur de commandes. Il fournit également un niveau de base de services pour d’autres utilitaires en ligne de commande, afin d’exécuter des services d’une manière semblable à CMD.
 
 ### <a name="dbcs-for-cjk"></a>DBCS pour CJK
 
-**\[1997-1999\]** À cette époque, la prise en charge de [DBCS](https://docs.microsoft.com/windows/win32/intl/double-byte-character-sets) (Double-Byte Character Set, ou « jeu de caractères codés sur deux octets ») est introduite pour prendre en charge les marchés CJK (chinois, japonais et coréen). Cet effort se traduit par une bifurcation de nombreuses méthodes d’écriture et de lecture à l’intérieur de la console en vue de fournir à la fois des versions « occidentales », pour gérer les caractères codés sur un octet, et une représentation alternative pour les versions « orientales », où deux octets sont nécessaires pour représenter la vaste gamme de caractères. Cette bifurcation comprenait la représentation agrandie d’une cellule dans l’environnement de la console afin qu’elle occupe une ou deux cellules de large, où une cellule est étroite (plus haute que large) et deux cellules est large, pleine largeur ou un carré dans lequel les idéogrammes chinois, japonais et coréens typiques peuvent être inscrits.
+**\[1997-1999\]** À cette époque, la prise en charge de [DBCS](/windows/win32/intl/double-byte-character-sets) (Double-Byte Character Set, ou « jeu de caractères codés sur deux octets ») est introduite pour prendre en charge les marchés CJK (chinois, japonais et coréen). Cet effort se traduit par une bifurcation de nombreuses méthodes d’écriture et de lecture à l’intérieur de la console en vue de fournir à la fois des versions « occidentales », pour gérer les caractères codés sur un octet, et une représentation alternative pour les versions « orientales », où deux octets sont nécessaires pour représenter la vaste gamme de caractères. Cette bifurcation comprenait la représentation agrandie d’une cellule dans l’environnement de la console afin qu’elle occupe une ou deux cellules de large, où une cellule est étroite (plus haute que large) et deux cellules est large, pleine largeur ou un carré dans lequel les idéogrammes chinois, japonais et coréens typiques peuvent être inscrits.
 
 ### <a name="securityisolation"></a>Sécurité/isolation
 
@@ -94,7 +94,7 @@ Cette section sur les principaux jalons du sous-système de console décrit l’
 
 ### <a name="virtual-terminal-client"></a>Client Terminal virtuel
 
-**\[2015-2017\]** Avec l’arrivée du [Sous-système Windows pour Linux](https://docs.microsoft.com/windows/wsl/), les efforts de Microsoft en vue d’améliorer l’expérience de [Docker sur Windows](https://docs.microsoft.com/dotnet/architecture/microservices/container-docker-introduction/docker-defined) et l’adoption d’[OpenSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_overview) en tant que principale technologie d’exécution à distance de la ligne de commande, les implémentations initiales de [séquences de terminaux virtuels](console-virtual-terminal-sequences.md) ont été introduites dans l’hôte de console. Cela a permis à la console existante d’assumer la fonction de terminal, attaché directement à ces applications Linux natives dans leurs environnements respectifs, avec rendu des attributs graphiques et textuels à l’écran et retour de l’entrée utilisateur dans le dialecte approprié.
+**\[2015-2017\]** Avec l’arrivée du [Sous-système Windows pour Linux](/windows/wsl/), les efforts de Microsoft en vue d’améliorer l’expérience de [Docker sur Windows](/dotnet/architecture/microservices/container-docker-introduction/docker-defined) et l’adoption d’[OpenSSH](/windows-server/administration/openssh/openssh_overview) en tant que principale technologie d’exécution à distance de la ligne de commande, les implémentations initiales de [séquences de terminaux virtuels](console-virtual-terminal-sequences.md) ont été introduites dans l’hôte de console. Cela a permis à la console existante d’assumer la fonction de terminal, attaché directement à ces applications Linux natives dans leurs environnements respectifs, avec rendu des attributs graphiques et textuels à l’écran et retour de l’entrée utilisateur dans le dialecte approprié.
 
 ### <a name="virtual-terminal-server"></a>Serveur Terminal virtuel
 

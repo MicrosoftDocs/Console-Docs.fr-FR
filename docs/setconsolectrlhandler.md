@@ -30,12 +30,12 @@ api_location:
 api_type:
 - DllExport
 ms.localizationpriority: high
-ms.openlocfilehash: 208eebc92b718fed9856a48dfaf5cbebdaddc1e1
-ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
+ms.openlocfilehash: 03e7166f84be2f760a4ffea385225390bdb3ffa1
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96420268"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357709"
 ---
 # <a name="setconsolectrlhandler-function"></a>Fonction SetConsoleCtrlHandler
 
@@ -66,13 +66,13 @@ Si le paramètre *HandlerRoutine* est **NULL**, une valeur **TRUE** fait que le 
 
 Si la fonction réussit, la valeur de retour est différente de zéro.
 
-Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](https://msdn.microsoft.com/library/windows/desktop/ms679360).
+Si la fonction échoue, la valeur de retour est égale à zéro. Pour obtenir des informations détaillées sur l’erreur, appelez [**GetLastError**](/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror).
 
 ## <a name="remarks"></a>Remarques
 
-Cette fonction fournit une notification similaire pour l’application console et les services fournis par [**WM\_QUERYENDSESSION**](https://msdn.microsoft.com/library/windows/desktop/aa376890) pour les applications graphiques avec une pompe de messages. Vous pouvez également utiliser cette fonction à partir d’une application graphique, mais il n’y a aucune garantie qu’elle arrive avant la notification de **WM\_QUERYENDSESSION**.
+Cette fonction fournit une notification similaire pour l’application console et les services fournis par [**WM\_QUERYENDSESSION**](/windows/win32/shutdown/wm-queryendsession) pour les applications graphiques avec une pompe de messages. Vous pouvez également utiliser cette fonction à partir d’une application graphique, mais il n’y a aucune garantie qu’elle arrive avant la notification de **WM\_QUERYENDSESSION**.
 
-Chaque processus de console a sa propre liste de fonctions [**HandlerRoutine**](handlerroutine.md) définies par l’application qui gèrent les signaux <kbd>CTRL</kbd>+<kbd>C</kbd> et <kbd>CTRL</kbd>+<kbd>BREAK</kbd>. Les fonctions du gestionnaire gèrent également les signaux générés par le système quand l’utilisateur ferme la console, se déconnecte ou arrête le système. À la base, la liste de gestionnaires de chaque processus contient seulement une fonction de gestionnaire par défaut qui appelle la fonction [**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658). Un processus de console ajoute ou supprime des fonctions de gestionnaire supplémentaires en appelant la fonction **SetConsoleCtrlHandler**, qui n’affecte pas la liste des fonctions de gestionnaire pour d’autres processus. Quand un processus de console reçoit un des signaux de contrôle, ses fonctions de gestionnaire sont appelées selon le principe « dernier enregistré, premier appelé », jusqu’à ce qu’un des gestionnaires retourne `TRUE`. Si aucun des gestionnaires ne retourne `TRUE`, le gestionnaire par défaut est appelé.
+Chaque processus de console a sa propre liste de fonctions [**HandlerRoutine**](handlerroutine.md) définies par l’application qui gèrent les signaux <kbd>CTRL</kbd>+<kbd>C</kbd> et <kbd>CTRL</kbd>+<kbd>BREAK</kbd>. Les fonctions du gestionnaire gèrent également les signaux générés par le système quand l’utilisateur ferme la console, se déconnecte ou arrête le système. À la base, la liste de gestionnaires de chaque processus contient seulement une fonction de gestionnaire par défaut qui appelle la fonction [**ExitProcess**](/windows/win32/api/processthreadsapi/nf-processthreadsapi-exitprocess). Un processus de console ajoute ou supprime des fonctions de gestionnaire supplémentaires en appelant la fonction **SetConsoleCtrlHandler**, qui n’affecte pas la liste des fonctions de gestionnaire pour d’autres processus. Quand un processus de console reçoit un des signaux de contrôle, ses fonctions de gestionnaire sont appelées selon le principe « dernier enregistré, premier appelé », jusqu’à ce qu’un des gestionnaires retourne `TRUE`. Si aucun des gestionnaires ne retourne `TRUE`, le gestionnaire par défaut est appelé.
 
 Pour les processus de la console, les combinaisons de touches <kbd>Ctrl</kbd>+<kbd>C</kbd> et <kbd>Ctrl</kbd>+<kbd>Pause</kbd> sont généralement traitées comme des signaux (**CTRL\_C\_EVENT** et **CTRL\_BREAK\_EVENT**). Quand une fenêtre de console avec le focus au clavier reçoit <kbd>CTRL</kbd>+<kbd>C</kbd> ou <kbd>CTRL</kbd>+<kbd>BREAK</kbd>, le signal est généralement passé à tous les processus qui partagent cette console.
 
@@ -88,9 +88,9 @@ Le système génère des signaux **CTRL\_CLOSE\_EVENT**, **CTRL\_LOGOFF\_EVENT**
 
 **Windows 7, Windows 8, Windows 8.1 et Windows 10 :**
 
-Si une application console charge la bibliothèque gdi32.dll ou user32.dll, la fonction [**HandlerRoutine**](handlerroutine.md) que vous spécifiez quand vous appelez **SetConsoleCtrlHandler** n’est pas appelée pour les événements **CTRL\_LOGOFF\_EVENT** et **CTRL\_SHUTDOWN\_EVENT**. Le système d’exploitation reconnaît les processus qui chargent gdi32.dll ou user32.dll en tant qu’applications Windows et non pas en tant qu’applications console. Ce comportement se produit également pour les applications console qui n’appellent pas directement des fonctions dans gdi32.dll ou user32.dll, mais qui appellent des fonctions comme des [fonctions Shell](https://msdn.microsoft.com/library/windows/desktop/bb776426) qui appellent à leur tour des fonctions dans gdi32.dll ou user32.dll.
+Si une application console charge la bibliothèque gdi32.dll ou user32.dll, la fonction [**HandlerRoutine**](handlerroutine.md) que vous spécifiez quand vous appelez **SetConsoleCtrlHandler** n’est pas appelée pour les événements **CTRL\_LOGOFF\_EVENT** et **CTRL\_SHUTDOWN\_EVENT**. Le système d’exploitation reconnaît les processus qui chargent gdi32.dll ou user32.dll en tant qu’applications Windows et non pas en tant qu’applications console. Ce comportement se produit également pour les applications console qui n’appellent pas directement des fonctions dans gdi32.dll ou user32.dll, mais qui appellent des fonctions comme des [fonctions Shell](/previous-versions/windows/desktop/legacy/bb776426(v=vs.85)) qui appellent à leur tour des fonctions dans gdi32.dll ou user32.dll.
 
-Pour recevoir des événements quand un utilisateur se déconnecte ou que l’appareil s’arrête dans ces circonstances, créez une fenêtre masquée dans votre application console, puis gérez les messages de fenêtre [**WM\_QUERYENDSESSION**](https://msdn.microsoft.com/library/windows/desktop/aa376890) et [**WM\_ENDSESSION**](https://msdn.microsoft.com/library/windows/desktop/aa376889) que la fenêtre masquée reçoit. Vous pouvez créer une fenêtre masquée en appelant la méthode [**CreateWindowEx**](https://msdn.microsoft.com/library/windows/desktop/ms632680) avec le paramètre *dwExStyle* défini sur 0.
+Pour recevoir des événements quand un utilisateur se déconnecte ou que l’appareil s’arrête dans ces circonstances, créez une fenêtre masquée dans votre application console, puis gérez les messages de fenêtre [**WM\_QUERYENDSESSION**](/windows/win32/shutdown/wm-queryendsession) et [**WM\_ENDSESSION**](/windows/win32/shutdown/wm-endsession) que la fenêtre masquée reçoit. Vous pouvez créer une fenêtre masquée en appelant la méthode [**CreateWindowEx**](/windows/win32/api/winuser/nf-winuser-createwindowexa) avec le paramètre *dwExStyle* défini sur 0.
 
 ## <a name="examples"></a>Exemples
 
@@ -113,7 +113,7 @@ Pour obtenir un exemple, consultez [Inscription d’une fonction de gestionnaire
 
 [Fonctions de console](console-functions.md)
 
-[**ExitProcess**](https://msdn.microsoft.com/library/windows/desktop/ms682658)
+[**ExitProcess**](/windows/win32/api/processthreadsapi/nf-processthreadsapi-exitprocess)
 
 [**GenerateConsoleCtrlEvent**](generateconsolectrlevent.md)
 

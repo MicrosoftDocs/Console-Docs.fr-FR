@@ -27,12 +27,12 @@ api_location:
 - WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: baf6eeb51cbae5ce410c190852c22ae237e6a367
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: 1e4e30601655190bc6f597bbd33dd99f14f8d488
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93038347"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358080"
 ---
 # <a name="console_screen_buffer_infoex-structure"></a>\_Structure INFOEX de la \_ mémoire tampon d’écran de la console \_
 
@@ -66,7 +66,7 @@ Structure de [**repère**](coord-str.md) qui contient la taille de la mémoire t
 Structure de [**repère**](coord-str.md) qui contient les coordonnées de colonne et de ligne du curseur dans la mémoire tampon d’écran de la console.
 
 **wAttributes**  
-Attributs des caractères écrits dans une mémoire tampon d’écran par les fonctions [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) et [**WriteConsole**](writeconsole.md) , ou répercutés dans une mémoire tampon d’écran par les fonctions [**ReadFile**](https://msdn.microsoft.com/library/windows/desktop/aa365467) et [**ReadConsole**](readconsole.md) . Pour plus d’informations, consultez [attributs de caractères](console-screen-buffers.md#character-attributes).
+Attributs des caractères écrits dans une mémoire tampon d’écran par les fonctions [**WriteFile**](/windows/win32/api/fileapi/nf-fileapi-writefile) et [**WriteConsole**](writeconsole.md) , ou répercutés dans une mémoire tampon d’écran par les fonctions [**ReadFile**](/windows/win32/api/fileapi/nf-fileapi-readfile) et [**ReadConsole**](readconsole.md) . Pour plus d’informations, consultez [attributs de caractères](console-screen-buffers.md#character-attributes).
 
 **srWindow**  
 [**Petite structure \_ Rect**](small-rect-str.md) qui contient les coordonnées de la mémoire tampon d’écran de la console des angles supérieur gauche et inférieur droit de la fenêtre d’affichage.
@@ -78,12 +78,12 @@ Structure de [**repère**](coord-str.md) qui contient la taille maximale de la f
 Attribut de remplissage des fenêtres contextuelles de la console.
 
 **bFullscreenSupported**  
-Si ce membre est `TRUE` , le mode plein écran est pris en charge ; sinon, il ne l’est pas. Ce sera toujours `FALSE` le cas pour les systèmes après Windows Vista avec le [modèle de pilote WDDM](https://docs.microsoft.com/windows-hardware/drivers/display/introduction-to-the-windows-vista-and-later-display-driver-model) , car l’accès direct VGA à l’analyse n’est plus disponible.
+Si ce membre est `TRUE` , le mode plein écran est pris en charge ; sinon, il ne l’est pas. Ce sera toujours `FALSE` le cas pour les systèmes après Windows Vista avec le [modèle de pilote WDDM](/windows-hardware/drivers/display/introduction-to-the-windows-vista-and-later-display-driver-model) , car l’accès direct VGA à l’analyse n’est plus disponible.
 
 **ColorTable**  
-Tableau de valeurs [**COLORREF**](https://msdn.microsoft.com/library/windows/desktop/dd183449) qui décrivent les paramètres de couleur de la console.
+Tableau de valeurs [**COLORREF**](/windows/win32/gdi/colorref) qui décrivent les paramètres de couleur de la console.
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|

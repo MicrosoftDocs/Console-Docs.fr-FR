@@ -28,12 +28,12 @@ api_location:
 - WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: 0a2ba8ecf8b07a83db54642c2399bb93d99b7aa2
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: bcc58b90e71b848e3b6e4b0bf5ba162323830529
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93039527"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100357799"
 ---
 # <a name="key_event_record-structure"></a>Structure d’enregistrement d' \_ événement clé \_
 
@@ -58,13 +58,13 @@ typedef struct _KEY_EVENT_RECORD {
 ## <a name="members"></a>Membres
 
 **bKeyDown**  
-Si la touche est enfoncée, ce membre a la **valeur true** . Dans le cas contraire, ce membre a la **valeur false** (la touche est relâchée).
+Si la touche est enfoncée, ce membre a la **valeur true**. Dans le cas contraire, ce membre a la **valeur false** (la touche est relâchée).
 
 **wRepeatCount**  
 Nombre de répétitions, qui indique qu’une touche est maintenue enfoncée. Par exemple, lorsqu’une touche est maintenue enfoncée, vous pouvez obtenir cinq événements avec ce membre égal à 1, un événement avec ce membre égal à 5 ou plusieurs événements avec ce membre supérieur ou égal à 1.
 
 **wVirtualKeyCode**  
-[Code de clé virtuelle](https://msdn.microsoft.com/library/windows/desktop/dd375731(v=vs.85).aspx) qui identifie la clé donnée de façon indépendante du périphérique.
+[Code de clé virtuelle](/windows/win32/inputdev/virtual-key-codes) qui identifie la clé donnée de façon indépendante du périphérique.
 
 **wVirtualScanCode**  
 Code d’analyse virtuelle de la clé donnée qui représente la valeur dépendante de l’appareil générée par le matériel clavier.
@@ -93,22 +93,22 @@ Caractère ASCII traduit.
 | **SCROLLLOCK_ON** 0x0040 | Le voyant du verrou de défilement est activé. |
 | **SHIFT_PRESSED** 0x0010 | La touche Maj est enfoncée. |
 
-## <a name="remarks"></a>Remarques
+## <a name="remarks"></a>Notes
 
 Les clés améliorées pour les claviers IBM® 101 et 102 sont les touches Inser, DEL, début, fin, PAGE précédente, PAGE suivante et direction dans les clusters à gauche du pavé numérique. et les touches de division (/) et de saisie dans le clavier.
 
-Les événements d’entrée au clavier sont générés lorsqu’une touche, y compris des touches de contrôle, est enfoncée ou libérée. Toutefois, la touche ALT enfoncée et libérée sans combiner avec un autre caractère a une signification particulière pour le système et n’est pas transmise à l’application. En outre, la combinaison de touches CTRL + C n’est pas transmise si le handle d’entrée est en mode traité ( **activer l' \_ \_ entrée traitée** ).
+Les événements d’entrée au clavier sont générés lorsqu’une touche, y compris des touches de contrôle, est enfoncée ou libérée. Toutefois, la touche ALT enfoncée et libérée sans combiner avec un autre caractère a une signification particulière pour le système et n’est pas transmise à l’application. En outre, la combinaison de touches CTRL + C n’est pas transmise si le handle d’entrée est en mode traité (**activer l' \_ \_ entrée traitée**).
 
 ## <a name="examples"></a>Exemples
 
-Pour obtenir un exemple, consultez [lecture des événements de mémoire tampon d’entrée](reading-input-buffer-events.md).
+Pour obtenir un exemple, consultez [Lecture des événements de mémoire tampon d’entrée](reading-input-buffer-events.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | WinConTypes. h (via WinCon. h, incluez Windows. h) |
 
 ## <a name="see-also"></a>Voir aussi

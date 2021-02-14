@@ -25,12 +25,12 @@ api_location:
 - WinCon.h
 api_type:
 - HeaderDef
-ms.openlocfilehash: 93121864c8754b281b92051a5e4a174b2d5956a3
-ms.sourcegitcommit: 463975e71920908a6bff9a6a7291ddf3736652d5
+ms.openlocfilehash: f9cbe94fff616a93d835f47b618a28bb9f521891
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93037097"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358489"
 ---
 # <a name="small_rect-structure"></a>PETITE \_ structure Rect
 
@@ -61,7 +61,7 @@ Coordonnée x du coin inférieur droit du rectangle.
 **Bas**  
 Coordonnée y du coin inférieur droit du rectangle.
 
-## <a name="remarks"></a>Remarques
+## <a name="remarks"></a>Notes
 
 Cette structure est utilisée par les fonctions de la console pour spécifier les zones rectangulaires des mémoires tampons d’écran de la console, où les coordonnées spécifient les lignes et les colonnes des cellules de caractères de la mémoire tampon d’écran.
 
@@ -69,16 +69,16 @@ Cette structure est utilisée par les fonctions de la console pour spécifier le
 
 Pour obtenir un exemple, consultez [défilement du contenu d’une mémoire tampon d’écran](scrolling-a-screen-buffer-s-contents.md).
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 | &nbsp; | &nbsp; |
 |-|-|
-| Client minimal pris en charge | Applications de bureau Windows 2000 professionnel \[ uniquement\] |
-| Serveur minimal pris en charge | Applications de bureau Windows 2000 Server \[ uniquement\] |
+| Client minimal pris en charge | Windows 2000 Professionnel - \[Applications de bureau uniquement\] |
+| Serveur minimal pris en charge | Windows 2000 Server - \[Applications de bureau uniquement\] |
 | En-tête | WinConTypes. h (via WinCon. h, incluez Windows. h) |
 
 ## <a name="see-also"></a>Voir aussi
 
-[**RECTANGULAIRE**](https://msdn.microsoft.com/library/windows/desktop/dd162897)
+[**RECTANGULAIRE**](/previous-versions//dd162897(v=vs.85))
 
-[**RECTo**](https://msdn.microsoft.com/library/windows/desktop/dd162907)
+[**RECTo**](/previous-versions//dd162907(v=vs.85))

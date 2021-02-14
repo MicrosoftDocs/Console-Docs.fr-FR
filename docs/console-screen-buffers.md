@@ -14,25 +14,25 @@ MSHAttr:
 - PreferredLib:/library/windows/desktop
 ms.assetid: f94995fc-5f5f-4fcd-969d-7e10020634c2
 ms.localizationpriority: high
-ms.openlocfilehash: 4c5740be3b60d54f9e7b586b41e962a4102222a0
-ms.sourcegitcommit: 508e93bc83b4bca6ce678f88ab081d66b95d605c
+ms.openlocfilehash: 7d617b48676c0e4272d11dea3c1bd990f4334d11
+ms.sourcegitcommit: 281eb1469f77ae4fb4c67806898e14eac440522a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96420198"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100358088"
 ---
 # <a name="console-screen-buffers"></a>Mémoires tampons d’écran d’une console
 
 Une *mémoire tampon d’écran* est un tableau à deux dimensions qui comprend des données sur les caractères et les couleurs utilisés pour la sortie de la fenêtre de console. Une console peut avoir plusieurs mémoires tampons d’écran. La *mémoire tampon active* est celle qui est affichée à l’écran.
 
-Le système crée une mémoire tampon d’écran chaque fois qu’il crée une nouvelle console. Pour ouvrir le handle vers la mémoire tampon d’écran active de la console, spécifiez la valeur **CONOUT$** dans un appel à la fonction [**CreateFile**](https://msdn.microsoft.com/library/windows/desktop/aa363858). Un processus peut utiliser la fonction [**CreateConsoleScreenBuffer**](createconsolescreenbuffer.md) afin de créer des mémoires tampons d’écran supplémentaires pour sa console. Une nouvelle mémoire tampon d’écran n’est pas active tant que son handle n’est pas spécifié dans un appel à la fonction [**SetConsoleActiveScreenBuffer**](setconsoleactivescreenbuffer.md). Toutefois, les mémoires tampons d’écran sont accessibles en lecture et en écriture, qu’elles soient actives ou inactives.
+Le système crée une mémoire tampon d’écran chaque fois qu’il crée une nouvelle console. Pour ouvrir le handle vers la mémoire tampon d’écran active de la console, spécifiez la valeur **CONOUT$** dans un appel à la fonction [**CreateFile**](/windows/win32/api/fileapi/nf-fileapi-createfilea). Un processus peut utiliser la fonction [**CreateConsoleScreenBuffer**](createconsolescreenbuffer.md) afin de créer des mémoires tampons d’écran supplémentaires pour sa console. Une nouvelle mémoire tampon d’écran n’est pas active tant que son handle n’est pas spécifié dans un appel à la fonction [**SetConsoleActiveScreenBuffer**](setconsoleactivescreenbuffer.md). Toutefois, les mémoires tampons d’écran sont accessibles en lecture et en écriture, qu’elles soient actives ou inactives.
 
 Chaque mémoire tampon d’écran a son propre tableau à deux dimensions contenant des informations sur les caractères. Les données concernant chaque caractère sont stockées dans une structure [**CHAR\_INFO**](char-info-str.md) qui spécifie le caractère Unicode ou ANSI, ainsi que les couleurs de premier plan et d’arrière-plan dans lesquelles ce caractère est affiché.
 
 Pour chaque mémoire tampon d’écran, vous pouvez définir indépendamment un certain nombre de propriétés. Cela signifie que le changement de la mémoire tampon d’écran active peut avoir un impact important sur l’apparence de la fenêtre de la console. Les propriétés associées à une mémoire tampon d’écran sont les suivantes :
 
 - Taille de la mémoire tampon d’écran, en nombre de lignes et de colonnes de caractères.
-- Attributs du texte (couleurs de premier plan et d’arrière-plan pour l’affichage du texte qui doit être écrit par la fonction [**WriteFile**](https://msdn.microsoft.com/library/windows/desktop/aa365747) ou [**WriteConsole**](writeconsole.md)).
+- Attributs du texte (couleurs de premier plan et d’arrière-plan pour l’affichage du texte qui doit être écrit par la fonction [**WriteFile**](/windows/win32/api/fileapi/nf-fileapi-writefile) ou [**WriteConsole**](writeconsole.md)).
 - Taille et emplacement de la fenêtre (zone rectangulaire de la mémoire tampon d’écran qui s’affiche dans la fenêtre de la console).
 - Position, apparence et visibilité du curseur.
 - Modes de sortie (**ENABLE\_PROCESSED\_OUTPUT** et **ENABLE\_WRAP\_AT\_EOL\_OUTPUT**). Pour plus d’informations sur les modes de sortie de la console, consultez [Modes de haut niveau de la console](high-level-console-modes.md).
@@ -77,7 +77,7 @@ Les attributs de caractères se divisent en deux classes : Color et DBCS. Les a
 | **COMMON\_LVB\_REVERSE\_VIDEO** | Inverse les attributs du premier plan et de l’arrière-plan. |
 | **COMMON\_LVB\_UNDERSCORE** | Caractère de soulignement. |
 
-Les attributs du premier plan spécifient la couleur du texte. Les attributs de l’arrière-plan spécifient la couleur qui est utilisée pour remplir l’arrière-plan de la cellule. Les autres attributs sont utilisés avec [DBCS](https://msdn.microsoft.com/library/windows/desktop/dd317794).
+Les attributs du premier plan spécifient la couleur du texte. Les attributs de l’arrière-plan spécifient la couleur qui est utilisée pour remplir l’arrière-plan de la cellule. Les autres attributs sont utilisés avec [DBCS](/windows/win32/intl/double-byte-character-sets).
 
 Une application peut combiner les constantes du premier plan et de l’arrière-plan pour obtenir des couleurs différentes. Par exemple, la combinaison suivante produit un texte cyan clair sur un arrière-plan bleu.
 
